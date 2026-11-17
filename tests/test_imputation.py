@@ -6,7 +6,7 @@ from numpy.testing import assert_allclose
 from pandas.testing import assert_frame_equal
 from sklearn.model_selection import train_test_split
 
-from src.generate_data import CATEGORY, NUMERIC, SEED, TARGETS, generate_complete, mask_mcar
+from src.prepare_data import CATEGORY, GROUP, NUMERIC, SEED, TARGETS, load_complete, mask_mcar
 from src.run_experiments import (
     benchmark, describe_demo, fit_imputer, group_median, masked_scores, summarize_scores, transform,
 )
@@ -22,14 +22,14 @@ class ImputationTests(unittest.TestCase):
                 assert_allclose(result.iloc[:-1], age["age"].iloc[:-1])
 
     def test_mode_and_tie(self):
-        size = pd.DataFrame({"category": ["M", "M", "L", "S", None, "M"]})
+        size = pd.DataFrame({CATEGORY: ["M", "M", "L", "S", None, "M"]})
         mode = fit_imputer(size, CATEGORY, "Mode")
         self.assertEqual(transform(mode, size, CATEGORY, "Mode").iloc[4], "M")
-        tie = pd.DataFrame({"category": ["Z", "A", "Z", "A", np.nan]})
+        tie = pd.DataFrame({CATEGORY: ["Z", "A", "Z", "A", np.nan]})
         self.assertEqual(fit_imputer(tie, CATEGORY, "Mode").statistics_[0], "A")
 
     def test_all_missing_and_wrong_dtype(self):
-        frame = pd.DataFrame({"x": [np.nan, np.nan], "category": ["M", None]})
+        frame = pd.DataFrame({"x": [np.nan, np.nan], CATEGORY: ["M", None]})
         for method in ("Mean", "Median", "Mode"):
             with self.assertRaisesRegex(ValueError, "không có giá trị quan sát"):
                 fit_imputer(frame, "x", method)
@@ -54,17 +54,19 @@ class ImputationTests(unittest.TestCase):
             masked_scores(pd.Series([1.]), pd.Series([1.]), pd.Series([False]))
 
     def test_group_fallback_for_unknown_or_small_groups(self):
-        train = pd.DataFrame({"group": ["A", "A", "B"], "x": [2., 4., 100.]})
-        test = pd.DataFrame({"group": ["A", "B", "C"], "x": [np.nan, np.nan, np.nan]})
+        train = pd.DataFrame({GROUP: ["A", "A", "B"], "x": [2., 4., 100.]})
+        test = pd.DataFrame({GROUP: ["A", "B", "C"], "x": [np.nan, np.nan, np.nan]})
         assert_allclose(group_median(train, test, "x", min_observed=2), [3, 4, 4])
 
     def test_mask_and_demo_invariance(self):
-        full = generate_complete(200)
+        full = load_complete()
+        self.assertEqual(len(full), 649)
+        self.assertFalse(full.isna().any().any())
         observed, mask = mask_mcar(full, 0.15, np.random.default_rng(SEED))
         _, repeated = mask_mcar(full, 0.15, np.random.default_rng(SEED))
         assert_frame_equal(mask, repeated)
         assert_frame_equal(observed[list(TARGETS)].isna(), mask)
-        self.assertTrue(observed["group"].equals(full["group"]))
+        self.assertTrue(observed[GROUP].equals(full[GROUP]))
         stages, _, _ = describe_demo(full, observed)
         variable = NUMERIC[1]
         count = observed[variable].count()
@@ -73,7 +75,7 @@ class ImputationTests(unittest.TestCase):
                                (count - 1) / (len(full) - 1) * observed[variable].var())
 
     def test_benchmark_row_matches_independent_train_and_mask(self):
-        complete = generate_complete()
+        complete = load_complete()
         rate, seed = 0.15, 47
         train_raw, test_raw = train_test_split(complete, test_size=0.25, random_state=42)
         self.assertFalse(len(train_raw.index.intersection(test_raw.index)))
@@ -92,7 +94,7 @@ class ImputationTests(unittest.TestCase):
         self.assertAlmostEqual(row.value, expected_mae)
 
     def test_main_benchmark_covers_three_rates_and_twelve_masks(self):
-        scores = summarize_scores(benchmark(generate_complete()))
+        scores = summarize_scores(benchmark(load_complete()))
         self.assertEqual(set(scores.missing_rate), {0.05, 0.15, 0.30})
         self.assertEqual(set(scores.repeats), {12})
         self.assertEqual(len(scores), 45)

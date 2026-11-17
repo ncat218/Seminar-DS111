@@ -5,9 +5,9 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
-from scipy.stats import gamma, gaussian_kde, norm
+from scipy.stats import gamma, norm
 
-from src.generate_data import CATEGORY, NUMERIC, RATES
+from src.prepare_data import CATEGORY, GROUP, NUMERIC, RATES
 
 INK = "#173340"
 TEAL = "#006D69"
@@ -16,7 +16,9 @@ VIOLET = "#624893"
 SLATE = "#758D99"
 PALE = "#DCE7EA"
 BASE = "#FFFFFF"
-VN_LABELS = ("Gần đối xứng", "Lệch phải", "Hai cụm")
+VN_LABELS = ("G1 · Điểm kỳ đầu", "absences · Số buổi vắng", "G3 · Điểm cuối kỳ")
+UNITS = ("Điểm (thang 0–20)", "Số buổi vắng", "Điểm (thang 0–20)")
+GUARDIANS = {"mother": "Mẹ", "father": "Cha", "other": "Khác"}
 
 plt.rcParams.update({
     "font.family": "DejaVu Sans", "font.size": 13, "text.color": INK,
@@ -64,19 +66,19 @@ def numeric_eda(out, observed):
     for index, (column, label) in enumerate(zip(NUMERIC[:2], VN_LABELS[:2])):
         values = observed[column].dropna()
         hist, box = axes[:, index]
-        bins = np.linspace(values.min(), values.max(), 37 if index == 0 else 54)
-        hist.hist(values, bins=bins, density=True, color=PALE, edgecolor=BASE)
-        x = np.linspace(values.min(), values.max(), 260)
-        hist.plot(x, gaussian_kde(values)(x), color=INK, linewidth=1.7)
+        bins = np.arange(-0.5, (20 if index == 0 else observed[column].max()) + 1.5, 1)
+        hist.hist(values, bins=bins, weights=np.full(len(values), 100 / len(values)),
+                  color=PALE, edgecolor=BASE)
+        hist.set_xlim(bins[0], bins[-1])
         hist.axvline(values.mean(), color=AMBER, label="Mean", linewidth=2)
         hist.axvline(values.median(), color=TEAL, label="Median", linewidth=2, linestyle="--")
-        hist.set(title=label, ylabel="Mật độ", xticklabels=[])
+        hist.set(title=label, ylabel="Tỷ trọng (%)", xticklabels=[])
         hist.legend(loc="upper right", fontsize=10)
         box.boxplot(values, orientation="horizontal", widths=0.55, patch_artist=True,
                     boxprops={"facecolor": PALE, "edgecolor": INK},
                     medianprops={"color": TEAL, "linewidth": 2},
                     flierprops={"marker": "o", "markersize": 3, "markeredgecolor": AMBER, "alpha": 0.42})
-        box.set(xlim=hist.get_xlim(), yticks=[], xlabel="Giá trị (đơn vị mô phỏng)")
+        box.set(xlim=hist.get_xlim(), yticks=[], xlabel=UNITS[index])
         if index == 1:
             box.text(0.98, 0.82, "Điểm ngoài hàng rào 1,5 IQR", fontsize=9,
                      ha="right", transform=box.transAxes, color=AMBER)
@@ -86,7 +88,7 @@ def numeric_eda(out, observed):
 def before_after(out, stages):
     variable = NUMERIC[1]
     arrays = [stages[s][variable].dropna() for s in ("Complete", "Observed", "Mean", "Median")]
-    bins = np.linspace(arrays[0].min(), arrays[0].max(), 65)
+    bins = np.arange(-0.25, arrays[0].max() + 0.76, 0.5)
     fig, ax = plt.subplots(figsize=(8.3, 4.1), layout="constrained")
     for values, label, color, ls in zip(
         arrays, ("Đầy đủ", "Quan sát", "Điền Mean", "Điền Median"),
@@ -94,7 +96,7 @@ def before_after(out, stages):
     ):
         proportions = np.histogram(values, bins)[0] / len(values)
         ax.stairs(proportions * 100, bins, color=color, linestyle=ls, linewidth=2.2, label=label)
-    ax.set(xlabel="Giá trị (đơn vị mô phỏng)", ylabel="Tỷ trọng mỗi khoảng (%)", xlim=(0, bins[-1]))
+    ax.set(xlabel="Số buổi vắng", ylabel="Tỷ trọng mỗi khoảng (%)", xlim=(bins[0], bins[-1]))
     ax.grid(axis="y")
     ax.legend(loc="upper right", ncols=2, fontsize=11)
     save(fig, out, "numeric_imputation_before_after")
@@ -111,7 +113,7 @@ def errors(out, scores):
                                   & (scores.method == method)].sort_values("missing_rate")
                 ax.bar(x + dx, data["mean"], 0.32, yerr=data["std"], capsize=4, color=color, label=method)
             ax.set(title=f"{label} · {metric}", xticks=x, xticklabels=[f"{rate:.0%}" for rate in RATES],
-                   ylabel="Sai số (đơn vị mô phỏng)", ylim=(0, None))
+                   ylabel=("Sai số (điểm)" if row == 0 else "Sai số (buổi vắng)"), ylim=(0, None))
             ax.set_axisbelow(True)
             ax.grid(axis="y")
     axes[0, 0].legend(ncols=2, fontsize=11)
@@ -130,7 +132,8 @@ def categorical(out, stages):
         counts = stages[stage][CATEGORY].value_counts().reindex(labels, fill_value=0)
         bars = ax.bar(x + dx, counts, width=0.24, color=color, label=label)
         ax.bar_label(bars, padding=3, fontsize=10)
-    ax.set(xticks=x, xticklabels=labels, xlabel="Nhãn loại", ylabel="Số quan sát")
+    ax.set(xticks=x, xticklabels=[GUARDIANS[label] for label in labels],
+           xlabel="Người giám hộ (guardian)", ylabel="Số quan sát")
     ax.set_ylim(0, ax.get_ylim()[1] * 1.12)
     ax.legend(ncols=3, fontsize=11)
     ax.set_axisbelow(True)
@@ -142,15 +145,16 @@ def groups(out, stages):
     fig, ax = plt.subplots(figsize=(8, 4), layout="constrained")
     frame = stages["Observed"]
     variable = NUMERIC[2]
-    bins = np.linspace(frame[variable].min(), frame[variable].max(), 39)
-    for group, color in (("A", TEAL), ("B", VIOLET)):
-        values = frame.loc[frame.group == group, variable].dropna()
-        ax.hist(values, bins=bins, color=color, alpha=0.38, label=f"Nhóm {group}")
+    bins = np.arange(-0.5, 21.5, 1)
+    for group, color in (("GP", TEAL), ("MS", VIOLET)):
+        values = frame.loc[frame[GROUP] == group, variable].dropna()
+        ax.hist(values, bins=bins, weights=np.full(len(values), 100 / len(values)),
+                color=color, alpha=0.38, label=f"Trường {group}")
         ax.axvline(values.median(), color=color, linewidth=2, linestyle="--")
     ax.axvline(frame[variable].median(), color=INK, linewidth=2, label="Median toàn cục")
-    ax.set(xlabel="Giá trị (đơn vị mô phỏng)", ylabel="Số quan sát")
+    ax.set(xlabel="Điểm G3 (thang 0–20)", ylabel="Tỷ trọng trong từng trường (%)")
     ax.legend(fontsize=11)
-    save(fig, out, "multimodal_groups")
+    save(fig, out, "g3_by_school")
 
 
 def create_figures(out, stages, scores):

@@ -9,8 +9,8 @@ from pandas.api.types import is_numeric_dtype
 from sklearn.impute import SimpleImputer
 from sklearn.model_selection import train_test_split
 
-from src.generate_data import (
-    CATEGORY, DEMO_RATE, NUMERIC, RATES, ROOT, SEED, TARGETS, mask_mcar, write_data,
+from src.prepare_data import (
+    CATEGORY, DEMO_RATE, GROUP, NUMERIC, RATES, ROOT, SEED, TARGETS, mask_mcar, write_data,
 )
 
 MASK_SEEDS = tuple(range(42, 54))
@@ -60,9 +60,9 @@ def transform(imputer, frame, variable, method):
 def group_median(train, test, variable, min_observed=20):
     """Learn per-group median on train, with train global median as the fallback."""
     fallback = fit_imputer(train, variable, "Median").statistics_[0]
-    group_stats = train.groupby("group")[variable].agg(["count", "median"])
+    group_stats = train.groupby(GROUP)[variable].agg(["count", "median"])
     usable = group_stats.loc[group_stats["count"].ge(min_observed), "median"]
-    return test[variable].fillna(test["group"].map(usable).fillna(fallback))
+    return test[variable].fillna(test[GROUP].map(usable).fillna(fallback))
 
 
 def masked_scores(truth, predicted, mask, categorical=False):
@@ -141,7 +141,7 @@ def describe_demo(complete, observed):
                 "stage": stage, "variable": variable, "count": series.count(), "mean": series.mean(),
                 "median": series.median(), "std": series.std(), "variance": series.var(),
                 "missing_rate": series.isna().mean(),
-                "corr_group_B": series.corr(frame["group"].eq("B").astype(int)),
+                "corr_school_GP": series.corr(frame[GROUP].eq("GP").astype(int)),
             })
     for stage in ("Complete", "Observed", "Mode"):
         counts = stages[stage][CATEGORY].value_counts()
@@ -153,15 +153,17 @@ def describe_demo(complete, observed):
     return stages, pd.DataFrame(numeric_rows), pd.DataFrame(category_rows)
 
 
-def result_payload(eda, missing, numeric, categories, scores):
+def result_payload(eda, missing, numeric, categories, scores, stages):
     def records(frame):
         return json.loads(frame.to_json(orient="records", double_precision=12))
 
+    schools = stages["Complete"].groupby(GROUP)[NUMERIC[2]].agg(["size", "median"])
     return {
         "n_rows": int(missing["total"].iloc[0]), "demo_rate": DEMO_RATE,
         "mask_seeds": list(MASK_SEEDS), "rates": list(RATES),
         "eda": records(eda.reset_index()), "missing": records(missing.reset_index()),
         "numeric": records(numeric), "categories": records(categories), "scores": records(scores),
+        "schools": records(schools.reset_index()),
     }
 
 
@@ -174,14 +176,15 @@ def write_conclusions(path, payload):
 
     def score(var, method, metric):
         row = selected.loc[(var, method, metric)]
-        factor = 100 if metric == "Accuracy" else 1
-        suffix = "%" if metric == "Accuracy" else ""
-        return f"{factor * row['mean']:.2f} ± {factor * row['std']:.2f}{suffix}"
+        if metric == "Accuracy":
+            return f"{row['mean']:.2%} ± {100 * row['std']:.2f} điểm phần trăm"
+        return f"{row['mean']:.2f} ± {row['std']:.2f}"
 
     sym, skew, multi = NUMERIC
     lines = [
         "# Kết luận từ thực nghiệm DS111", "",
-        f"Dữ liệu mô phỏng gồm {payload['n_rows']:,} dòng. Chia train/test 75/25, giữ nguyên lần chia.",
+        f"Tập tiếng Bồ Đào Nha của UCI Student Performance gồm {payload['n_rows']:,} dòng thực tế. "
+        "Bốn cột phân tích đầy đủ trước khi che. Chia train/test 75/25, giữ nguyên lần chia.",
         f"Ở mỗi mức thiếu 5%, 15%, 30%, lặp {len(MASK_SEEDS)} bộ mặt nạ MCAR. "
         "Các sai số dưới đây là trung bình ± SD qua lần che ở mức danh nghĩa 15%. SD mô tả độ dao động theo mặt nạ.",
         "",
@@ -193,33 +196,36 @@ def write_conclusions(path, payload):
             lines.append(f"| {var} | {method} | {score(var, method, 'MAE')} | {score(var, method, 'RMSE')} |")
     lines += [
         "",
-        f"- **Gần đối xứng:** skewness {eda.loc[sym, 'skewness']:.2f}, "
+        f"- **Điểm kỳ đầu G1:** skewness {eda.loc[sym, 'skewness']:.2f}, "
         f"Mean {eda.loc[sym, 'mean']:.2f} và Median {eda.loc[sym, 'median']:.2f}, "
         f"{eda.loc[sym, 'iqr_flag_count']:.0f} điểm bị gắn cờ theo 1,5 IQR. "
-        "Hai giá trị điền gần nhau nên sai số chênh ít trong benchmark này.",
-        f"- **Lệch phải:** skewness {eda.loc[skew, 'skewness']:.2f}, "
+        "Hai tâm gần nhau. Đọc cả hình dạng và điểm đuôi trước khi chọn.",
+        f"- **Số buổi vắng absences:** skewness {eda.loc[skew, 'skewness']:.2f}, "
         f"Mean {eda.loc[skew, 'mean']:.2f} và Median {eda.loc[skew, 'median']:.2f}, "
         f"{eda.loc[skew, 'iqr_flag_count']:.0f} điểm bị gắn cờ. "
-        "Ở mức 15%, Median giảm MAE còn Mean giảm RMSE. Với một hằng số, "
-        "trung vị tối thiểu hóa tổng sai số tuyệt đối và trung bình tối thiểu hóa tổng bình phương sai số trên tập dùng để tối ưu. "
-        "Thứ hạng trên test còn phụ thuộc vào mức đại diện của train.",
-        f"- **Biến loại:** Accuracy của Mode đạt {score(CATEGORY, 'Mode', 'Accuracy')}. "
-        f"Tỷ trọng M trong các giá trị có mặt tăng từ {cats.loc[('M', 'Observed'), 'share_nonmissing']:.1%} "
-        f"lên {cats.loc[('M', 'Mode'), 'share_nonmissing']:.1%} trong demo EDA. "
-        "Mọi ô che đều nhận M, nên accuracy bằng tỷ lệ M thật trong các ô che và tỷ lệ khôi phục của các lớp còn lại bằng 0 khi có mặt.",
+        "Ở mức 15%, Median có MAE thấp hơn và Mean có RMSE thấp hơn. "
+        "Số 0 là vắng 0 buổi, một quan sát hợp lệ. Mean có thể cho kết quả lẻ, "
+        "phù hợp với dự đoán điểm theo mất mát bình phương. Nếu đầu ra cần số đếm nguyên, "
+        "cần định nghĩa quy tắc và đánh giá lại. Với một hằng số, Median tối thiểu hóa tổng sai số tuyệt đối "
+        "và Mean tối thiểu hóa tổng bình phương trên tập tối ưu. Thứ hạng test phụ thuộc vào mức đại diện của train.",
+        f"- **Người giám hộ guardian:** Accuracy của Mode đạt {score(CATEGORY, 'Mode', 'Accuracy')}. "
+        f"Tỷ trọng nhãn mẹ trong các giá trị có mặt tăng từ {cats.loc[('mother', 'Observed'), 'share_nonmissing']:.1%} "
+        f"lên {cats.loc[('mother', 'Mode'), 'share_nonmissing']:.1%} trong demo EDA. "
+        "Điền nhãn đa số cho mọi ô che làm giảm khả năng khôi phục các lớp hiếm.",
         f"- **Phân phối:** SD mẫu cột lệch từ {demo.loc[(skew, 'Observed'), 'std']:.2f} "
         f"xuống {demo.loc[(skew, 'Mean'), 'std']:.2f} khi điền Mean trong cùng demo. "
-        f"Điền Mean toàn cục cho cột hai cụm làm tương quan Pearson với chỉ báo nhóm B "
-        f"đổi từ {demo.loc[(multi, 'Observed'), 'corr_group_B']:.3f} "
-        f"xuống {demo.loc[(multi, 'Mean'), 'corr_group_B']:.3f}. "
+        f"Điền Mean toàn cục cho điểm G3 làm tương quan Pearson với chỉ báo trường GP "
+        f"đổi từ {demo.loc[(multi, 'Observed'), 'corr_school_GP']:.3f} "
+        f"thành {demo.loc[(multi, 'Mean'), 'corr_school_GP']:.3f}. "
         "Điền Median cũng tạo một đỉnh nhân tạo. Với hằng số khác Mean quan sát, thay đổi phương sai phụ thuộc vào vị trí hằng số.",
-        f"- **Mở rộng theo nhóm:** MAE của Median toàn cục là {score(multi, 'Median', 'MAE')}, "
+        f"- **Mở rộng theo trường:** MAE của Median G3 toàn cục là {score(multi, 'Median', 'MAE')}, "
         f"Median theo nhóm là {score(multi, 'Group Median', 'MAE')}. "
-        "Nhóm A/B mang thông tin theo cách sinh dữ liệu. Cần kiểm tra nhóm có sẵn lúc sử dụng và đủ quan sát, "
+        f"RMSE lần lượt là {score(multi, 'Median', 'RMSE')} và {score(multi, 'Group Median', 'RMSE')}. "
+        "Chênh lệch quan sát giữa trường không xác lập tác động nhân quả. Cần kiểm tra trường có sẵn lúc sử dụng và đủ quan sát, "
         "vì benchmark này dùng fallback Median train toàn cục cho nhóm hiếm hoặc chưa gặp.",
         "",
-        "Các kết quả giới hạn ở bộ sinh dữ liệu, lần chia và cơ chế MCAR này. Tiêu chí sai số từng ô, "
-        "bảo toàn phân phối marginal và bảo toàn quan hệ giữa biến cần được kiểm tra riêng.",
+        "Các kết quả giới hạn ở mẫu môn tiếng Bồ Đào Nha, lần chia và cơ chế che MCAR này. "
+        "Số liệu do thực nghiệm trên bộ dữ liệu thật tạo ra. Cách thiếu ngoài đời có thể khác.",
     ]
     path.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
@@ -244,7 +250,7 @@ def run(root: Path = ROOT):
         ("evaluation", scores, False), ("evaluation_by_seed", repeats, False),
     ]:
         frame.to_csv(out / f"{name}.csv", index=index)
-    payload = result_payload(eda, missing, numeric, categories, scores)
+    payload = result_payload(eda, missing, numeric, categories, scores, stages)
     (out / "evidence.json").write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     write_conclusions(out / "conclusions.md", payload)
     create_figures(root / "figures", stages, scores)

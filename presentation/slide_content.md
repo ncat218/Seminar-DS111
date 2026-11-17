@@ -88,10 +88,11 @@ Xem đây là điểm bắt đầu. Điều chỉnh theo mục tiêu và ngữ n
 
 **Nội dung chiếu**
 
-3.200 dòng mô phỏng · Bốn biến phân tích · Cột lệch phải thiếu 14,81%
+UCI Student Performance · 649 dòng môn tiếng Bồ Đào Nha
 
-- Gần đối xứng. Skewness 0,04 · 0 điểm gắn cờ.
-- Lệch phải. Skewness 3,41 · 183 điểm gắn cờ.
+- Demo: che 94/649 ô absences (14,48%).
+- G1. Skewness 0,01 · 14 điểm gắn cờ.
+- absences. Skewness 2,08 · 18 điểm gắn cờ.
 - Train/test 75/25 · MCAR 5%, 15%, 30% · 12 lần che mỗi mức.
 - Chấm ở ô test bị che.
 
@@ -100,7 +101,7 @@ imputer.fit(train_masked)
 test_filled = imputer.transform(test_masked)
 ```
 
-**Đồ họa** · Histogram với KDE, đường Mean/Median và boxplot trên dữ liệu quan sát từ demo 15%.
+**Đồ họa** · Histogram theo khoảng nguyên, đường Mean/Median và boxplot trên dữ liệu quan sát từ demo 15%.
 
 ---
 
@@ -112,15 +113,15 @@ Benchmark MCAR 15%, điểm trung bình qua 12 lần che.
 
 | Metric | Mean | Median |
 |---|---:|---:|
-| MAE | 16,50 | 15,87 |
-| RMSE | 25,83 | 27,55 |
+| MAE | 2,83 | 2,52 |
+| RMSE | 3,69 | 3,86 |
 
 - Median giảm MAE. Mean giảm RMSE.
-- SD mẫu từ 23,55 xuống 21,74 khi điền Mean.
-- Mode đúng 60,56% ô bị che · Tỷ trọng M trong demo từ 60,5% lên 66,3%.
-- Với hai cụm, MAE Median toàn cục 14,75, theo nhóm 3,12 (mở rộng nêu trong lời thoại).
+- SD mẫu từ 4,66 xuống 4,31 khi điền Mean.
+- Mode đúng 68,87% ô người giám hộ bị che. Tỷ trọng nhãn mẹ từ 70,3% lên 74,6%.
+- Với G3, MAE Median toàn cục 2,42, theo trường 2,35 (mở rộng nêu trong lời thoại).
 
-**Đồ họa** · Biểu đồ cột PowerPoint cho MAE/RMSE và histogram trước/sau của biến lệch phải.
+**Đồ họa** · Biểu đồ cột PowerPoint cho MAE/RMSE và histogram trước/sau của số buổi vắng.
 
 ---
 

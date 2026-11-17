@@ -54,7 +54,7 @@ Trên hình thứ nhất, em dùng phân phối chuẩn làm ví dụ đối x�
 
 Hình thứ hai dùng phân phối Gamma. [Trỏ lần lượt vào Mode, Median rồi Mean.] Mode ở đỉnh. Median chia xác suất thành hai nửa. Một số giá trị rất lớn phía đuôi phải có thể đóng góp nhiều vào tổng, kéo Mean sang phải. Theo quy ước Fisher–Pearson, skewness dương thường đi cùng đuôi phải. Hình thứ ba phản chiếu phân phối Gamma để có đuôi trái và skewness âm. Lúc này Mean nằm phía trái Median. Ba thứ tự hiện trên slide áp dụng cho ba ví dụ cụ thể. Với dữ liệu nhiều đỉnh hoặc hình dạng phức tạp, thứ tự giữa các thước đo có thể khác.
 
-Thực tế em đọc histogram để thấy cụm, đỉnh và đuôi. Boxplot là cách nhanh để xem trung vị, khoảng tứ phân vị và điểm ngoài hàng rào 1,5 lần IQR. Moment bậc ba trong skewness rất nhạy với các điểm xa tâm, vì vậy em dùng nó cùng biểu đồ và thống kê mô tả. Một điểm ngoài hàng rào có thể là quan sát hợp lệ, chẳng hạn đuôi thật của phân phối lognormal. [Dừng và chỉ lại đuôi phải.] Ta kiểm tra nguồn gốc của điểm đó trước khi quyết định xử lý.
+Thực tế em đọc histogram để thấy cụm, đỉnh và đuôi. Boxplot là cách nhanh để xem trung vị, khoảng tứ phân vị và điểm ngoài hàng rào 1,5 lần IQR. Moment bậc ba trong skewness rất nhạy với các điểm xa tâm, vì vậy em dùng nó cùng biểu đồ và thống kê mô tả. Một điểm ngoài hàng rào có thể là quan sát hợp lệ, chẳng hạn một học sinh có số buổi vắng cao. [Dừng và chỉ lại đuôi phải.] Ta kiểm tra nguồn gốc của điểm đó trước khi quyết định xử lý.
 
 **Chuyển tiếp** · Kết hợp kiểu biến với hình dạng này, ta có thể chọn các phương pháp để thử.
 
@@ -94,9 +94,9 @@ Ví dụ Size có ba chữ M, một L và một S. M có tần suất lớn nh�
 
 **Lời thoại**
 
-Dữ liệu mô phỏng có 3.200 dòng. Em sinh một biến tam giác gần đối xứng, một biến lognormal lệch phải, một biến có hai cụm theo nhóm và nhãn M, S, L. Trước mắt là một lần che kiểu MCAR ở mức danh nghĩa 15%. Chẳng hạn cột lệch phải thiếu 474 trên 3.200 ô, tức khoảng 14,81%. Cột nhóm luôn quan sát được.
+Dữ liệu là 649 dòng của môn tiếng Bồ Đào Nha từ UCI Student Performance, thu thập tại hai trường trung học. Em chọn điểm kỳ đầu G1, số buổi vắng, người giám hộ và điểm cuối kỳ G3 để phân tích. Cột trường được giữ đầy đủ để thử phương án theo nhóm. Bản gốc đầy đủ, nên em chủ động che ô để có giá trị thật đối chiếu. Trên slide là một lần che kiểu MCAR ở mức danh nghĩa 15%. Riêng số buổi vắng thiếu 94 trên 649 ô, khoảng 14,48%.
 
-[Chỉ hình bên trái.] Biến gần đối xứng có skewness khoảng 0,04. Mean khoảng 49,83 và Median khoảng 49,91, hai đường gần như trùng, và boxplot không gắn cờ điểm nào. [Chỉ hình bên phải.] Biến lệch phải có skewness 3,41. Mean khoảng 23,51 so với Median khoảng 16,00. Boxplot gắn cờ 183 điểm, phù hợp với đuôi dài của biến sinh lognormal. Từ EDA này, em kỳ vọng hai phương pháp cho kết quả gần nhau trên biến thứ nhất và khác nhiều hơn trên biến thứ hai. Với Size mô phỏng, M là nhãn phổ biến, nên em thử Mode.
+[Chỉ hình bên trái.] Vùng trung tâm của điểm G1 khá cân đối. Skewness khoảng 0,01. Mean khoảng 11,35 và Median bằng 11, dù boxplot vẫn gắn cờ 14 điểm. [Chỉ hình bên phải.] Số buổi vắng lệch phải, skewness 2,08. Mean khoảng 3,71 so với Median là 2. Nhiều học sinh vắng 0 buổi và một số học sinh có số buổi vắng cao. Giá trị 0 được giữ như quan sát hợp lệ. Với người giám hộ, nhóm mẹ phổ biến nhất, nên em thử Mode.
 
 Để chấm sai số, em dùng lại bản đầy đủ và chia theo hàng thành 75% train và 25% test. Sau đó mới tạo mặt nạ train và test bằng hai luồng ngẫu nhiên riêng. Đoạn mã khớp bộ điền trên train đã che, rồi áp dụng lên test đã che. Mean và Median dùng cùng một mặt nạ để so sánh công bằng. Em chỉ xem lại giá trị gốc ở các ô test mà em đã cố tình che. Thuật toán thử mức 5%, 15% và 30%, mỗi mức lặp 12 mặt nạ. Khác với benchmark, phần EDA dùng Mean của chính bảng quan sát để giải thích thay đổi của phân phối.
 
@@ -110,11 +110,11 @@ Dữ liệu mô phỏng có 3.200 dòng. Em sinh một biến tam giác gần đ
 
 **Lời thoại**
 
-Biểu đồ dùng kết quả trung bình ở mức thiếu 15%. MAE là trung bình độ lệch tuyệt đối. RMSE lấy căn của sai số bình phương trung bình nên nhạy hơn với các lỗi lớn. Cả hai dùng cùng đơn vị của biến. [Trỏ vào MAE.] Trên biến lệch phải, Median có MAE 15,87, thấp hơn 16,50 của Mean. [Trỏ RMSE.] Mean có RMSE 25,83, thấp hơn 27,55 của Median. Với một giá trị điền duy nhất, Median phù hợp với mất mát tuyệt đối, trong khi Mean phù hợp với mất mát bình phương. Đây là kết quả của mô phỏng cụ thể. Trên biến gần đối xứng, điểm hai cách gần như trùng. Độ lệch chuẩn của điểm qua 12 mặt nạ có trong notebook.
+Biểu đồ dùng kết quả trung bình ở mức che 15%. MAE là trung bình độ lệch tuyệt đối. RMSE lấy căn của sai số bình phương trung bình nên nhạy hơn với các sai số lớn. Trên hình, cả hai đều tính theo số buổi vắng. [Trỏ vào MAE.] Median có MAE 2,52, thấp hơn 2,83 của Mean. [Trỏ RMSE.] Mean có RMSE 3,69, thấp hơn 3,86 của Median. Với một giá trị điền duy nhất, Median phù hợp với mất mát tuyệt đối, còn Mean phù hợp với mất mát bình phương. Điểm G1 cho kết quả hai cách khá gần nhau. Độ lệch chuẩn của sai số qua 12 mặt nạ được ghi trong notebook.
 
-Hình bên phải đặt dữ liệu quan sát cạnh dữ liệu sau điền. Ta thấy đỉnh mới tại giá trị điền. Khi điền bằng Mean của chính phần quan sát, Mean giữ nguyên và độ lệch chuẩn mẫu của biến lệch giảm từ 23,55 xuống 21,74. Các ô điền có độ lệch bằng 0 so với Mean, còn số quan sát dùng để chia tăng. Điều đó cũng có thể làm thay đổi tương quan khi ta phân tích nhiều biến.
+Hình bên phải đặt dữ liệu quan sát cạnh dữ liệu sau điền. Median làm cột tại 2 buổi cao hơn. Mean tạo một điểm tập trung ở khoảng 3,71 buổi. Em giữ con số lẻ để so sánh dự đoán điểm. Nếu đầu ra dùng để ghi nhận số buổi thật, cần kiểm tra thêm quy tắc cho giá trị nguyên. Khi điền bằng Mean của phần quan sát, độ lệch chuẩn mẫu của số buổi vắng giảm từ 4,66 xuống 4,31. Các ô điền có độ lệch bằng 0 so với Mean, còn số quan sát dùng để chia tăng.
 
-Mode dự đoán đúng khoảng 60,56% ô test bị che, nhưng trong demo tỷ trọng M tăng từ 60,5% lên 66,3%. Phương pháp dồn mọi ô thiếu về lớp đa số. Ví dụ hai cụm cũng cho thấy tiềm năng của nhóm: Median theo nhóm cho MAE 3,12, so với 14,75 khi dùng Median gộp. Nhóm A/B có thông tin theo thiết kế, nên cần kiểm tra lại điều kiện đó ở dữ liệu sử dụng.
+Mode dự đoán đúng khoảng 68,87% ô người giám hộ bị che. Tỷ trọng nhãn mẹ trong demo tăng từ 70,3% lên 74,6% do phương pháp dồn các ô thiếu về lớp đa số. Với G3, Median theo trường cho MAE 2,35 so với 2,42 khi dùng Median toàn cục, còn RMSE ở mức tương tự. Đó là một chênh lệch nhỏ trên mẫu này.
 
 **Chuyển tiếp** · Với một cột mới, em sẽ làm ba việc trước khi chọn dùng kết quả điền.
 

@@ -12,4 +12,8 @@
 - Mean, Median và Mode dùng `SimpleImputer`. `most_frequent` chọn giá trị nhỏ nhất khi hòa, với nhãn chuỗi đồng nhất là thứ tự từ điển. [Tài liệu SimpleImputer](https://scikit-learn.org/stable/modules/generated/sklearn.impute.SimpleImputer.html)
 - Train/test chia trước khi fit tiền xử lý. Trong cross-validation, đưa imputer vào pipeline để fit trong từng fold. [scikit-learn, Data leakage](https://scikit-learn.org/stable/common_pitfalls.html#data-leakage)
 
-Thiết kế benchmark, bộ sinh dữ liệu, hình vẽ và số liệu đều do project này tạo. Ví dụ tuổi, Size và đa Mode lấy từ đặc tả.
+## Dữ liệu thực nghiệm
+
+Paulo Cortez (2014), *Student Performance*, UCI Machine Learning Repository, DOI 10.24432/C5TG7T. Dùng `student-por.csv`, 649 dòng môn tiếng Bồ Đào Nha tại hai trường trung học. Sao chép tệp gốc và ghi riêng bản trích cột, bản che nhân tạo và mặt nạ. Kết quả benchmark và biểu đồ được tính từ các tệp này. [Dữ liệu và từ điển biến](https://archive.ics.uci.edu/dataset/320/student-performance) · [Giấy phép CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+
+Ví dụ tính tay tuổi, Size và đa Mode lấy từ đặc tả. Ba đường mật độ minh họa dùng Normal, Gamma và Gamma phản chiếu.

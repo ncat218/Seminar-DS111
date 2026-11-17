@@ -1,6 +1,6 @@
 # DS111 · Điền khuyết bằng Mean, Median và Mode
 
-Bộ seminar tiếng Việt gồm 9 slide cho 13 phút trình bày và 2 phút hỏi đáp. Thực nghiệm dùng dữ liệu mô phỏng để quan sát hai tiêu chí riêng biệt: sai số tại các ô bị che và mức thay đổi phân phối sau khi điền.
+Bộ seminar tiếng Việt gồm 9 slide cho 13 phút trình bày và 2 phút hỏi đáp. Thực nghiệm dùng dữ liệu thực tế từ **UCI Student Performance** để đo sai số tại các ô được che thử và xem phân phối thay đổi thế nào sau khi điền. [Student Performance — UCI](https://archive.ics.uci.edu/dataset/320/student-performance)
 
 ## Trình chiếu
 
@@ -26,21 +26,21 @@ Trong JupyterLab, chọn kernel của môi trường vừa cài rồi chạy **R
 .\.venv\Scripts\jupyter-nbconvert.exe --to notebook --execute --ExecutePreprocessor.timeout=180 --inplace notebooks/seminar_imputation.ipynb
 ```
 
-Trên macOS/Linux, dùng `.venv/bin/python` và `.venv/bin/jupyter-nbconvert`. Chạy riêng `python -m src.generate_data` nếu chỉ cần CSV dữ liệu. Tác vụ `src.run_experiments` sinh lại dữ liệu, bảng, kết luận và biểu đồ. Slide đã xuất là bản chụp của lần chạy kèm theo.
+Trên macOS/Linux, dùng `.venv/bin/python` và `.venv/bin/jupyter-nbconvert`. Chạy riêng `python -m src.prepare_data` nếu chỉ cần các CSV phân tích. Tác vụ `src.run_experiments` đọc dữ liệu gốc và tái tạo mặt nạ, bảng, kết luận và biểu đồ. Slide đã xuất dùng kết quả của lần chạy kèm theo.
 
 Đã chạy toàn bộ 6 cell mã theo thứ tự trên Python 3.14.4 và lưu bảng, hình vào notebook. Máy tạo bộ seminar thiếu kernel Jupyter. Các lệnh JupyterLab và nbconvert ở trên dành cho môi trường đã cài các thư viện trong `requirements.txt`.
 
 ## Dataset và thiết kế
 
-3.200 dòng, seed sinh 42, xác định bởi `row_id` (chỉ mục dùng để ghép các tập). Biến số dùng đơn vị mô phỏng. Mọi dòng đều đầy đủ trước khi che.
+Tập `student-por.csv` gồm **649 dòng của môn tiếng Bồ Đào Nha** tại hai trường trung học. Bản CSV gốc có 33 cột và không có ô thiếu. Project chọn năm cột bên dưới, thêm `row_id` theo thứ tự dòng để ghép mặt nạ với dữ liệu gốc, rồi che thử bốn cột. Chỉ dùng một môn để giữ bối cảnh điểm số nhất quán và tránh tính lặp khi ghép hai tệp môn học. [Student Performance — UCI](https://archive.ics.uci.edu/dataset/320/student-performance)
 
-| Cột | Cách sinh và mục đích |
+| Cột | Ý nghĩa và mục đích |
 |---|---|
-| `symmetric_numeric` | Phân phối tam giác min 30, đỉnh 50, max 70. Ví dụ gần đối xứng với đuôi hữu hạn. |
-| `skewed_numeric` | Lognormal, μ = 2,8 và σ = 0,85 trên thang log tự nhiên. Đuôi phải chứa các giá trị lớn do quá trình sinh. |
-| `multimodal_numeric` | Normal theo A/B, Mean 35/65 và SD 4. Phân phối gộp có hai cụm. |
-| `category` | Nhãn M, S, L với xác suất lần lượt 0,61, 0,26, 0,13. |
-| `group` | A hoặc B, mỗi nhóm có xác suất 0,5. Giữ quan sát được khi thử mở rộng theo nhóm. |
+| `G1` | Điểm kỳ đầu, thang 0–20. Vùng trung tâm gần đối xứng. |
+| `absences` | Số buổi vắng, có đuôi dài bên phải. Giá trị 0 nghĩa là không vắng. |
+| `G3` | Điểm cuối kỳ, thang 0–20. Dùng để so sánh Median toàn cục với Median theo trường. |
+| `guardian` | Người giám hộ, gồm `mother`, `father`, `other`. |
+| `school` | Mã trường GP hoặc MS. Giữ quan sát đầy đủ để thử thống kê theo trường. |
 
 Demo mô tả dùng một mặt nạ Bernoulli MCAR 15% và fit trên phần quan sát của demo để đo biến dạng của chính cột đó. Benchmark chia riêng train/test 75/25 với seed 42, sau đó che độc lập train và test. Seed mặt nạ 42–53 lặp tại ba mức 5%, 15%, 30%. Mỗi phương pháp so sánh trong cùng lần chạy dùng cùng ô test. Các mức là xác suất che danh nghĩa nên tỷ lệ thực tế dao động. Fit chỉ trên train đã che và chấm chỉ trên test bị che bằng giá trị gốc. Group Median dùng Median toàn cục của train cho nhóm có dưới 20 giá trị quan sát hoặc chưa gặp.
 
@@ -48,20 +48,23 @@ Demo mô tả dùng một mặt nạ Bernoulli MCAR 15% và fit trên phần qua
 
 | Đường dẫn | Nội dung |
 |---|---|
-| `data/synthetic_complete.csv` | Ground truth của mô phỏng |
-| `data/synthetic_missing_15pct.csv`, `synthetic_mask_15pct.csv` | Bản quan sát và mặt nạ của demo |
+| `data/raw/student-por.csv` | CSV gốc do UCI phát hành, phân tách bằng dấu chấm phẩy |
+| `data/student_complete.csv` | Năm cột phân tích và chỉ mục dòng, trước khi che |
+| `data/student_missing_15pct.csv`, `student_mask_15pct.csv` | Bản quan sát và mặt nạ của demo |
 | `results/missing_summary.csv`, `eda_numeric.csv` | Tỷ lệ thiếu thực tế, thống kê và số điểm ngoài hàng rào 1,5 IQR |
 | `results/distribution_summary.csv`, `category_frequencies.csv` | Thống kê của dữ liệu gốc, quan sát và sau điền, bao gồm SD mẫu, tương quan và tần suất |
 | `results/evaluation.csv` | Trung bình và SD qua các mặt nạ, phân theo mức thiếu, biến, phương pháp và metric |
 | `results/evaluation_by_seed.csv` | Điểm và số ô che thực tế theo từng lần lặp |
 | [Kết luận thực nghiệm](results/conclusions.md) | Số liệu và diễn giải ở mức danh nghĩa 15% |
-| `figures/` | Sáu biểu đồ PNG, gồm lý thuyết, EDA, trước/sau, sai số, biến loại và hai nhóm |
-| `src/`, `tests/` | Mã sinh dữ liệu, đánh giá, trực quan và kiểm thử |
+| `figures/` | Sáu biểu đồ PNG, gồm lý thuyết, EDA, trước/sau, sai số, người giám hộ và điểm G3 theo trường |
+| `src/`, `tests/` | Mã chuẩn bị dữ liệu, đánh giá, trực quan và kiểm thử |
 
-MAE và RMSE dùng đơn vị biến số, càng thấp càng tốt. Accuracy lưu dưới dạng tỷ lệ 0–1, càng cao càng tốt. SD trong bảng benchmark mô tả sự dao động của mặt nạ ở cùng một lần chia. Phần chia tỷ trọng lớp dùng mẫu số là số giá trị có mặt ở mỗi giai đoạn. Ô trống ở cột Mode của bảng EDA nghĩa là các giá trị liên tục đều xuất hiện một lần.
+MAE và RMSE dùng đơn vị gốc của biến, càng thấp càng tốt. Accuracy lưu dưới dạng tỷ lệ 0–1, càng cao càng tốt. SD trong bảng benchmark mô tả sự dao động của mặt nạ ở cùng một lần chia. Tỷ trọng lớp dùng mẫu số là số giá trị có mặt ở mỗi giai đoạn. Điểm và số buổi vắng là biến rời rạc. Benchmark giữ nguyên giá trị dự đoán lẻ để đánh giá dưới hàm mất mát đã chọn. Nếu hệ thống yêu cầu đầu ra nguyên, cần quy định rồi kiểm thử việc làm tròn.
 
 ## Phạm vi
 
-Dữ liệu và cơ chế thiếu là mô phỏng. Kết quả không suy rộng trực tiếp sang MAR/MNAR, biến có ràng buộc khác hoặc tập dữ liệu thật. Khi toàn bộ cột train thiếu hoặc kiểu biến sai, mã báo lỗi rõ để tránh tạo thống kê vô căn cứ. Các điểm bị boxplot gắn cờ vẫn nằm trong dữ liệu gốc.
+Dữ liệu gốc là quan sát thực tế. Các ô thiếu xuất hiện từ mặt nạ do project tạo, vì vậy benchmark đo khả năng điền dưới MCAR. Kết quả giới hạn ở môn học, mẫu và lần chia đã dùng. Khi toàn bộ cột train thiếu hoặc kiểu biến sai, mã báo lỗi rõ để tránh tạo thống kê vô căn cứ. Giữ các điểm bị boxplot gắn cờ, kể cả điểm 0 và số buổi vắng bằng 0.
+
+Dữ liệu của Paulo Cortez, *Student Performance* (2014), UCI Machine Learning Repository, DOI 10.24432/C5TG7T. Tệp gốc được giữ nguyên, các tệp phân tích là trích cột và tạo mặt nạ bởi project. [Nguồn UCI](https://doi.org/10.24432/C5TG7T) · [Giấy phép CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
 
 Khung môn học dựa trên phần tóm tắt slide 14–17 trong đặc tả đi kèm. Liên kết Drive chưa cung cấp được nội dung PDF trong môi trường này. [Chi tiết nguồn tham khảo](presentation/references.md)
