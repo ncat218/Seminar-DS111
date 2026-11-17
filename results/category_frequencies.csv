@@ -1,0 +1,10 @@
+stage,category,count,share_nonmissing
+Complete,L,401,0.1253125
+Complete,M,1937,0.6053125
+Complete,S,862,0.269375
+Observed,L,343,0.12554904831625183
+Observed,M,1654,0.6054172767203514
+Observed,S,735,0.26903367496339675
+Mode,L,343,0.1071875
+Mode,M,2122,0.663125
+Mode,S,735,0.2296875

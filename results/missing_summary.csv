@@ -1,0 +1,6 @@
+variable,n_missing,total,missing_rate
+symmetric_numeric,481,3200,0.1503125
+skewed_numeric,474,3200,0.148125
+multimodal_numeric,488,3200,0.1525
+category,468,3200,0.14625
+group,0,3200,0.0

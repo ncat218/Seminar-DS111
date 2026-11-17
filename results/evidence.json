@@ -1,0 +1,780 @@
+{
+  "n_rows": 3200,
+  "demo_rate": 0.15,
+  "mask_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53
+  ],
+  "rates": [
+    0.05,
+    0.15,
+    0.3
+  ],
+  "eda": [
+    {
+      "variable": "symmetric_numeric",
+      "count": 2719.0,
+      "mean": 49.834745870558,
+      "std": 8.198112517025,
+      "min": 30.674168678563,
+      "max": 69.566721257705,
+      "median": 49.90962262362,
+      "skewness": 0.036197363745,
+      "mode": "",
+      "iqr_flag_count": 0.0
+    },
+    {
+      "variable": "skewed_numeric",
+      "count": 2726.0,
+      "mean": 23.508192173398,
+      "std": 23.553730617481,
+      "min": 0.394258932231,
+      "max": 258.545117739934,
+      "median": 16.003544799971,
+      "skewness": 3.409729824331,
+      "mode": "",
+      "iqr_flag_count": 183.0
+    },
+    {
+      "variable": "multimodal_numeric",
+      "count": 2712.0,
+      "mean": 49.97035993198,
+      "std": 15.622511906565,
+      "min": 22.218853261757,
+      "max": 81.103296170909,
+      "median": 49.813435325922,
+      "skewness": -0.005993745078,
+      "mode": "",
+      "iqr_flag_count": 0.0
+    }
+  ],
+  "missing": [
+    {
+      "variable": "symmetric_numeric",
+      "n_missing": 481,
+      "total": 3200,
+      "missing_rate": 0.1503125
+    },
+    {
+      "variable": "skewed_numeric",
+      "n_missing": 474,
+      "total": 3200,
+      "missing_rate": 0.148125
+    },
+    {
+      "variable": "multimodal_numeric",
+      "n_missing": 488,
+      "total": 3200,
+      "missing_rate": 0.1525
+    },
+    {
+      "variable": "category",
+      "n_missing": 468,
+      "total": 3200,
+      "missing_rate": 0.14625
+    },
+    {
+      "variable": "group",
+      "n_missing": 0,
+      "total": 3200,
+      "missing_rate": 0.0
+    }
+  ],
+  "numeric": [
+    {
+      "stage": "Complete",
+      "variable": "symmetric_numeric",
+      "count": 3200,
+      "mean": 49.868677886213,
+      "median": 49.87936961602,
+      "std": 8.180249401221,
+      "variance": 66.916480266184,
+      "missing_rate": 0.0,
+      "corr_group_B": 0.009087699301
+    },
+    {
+      "stage": "Complete",
+      "variable": "skewed_numeric",
+      "count": 3200,
+      "mean": 23.624317870902,
+      "median": 16.09249851536,
+      "std": 23.977088901017,
+      "variance": 574.90079216728,
+      "missing_rate": 0.0,
+      "corr_group_B": 0.015220412744
+    },
+    {
+      "stage": "Complete",
+      "variable": "multimodal_numeric",
+      "count": 3200,
+      "mean": 49.847233485223,
+      "median": 45.343910591796,
+      "std": 15.622819429021,
+      "variance": 244.072486911791,
+      "missing_rate": 0.0,
+      "corr_group_B": 0.965469857284
+    },
+    {
+      "stage": "Observed",
+      "variable": "symmetric_numeric",
+      "count": 2719,
+      "mean": 49.834745870558,
+      "median": 49.90962262362,
+      "std": 8.198112517025,
+      "variance": 67.209048841803,
+      "missing_rate": 0.1503125,
+      "corr_group_B": 0.004471349563
+    },
+    {
+      "stage": "Observed",
+      "variable": "skewed_numeric",
+      "count": 2726,
+      "mean": 23.508192173398,
+      "median": 16.003544799971,
+      "std": 23.553730617481,
+      "variance": 554.778226000877,
+      "missing_rate": 0.148125,
+      "corr_group_B": 0.013748379853
+    },
+    {
+      "stage": "Observed",
+      "variable": "multimodal_numeric",
+      "count": 2712,
+      "mean": 49.97035993198,
+      "median": 49.813435325922,
+      "std": 15.622511906565,
+      "variance": 244.062878270777,
+      "missing_rate": 0.1525,
+      "corr_group_B": 0.965340762755
+    },
+    {
+      "stage": "Mean",
+      "variable": "symmetric_numeric",
+      "count": 3200,
+      "mean": 49.834745870558,
+      "median": 49.834745870558,
+      "std": 7.556687813676,
+      "variance": 57.103530713354,
+      "missing_rate": 0.0,
+      "corr_group_B": 0.004121555577
+    },
+    {
+      "stage": "Mean",
+      "variable": "skewed_numeric",
+      "count": 3200,
+      "mean": 23.508192173398,
+      "median": 19.173910692824,
+      "std": 21.738813515989,
+      "variance": 472.57601308296,
+      "missing_rate": 0.0,
+      "corr_group_B": 0.012687636535
+    },
+    {
+      "stage": "Mean",
+      "variable": "multimodal_numeric",
+      "count": 3200,
+      "mean": 49.97035993198,
+      "median": 49.97035993198,
+      "std": 14.381642972104,
+      "variance": 206.831654577079,
+      "missing_rate": 0.0,
+      "corr_group_B": 0.888719755421
+    },
+    {
+      "stage": "Median",
+      "variable": "symmetric_numeric",
+      "count": 3200,
+      "mean": 49.846000782503,
+      "median": 49.90962262362,
+      "std": 7.556735207443,
+      "variance": 57.104246995412,
+      "missing_rate": 0.0,
+      "corr_group_B": 0.004136730325
+    },
+    {
+      "stage": "Median",
+      "variable": "skewed_numeric",
+      "count": 3200,
+      "mean": 22.396566281209,
+      "median": 16.003544799971,
+      "std": 21.901709586528,
+      "variance": 479.684882812614,
+      "missing_rate": 0.0,
+      "corr_group_B": 0.009610436278
+    },
+    {
+      "stage": "Median",
+      "variable": "multimodal_numeric",
+      "count": 3200,
+      "mean": 49.946428929556,
+      "median": 49.813435325922,
+      "std": 14.381753656708,
+      "variance": 206.834838242225,
+      "missing_rate": 0.0,
+      "corr_group_B": 0.888788064893
+    }
+  ],
+  "categories": [
+    {
+      "stage": "Complete",
+      "category": "L",
+      "count": 401,
+      "share_nonmissing": 0.1253125
+    },
+    {
+      "stage": "Complete",
+      "category": "M",
+      "count": 1937,
+      "share_nonmissing": 0.6053125
+    },
+    {
+      "stage": "Complete",
+      "category": "S",
+      "count": 862,
+      "share_nonmissing": 0.269375
+    },
+    {
+      "stage": "Observed",
+      "category": "L",
+      "count": 343,
+      "share_nonmissing": 0.125549048316
+    },
+    {
+      "stage": "Observed",
+      "category": "M",
+      "count": 1654,
+      "share_nonmissing": 0.60541727672
+    },
+    {
+      "stage": "Observed",
+      "category": "S",
+      "count": 735,
+      "share_nonmissing": 0.269033674963
+    },
+    {
+      "stage": "Mode",
+      "category": "L",
+      "count": 343,
+      "share_nonmissing": 0.1071875
+    },
+    {
+      "stage": "Mode",
+      "category": "M",
+      "count": 2122,
+      "share_nonmissing": 0.663125
+    },
+    {
+      "stage": "Mode",
+      "category": "S",
+      "count": 735,
+      "share_nonmissing": 0.2296875
+    }
+  ],
+  "scores": [
+    {
+      "missing_rate": 0.05,
+      "variable": "category",
+      "method": "Mode",
+      "metric": "Accuracy",
+      "mean": 0.562340064565,
+      "std": 0.063227754745,
+      "repeats": 12,
+      "mean_actual_test_rate": 0.050104166667,
+      "mean_test_masked": 40.083333333333
+    },
+    {
+      "missing_rate": 0.05,
+      "variable": "multimodal_numeric",
+      "method": "Group Median",
+      "metric": "MAE",
+      "mean": 3.231241525455,
+      "std": 0.373781782552,
+      "repeats": 12,
+      "mean_actual_test_rate": 0.0515625,
+      "mean_test_masked": 41.25
+    },
+    {
+      "missing_rate": 0.05,
+      "variable": "multimodal_numeric",
+      "method": "Group Median",
+      "metric": "RMSE",
+      "mean": 4.011396280023,
+      "std": 0.407631417774,
+      "repeats": 12,
+      "mean_actual_test_rate": 0.0515625,
+      "mean_test_masked": 41.25
+    },
+    {
+      "missing_rate": 0.05,
+      "variable": "multimodal_numeric",
+      "method": "Mean",
+      "metric": "MAE",
+      "mean": 14.900032277951,
+      "std": 0.513001113611,
+      "repeats": 12,
+      "mean_actual_test_rate": 0.0515625,
+      "mean_test_masked": 41.25
+    },
+    {
+      "missing_rate": 0.05,
+      "variable": "multimodal_numeric",
+      "method": "Mean",
+      "metric": "RMSE",
+      "mean": 15.425835665349,
+      "std": 0.566141451831,
+      "repeats": 12,
+      "mean_actual_test_rate": 0.0515625,
+      "mean_test_masked": 41.25
+    },
+    {
+      "missing_rate": 0.05,
+      "variable": "multimodal_numeric",
+      "method": "Median",
+      "metric": "MAE",
+      "mean": 14.808818100727,
+      "std": 0.757722333261,
+      "repeats": 12,
+      "mean_actual_test_rate": 0.0515625,
+      "mean_test_masked": 41.25
+    },
+    {
+      "missing_rate": 0.05,
+      "variable": "multimodal_numeric",
+      "method": "Median",
+      "metric": "RMSE",
+      "mean": 16.01667980356,
+      "std": 0.67594286508,
+      "repeats": 12,
+      "mean_actual_test_rate": 0.0515625,
+      "mean_test_masked": 41.25
+    },
+    {
+      "missing_rate": 0.05,
+      "variable": "skewed_numeric",
+      "method": "Mean",
+      "metric": "MAE",
+      "mean": 16.749941514524,
+      "std": 3.699910317159,
+      "repeats": 12,
+      "mean_actual_test_rate": 0.051145833333,
+      "mean_test_masked": 40.916666666667
+    },
+    {
+      "missing_rate": 0.05,
+      "variable": "skewed_numeric",
+      "method": "Mean",
+      "metric": "RMSE",
+      "mean": 24.728043420212,
+      "std": 8.451849676138,
+      "repeats": 12,
+      "mean_actual_test_rate": 0.051145833333,
+      "mean_test_masked": 40.916666666667
+    },
+    {
+      "missing_rate": 0.05,
+      "variable": "skewed_numeric",
+      "method": "Median",
+      "metric": "MAE",
+      "mean": 16.092226885711,
+      "std": 3.947739858203,
+      "repeats": 12,
+      "mean_actual_test_rate": 0.051145833333,
+      "mean_test_masked": 40.916666666667
+    },
+    {
+      "missing_rate": 0.05,
+      "variable": "skewed_numeric",
+      "method": "Median",
+      "metric": "RMSE",
+      "mean": 26.535417663365,
+      "std": 8.87976325728,
+      "repeats": 12,
+      "mean_actual_test_rate": 0.051145833333,
+      "mean_test_masked": 40.916666666667
+    },
+    {
+      "missing_rate": 0.05,
+      "variable": "symmetric_numeric",
+      "method": "Mean",
+      "metric": "MAE",
+      "mean": 6.438944614573,
+      "std": 0.607149195857,
+      "repeats": 12,
+      "mean_actual_test_rate": 0.049895833333,
+      "mean_test_masked": 39.916666666667
+    },
+    {
+      "missing_rate": 0.05,
+      "variable": "symmetric_numeric",
+      "method": "Mean",
+      "metric": "RMSE",
+      "mean": 7.992045937906,
+      "std": 0.622193215686,
+      "repeats": 12,
+      "mean_actual_test_rate": 0.049895833333,
+      "mean_test_masked": 39.916666666667
+    },
+    {
+      "missing_rate": 0.05,
+      "variable": "symmetric_numeric",
+      "method": "Median",
+      "metric": "MAE",
+      "mean": 6.445676187793,
+      "std": 0.605022908474,
+      "repeats": 12,
+      "mean_actual_test_rate": 0.049895833333,
+      "mean_test_masked": 39.916666666667
+    },
+    {
+      "missing_rate": 0.05,
+      "variable": "symmetric_numeric",
+      "method": "Median",
+      "metric": "RMSE",
+      "mean": 8.001555528011,
+      "std": 0.623148408504,
+      "repeats": 12,
+      "mean_actual_test_rate": 0.049895833333,
+      "mean_test_masked": 39.916666666667
+    },
+    {
+      "missing_rate": 0.15,
+      "variable": "category",
+      "method": "Mode",
+      "metric": "Accuracy",
+      "mean": 0.605628811752,
+      "std": 0.031933493937,
+      "repeats": 12,
+      "mean_actual_test_rate": 0.149270833333,
+      "mean_test_masked": 119.416666666667
+    },
+    {
+      "missing_rate": 0.15,
+      "variable": "multimodal_numeric",
+      "method": "Group Median",
+      "metric": "MAE",
+      "mean": 3.123114260544,
+      "std": 0.2044690257,
+      "repeats": 12,
+      "mean_actual_test_rate": 0.157395833333,
+      "mean_test_masked": 125.916666666667
+    },
+    {
+      "missing_rate": 0.15,
+      "variable": "multimodal_numeric",
+      "method": "Group Median",
+      "metric": "RMSE",
+      "mean": 3.901550888569,
+      "std": 0.250295577136,
+      "repeats": 12,
+      "mean_actual_test_rate": 0.157395833333,
+      "mean_test_masked": 125.916666666667
+    },
+    {
+      "missing_rate": 0.15,
+      "variable": "multimodal_numeric",
+      "method": "Mean",
+      "metric": "MAE",
+      "mean": 14.878824091679,
+      "std": 0.329945138218,
+      "repeats": 12,
+      "mean_actual_test_rate": 0.157395833333,
+      "mean_test_masked": 125.916666666667
+    },
+    {
+      "missing_rate": 0.15,
+      "variable": "multimodal_numeric",
+      "method": "Mean",
+      "metric": "RMSE",
+      "mean": 15.378412724646,
+      "std": 0.350386771492,
+      "repeats": 12,
+      "mean_actual_test_rate": 0.157395833333,
+      "mean_test_masked": 125.916666666667
+    },
+    {
+      "missing_rate": 0.15,
+      "variable": "multimodal_numeric",
+      "method": "Median",
+      "metric": "MAE",
+      "mean": 14.750794817612,
+      "std": 0.459961854491,
+      "repeats": 12,
+      "mean_actual_test_rate": 0.157395833333,
+      "mean_test_masked": 125.916666666667
+    },
+    {
+      "missing_rate": 0.15,
+      "variable": "multimodal_numeric",
+      "method": "Median",
+      "metric": "RMSE",
+      "mean": 16.126128081063,
+      "std": 0.675615116272,
+      "repeats": 12,
+      "mean_actual_test_rate": 0.157395833333,
+      "mean_test_masked": 125.916666666667
+    },
+    {
+      "missing_rate": 0.15,
+      "variable": "skewed_numeric",
+      "method": "Mean",
+      "metric": "MAE",
+      "mean": 16.498918912867,
+      "std": 2.216640426811,
+      "repeats": 12,
+      "mean_actual_test_rate": 0.1528125,
+      "mean_test_masked": 122.25
+    },
+    {
+      "missing_rate": 0.15,
+      "variable": "skewed_numeric",
+      "method": "Mean",
+      "metric": "RMSE",
+      "mean": 25.834035569765,
+      "std": 6.146492408403,
+      "repeats": 12,
+      "mean_actual_test_rate": 0.1528125,
+      "mean_test_masked": 122.25
+    },
+    {
+      "missing_rate": 0.15,
+      "variable": "skewed_numeric",
+      "method": "Median",
+      "metric": "MAE",
+      "mean": 15.872746752155,
+      "std": 2.398811250701,
+      "repeats": 12,
+      "mean_actual_test_rate": 0.1528125,
+      "mean_test_masked": 122.25
+    },
+    {
+      "missing_rate": 0.15,
+      "variable": "skewed_numeric",
+      "method": "Median",
+      "metric": "RMSE",
+      "mean": 27.548229501642,
+      "std": 6.380086366678,
+      "repeats": 12,
+      "mean_actual_test_rate": 0.1528125,
+      "mean_test_masked": 122.25
+    },
+    {
+      "missing_rate": 0.15,
+      "variable": "symmetric_numeric",
+      "method": "Mean",
+      "metric": "MAE",
+      "mean": 6.672290736148,
+      "std": 0.340878336927,
+      "repeats": 12,
+      "mean_actual_test_rate": 0.151458333333,
+      "mean_test_masked": 121.166666666667
+    },
+    {
+      "missing_rate": 0.15,
+      "variable": "symmetric_numeric",
+      "method": "Mean",
+      "metric": "RMSE",
+      "mean": 8.201050138454,
+      "std": 0.377631069661,
+      "repeats": 12,
+      "mean_actual_test_rate": 0.151458333333,
+      "mean_test_masked": 121.166666666667
+    },
+    {
+      "missing_rate": 0.15,
+      "variable": "symmetric_numeric",
+      "method": "Median",
+      "metric": "MAE",
+      "mean": 6.677029999225,
+      "std": 0.339313680456,
+      "repeats": 12,
+      "mean_actual_test_rate": 0.151458333333,
+      "mean_test_masked": 121.166666666667
+    },
+    {
+      "missing_rate": 0.15,
+      "variable": "symmetric_numeric",
+      "method": "Median",
+      "metric": "RMSE",
+      "mean": 8.208777632244,
+      "std": 0.375833710726,
+      "repeats": 12,
+      "mean_actual_test_rate": 0.151458333333,
+      "mean_test_masked": 121.166666666667
+    },
+    {
+      "missing_rate": 0.3,
+      "variable": "category",
+      "method": "Mode",
+      "metric": "Accuracy",
+      "mean": 0.616031919809,
+      "std": 0.02745502808,
+      "repeats": 12,
+      "mean_actual_test_rate": 0.3065625,
+      "mean_test_masked": 245.25
+    },
+    {
+      "missing_rate": 0.3,
+      "variable": "multimodal_numeric",
+      "method": "Group Median",
+      "metric": "MAE",
+      "mean": 3.196064580691,
+      "std": 0.100898787755,
+      "repeats": 12,
+      "mean_actual_test_rate": 0.302916666667,
+      "mean_test_masked": 242.333333333333
+    },
+    {
+      "missing_rate": 0.3,
+      "variable": "multimodal_numeric",
+      "method": "Group Median",
+      "metric": "RMSE",
+      "mean": 3.994411964401,
+      "std": 0.109512979198,
+      "repeats": 12,
+      "mean_actual_test_rate": 0.302916666667,
+      "mean_test_masked": 242.333333333333
+    },
+    {
+      "missing_rate": 0.3,
+      "variable": "multimodal_numeric",
+      "method": "Mean",
+      "metric": "MAE",
+      "mean": 14.963831394416,
+      "std": 0.242935837657,
+      "repeats": 12,
+      "mean_actual_test_rate": 0.302916666667,
+      "mean_test_masked": 242.333333333333
+    },
+    {
+      "missing_rate": 0.3,
+      "variable": "multimodal_numeric",
+      "method": "Mean",
+      "metric": "RMSE",
+      "mean": 15.486404489856,
+      "std": 0.248337335335,
+      "repeats": 12,
+      "mean_actual_test_rate": 0.302916666667,
+      "mean_test_masked": 242.333333333333
+    },
+    {
+      "missing_rate": 0.3,
+      "variable": "multimodal_numeric",
+      "method": "Median",
+      "metric": "MAE",
+      "mean": 14.93316435951,
+      "std": 0.324020731441,
+      "repeats": 12,
+      "mean_actual_test_rate": 0.302916666667,
+      "mean_test_masked": 242.333333333333
+    },
+    {
+      "missing_rate": 0.3,
+      "variable": "multimodal_numeric",
+      "method": "Median",
+      "metric": "RMSE",
+      "mean": 16.399319642568,
+      "std": 0.750600176616,
+      "repeats": 12,
+      "mean_actual_test_rate": 0.302916666667,
+      "mean_test_masked": 242.333333333333
+    },
+    {
+      "missing_rate": 0.3,
+      "variable": "skewed_numeric",
+      "method": "Mean",
+      "metric": "MAE",
+      "mean": 16.114793832472,
+      "std": 1.169725962005,
+      "repeats": 12,
+      "mean_actual_test_rate": 0.297083333333,
+      "mean_test_masked": 237.666666666667
+    },
+    {
+      "missing_rate": 0.3,
+      "variable": "skewed_numeric",
+      "method": "Mean",
+      "metric": "RMSE",
+      "mean": 25.783289280608,
+      "std": 3.22216638481,
+      "repeats": 12,
+      "mean_actual_test_rate": 0.297083333333,
+      "mean_test_masked": 237.666666666667
+    },
+    {
+      "missing_rate": 0.3,
+      "variable": "skewed_numeric",
+      "method": "Median",
+      "metric": "MAE",
+      "mean": 15.278724116922,
+      "std": 1.103918933631,
+      "repeats": 12,
+      "mean_actual_test_rate": 0.297083333333,
+      "mean_test_masked": 237.666666666667
+    },
+    {
+      "missing_rate": 0.3,
+      "variable": "skewed_numeric",
+      "method": "Median",
+      "metric": "RMSE",
+      "mean": 27.304047623562,
+      "std": 3.250194913466,
+      "repeats": 12,
+      "mean_actual_test_rate": 0.297083333333,
+      "mean_test_masked": 237.666666666667
+    },
+    {
+      "missing_rate": 0.3,
+      "variable": "symmetric_numeric",
+      "method": "Mean",
+      "metric": "MAE",
+      "mean": 6.524052348659,
+      "std": 0.315455077665,
+      "repeats": 12,
+      "mean_actual_test_rate": 0.303229166667,
+      "mean_test_masked": 242.583333333333
+    },
+    {
+      "missing_rate": 0.3,
+      "variable": "symmetric_numeric",
+      "method": "Mean",
+      "metric": "RMSE",
+      "mean": 8.047603758626,
+      "std": 0.37298472498,
+      "repeats": 12,
+      "mean_actual_test_rate": 0.303229166667,
+      "mean_test_masked": 242.583333333333
+    },
+    {
+      "missing_rate": 0.3,
+      "variable": "symmetric_numeric",
+      "method": "Median",
+      "metric": "MAE",
+      "mean": 6.527862541039,
+      "std": 0.312075881962,
+      "repeats": 12,
+      "mean_actual_test_rate": 0.303229166667,
+      "mean_test_masked": 242.583333333333
+    },
+    {
+      "missing_rate": 0.3,
+      "variable": "symmetric_numeric",
+      "method": "Median",
+      "metric": "RMSE",
+      "mean": 8.054541310658,
+      "std": 0.369506178489,
+      "repeats": 12,
+      "mean_actual_test_rate": 0.303229166667,
+      "mean_test_masked": 242.583333333333
+    }
+  ]
+}
