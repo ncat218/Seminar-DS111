@@ -157,7 +157,23 @@ def groups(out, stages):
     save(fig, out, "g3_by_school")
 
 
-def create_figures(out, stages, scores):
+def constant_loss(out, support):
+    curve = support["age_loss_curve"]
+    candidates = [row["candidate"] for row in curve]
+    fig, axes = plt.subplots(1, 2, figsize=(10.8, 4.1), layout="constrained")
+    for ax, metric, best, color in zip(axes, ("MAE", "RMSE"), (23, 34), (TEAL, AMBER)):
+        values = [row[metric] for row in curve]
+        ax.plot(candidates, values, color=color, linewidth=2.5)
+        point = next(row[metric] for row in curve if row["candidate"] == best)
+        ax.scatter([best], [point], color=color, s=55, zorder=3)
+        ax.axvline(best, color=color, linestyle="--", linewidth=1.4)
+        ax.set(title=f"{metric} nhỏ nhất tại {best}", xlabel="Giá trị dự đoán chung c",
+               ylabel="Sai số trên 5 tuổi quan sát (năm)")
+        ax.grid(axis="y")
+    save(fig, out, "constant_prediction_loss")
+
+
+def create_figures(out, stages, scores, support):
     out.mkdir(parents=True, exist_ok=True)
     theory(out)
     numeric_eda(out, stages["Observed"])
@@ -165,3 +181,4 @@ def create_figures(out, stages, scores):
     errors(out, scores)
     categorical(out, stages)
     groups(out, stages)
+    constant_loss(out, support)

@@ -6,6 +6,9 @@
 
 ## Phần mở rộng
 
+- Dự đoán hằng số là phạm vi xét khi liên hệ thống kê trung tâm với tổn thất. Các chiến lược Mean và Median được định nghĩa trong bộ dự đoán cơ sở. [DummyRegressor](https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyRegressor.html)
+- Mode chọn lớp phổ biến nhất khi dùng dự đoán cố định theo chi phí đúng/sai bằng nhau. [DummyClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html)
+
 - Định nghĩa thước đo vị trí, sự nhạy với đuôi phân phối và cách hiểu Mode cho biến liên tục. [NIST/SEMATECH, Measures of Location](https://www.itl.nist.gov/div898/handbook/eda/section3/eda351.htm)
 - Skewness Fisher–Pearson dùng moment bậc ba chuẩn hóa. Khối lượng ở xa tâm có ảnh hưởng mạnh lên hệ số. Các thứ tự Mean/Median/Mode trên slide 4 là ví dụ của Normal, Gamma và Gamma phản chiếu. Skewness bằng 0 hoặc Mean gần Median đều có thể xuất hiện ngoài phân phối chuẩn. [NIST/SEMATECH, Measures of Skewness and Kurtosis](https://www.itl.nist.gov/div898/handbook/eda/section3/eda35b.htm)
 - Cơ chế thiếu và điều kiện suy luận khi quá trình tạo thiếu phụ thuộc dữ liệu. Seminar mô phỏng MCAR để có ground truth và tập trung vào ba phương pháp điền hằng số. [Rubin (1976), Inference and Missing Data](https://doi.org/10.1093/biomet/63.3.581)

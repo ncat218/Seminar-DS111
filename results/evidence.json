@@ -788,5 +788,1047 @@
       "size": 226,
       "median": 11.0
     }
-  ]
+  ],
+  "support": {
+    "paired": [
+      {
+        "variable": "G1",
+        "metric": "MAE",
+        "mean_difference": 0.030361675306,
+        "std_difference": 0.05076949639,
+        "median_wins": 3,
+        "mean_wins": 9,
+        "ties": 0
+      },
+      {
+        "variable": "G1",
+        "metric": "RMSE",
+        "mean_difference": 0.079806375264,
+        "std_difference": 0.031471187824,
+        "median_wins": 0,
+        "mean_wins": 12,
+        "ties": 0
+      },
+      {
+        "variable": "absences",
+        "metric": "MAE",
+        "mean_difference": -0.310941000939,
+        "std_difference": 0.251572765059,
+        "median_wins": 10,
+        "mean_wins": 1,
+        "ties": 1
+      },
+      {
+        "variable": "absences",
+        "metric": "RMSE",
+        "mean_difference": 0.165627353382,
+        "std_difference": 0.173449977946,
+        "median_wins": 1,
+        "mean_wins": 11,
+        "ties": 0
+      },
+      {
+        "variable": "G3",
+        "metric": "MAE",
+        "mean_difference": -0.016101744208,
+        "std_difference": 0.039216940329,
+        "median_wins": 8,
+        "mean_wins": 3,
+        "ties": 1
+      },
+      {
+        "variable": "G3",
+        "metric": "RMSE",
+        "mean_difference": -0.020630100164,
+        "std_difference": 0.042003792421,
+        "median_wins": 10,
+        "mean_wins": 2,
+        "ties": 0
+      }
+    ],
+    "correlations": {
+      "complete": 0.2842941636006064,
+      "observed": 0.28605894010712374,
+      "mean_imputed": 0.2636416385850955
+    },
+    "age_loss_curve": [
+      {
+        "candidate": 15.0,
+        "MAE": 19.0,
+        "RMSE": 29.876412100518
+      },
+      {
+        "candidate": 15.25,
+        "MAE": 18.75,
+        "RMSE": 29.718050070622
+      },
+      {
+        "candidate": 15.5,
+        "MAE": 18.5,
+        "RMSE": 29.560953976487
+      },
+      {
+        "candidate": 15.75,
+        "MAE": 18.25,
+        "RMSE": 29.405144107792
+      },
+      {
+        "candidate": 16.0,
+        "MAE": 18.0,
+        "RMSE": 29.250641018617
+      },
+      {
+        "candidate": 16.25,
+        "MAE": 17.75,
+        "RMSE": 29.097465525368
+      },
+      {
+        "candidate": 16.5,
+        "MAE": 17.5,
+        "RMSE": 28.945638704302
+      },
+      {
+        "candidate": 16.75,
+        "MAE": 17.25,
+        "RMSE": 28.795181888642
+      },
+      {
+        "candidate": 17.0,
+        "MAE": 17.0,
+        "RMSE": 28.646116665265
+      },
+      {
+        "candidate": 17.25,
+        "MAE": 16.75,
+        "RMSE": 28.498464870936
+      },
+      {
+        "candidate": 17.5,
+        "MAE": 16.5,
+        "RMSE": 28.352248588075
+      },
+      {
+        "candidate": 17.75,
+        "MAE": 16.25,
+        "RMSE": 28.207490140032
+      },
+      {
+        "candidate": 18.0,
+        "MAE": 16.0,
+        "RMSE": 28.064212085858
+      },
+      {
+        "candidate": 18.25,
+        "MAE": 15.75,
+        "RMSE": 27.922437214541
+      },
+      {
+        "candidate": 18.5,
+        "MAE": 15.5,
+        "RMSE": 27.782188538702
+      },
+      {
+        "candidate": 18.75,
+        "MAE": 15.25,
+        "RMSE": 27.643489287715
+      },
+      {
+        "candidate": 19.0,
+        "MAE": 15.0,
+        "RMSE": 27.506362900245
+      },
+      {
+        "candidate": 19.25,
+        "MAE": 14.75,
+        "RMSE": 27.370833016187
+      },
+      {
+        "candidate": 19.5,
+        "MAE": 14.5,
+        "RMSE": 27.236923467969
+      },
+      {
+        "candidate": 19.75,
+        "MAE": 14.25,
+        "RMSE": 27.104658271227
+      },
+      {
+        "candidate": 20.0,
+        "MAE": 14.0,
+        "RMSE": 26.974061614818
+      },
+      {
+        "candidate": 20.25,
+        "MAE": 13.85,
+        "RMSE": 26.84515785016
+      },
+      {
+        "candidate": 20.5,
+        "MAE": 13.7,
+        "RMSE": 26.717971479886
+      },
+      {
+        "candidate": 20.75,
+        "MAE": 13.55,
+        "RMSE": 26.592527145798
+      },
+      {
+        "candidate": 21.0,
+        "MAE": 13.4,
+        "RMSE": 26.468849616105
+      },
+      {
+        "candidate": 21.25,
+        "MAE": 13.25,
+        "RMSE": 26.346963771942
+      },
+      {
+        "candidate": 21.5,
+        "MAE": 13.1,
+        "RMSE": 26.226894593146
+      },
+      {
+        "candidate": 21.75,
+        "MAE": 12.95,
+        "RMSE": 26.108667143307
+      },
+      {
+        "candidate": 22.0,
+        "MAE": 12.8,
+        "RMSE": 25.992306554056
+      },
+      {
+        "candidate": 22.25,
+        "MAE": 12.75,
+        "RMSE": 25.877838008613
+      },
+      {
+        "candidate": 22.5,
+        "MAE": 12.7,
+        "RMSE": 25.765286724584
+      },
+      {
+        "candidate": 22.75,
+        "MAE": 12.65,
+        "RMSE": 25.654677936002
+      },
+      {
+        "candidate": 23.0,
+        "MAE": 12.6,
+        "RMSE": 25.546036874631
+      },
+      {
+        "candidate": 23.25,
+        "MAE": 12.65,
+        "RMSE": 25.439388750518
+      },
+      {
+        "candidate": 23.5,
+        "MAE": 12.7,
+        "RMSE": 25.334758731829
+      },
+      {
+        "candidate": 23.75,
+        "MAE": 12.75,
+        "RMSE": 25.232171923955
+      },
+      {
+        "candidate": 24.0,
+        "MAE": 12.8,
+        "RMSE": 25.13165334792
+      },
+      {
+        "candidate": 24.25,
+        "MAE": 12.85,
+        "RMSE": 25.033227918109
+      },
+      {
+        "candidate": 24.5,
+        "MAE": 12.9,
+        "RMSE": 24.93692041933
+      },
+      {
+        "candidate": 24.75,
+        "MAE": 12.95,
+        "RMSE": 24.842755483239
+      },
+      {
+        "candidate": 25.0,
+        "MAE": 13.0,
+        "RMSE": 24.750757564164
+      },
+      {
+        "candidate": 25.25,
+        "MAE": 13.15,
+        "RMSE": 24.66095091435
+      },
+      {
+        "candidate": 25.5,
+        "MAE": 13.3,
+        "RMSE": 24.573359558677
+      },
+      {
+        "candidate": 25.75,
+        "MAE": 13.45,
+        "RMSE": 24.488007268865
+      },
+      {
+        "candidate": 26.0,
+        "MAE": 13.6,
+        "RMSE": 24.404917537251
+      },
+      {
+        "candidate": 26.25,
+        "MAE": 13.75,
+        "RMSE": 24.324113550138
+      },
+      {
+        "candidate": 26.5,
+        "MAE": 13.9,
+        "RMSE": 24.245618160814
+      },
+      {
+        "candidate": 26.75,
+        "MAE": 14.05,
+        "RMSE": 24.169453862262
+      },
+      {
+        "candidate": 27.0,
+        "MAE": 14.2,
+        "RMSE": 24.095642759636
+      },
+      {
+        "candidate": 27.25,
+        "MAE": 14.35,
+        "RMSE": 24.024206542569
+      },
+      {
+        "candidate": 27.5,
+        "MAE": 14.5,
+        "RMSE": 23.955166457364
+      },
+      {
+        "candidate": 27.75,
+        "MAE": 14.65,
+        "RMSE": 23.888543279154
+      },
+      {
+        "candidate": 28.0,
+        "MAE": 14.8,
+        "RMSE": 23.824357284091
+      },
+      {
+        "candidate": 28.25,
+        "MAE": 14.95,
+        "RMSE": 23.762628221642
+      },
+      {
+        "candidate": 28.5,
+        "MAE": 15.1,
+        "RMSE": 23.703375287077
+      },
+      {
+        "candidate": 28.75,
+        "MAE": 15.25,
+        "RMSE": 23.646617094206
+      },
+      {
+        "candidate": 29.0,
+        "MAE": 15.4,
+        "RMSE": 23.59237164848
+      },
+      {
+        "candidate": 29.25,
+        "MAE": 15.55,
+        "RMSE": 23.540656320502
+      },
+      {
+        "candidate": 29.5,
+        "MAE": 15.7,
+        "RMSE": 23.491487820059
+      },
+      {
+        "candidate": 29.75,
+        "MAE": 15.85,
+        "RMSE": 23.444882170743
+      },
+      {
+        "candidate": 30.0,
+        "MAE": 16.0,
+        "RMSE": 23.400854685246
+      },
+      {
+        "candidate": 30.25,
+        "MAE": 16.15,
+        "RMSE": 23.359419941428
+      },
+      {
+        "candidate": 30.5,
+        "MAE": 16.3,
+        "RMSE": 23.320591759216
+      },
+      {
+        "candidate": 30.75,
+        "MAE": 16.45,
+        "RMSE": 23.284383178431
+      },
+      {
+        "candidate": 31.0,
+        "MAE": 16.6,
+        "RMSE": 23.250806437627
+      },
+      {
+        "candidate": 31.25,
+        "MAE": 16.75,
+        "RMSE": 23.219872954002
+      },
+      {
+        "candidate": 31.5,
+        "MAE": 16.9,
+        "RMSE": 23.191593304471
+      },
+      {
+        "candidate": 31.75,
+        "MAE": 17.05,
+        "RMSE": 23.165977207966
+      },
+      {
+        "candidate": 32.0,
+        "MAE": 17.2,
+        "RMSE": 23.143033509028
+      },
+      {
+        "candidate": 32.25,
+        "MAE": 17.35,
+        "RMSE": 23.122770162764
+      },
+      {
+        "candidate": 32.5,
+        "MAE": 17.5,
+        "RMSE": 23.105194221214
+      },
+      {
+        "candidate": 32.75,
+        "MAE": 17.65,
+        "RMSE": 23.090311821195
+      },
+      {
+        "candidate": 33.0,
+        "MAE": 17.8,
+        "RMSE": 23.078128173663
+      },
+      {
+        "candidate": 33.25,
+        "MAE": 17.95,
+        "RMSE": 23.068647554636
+      },
+      {
+        "candidate": 33.5,
+        "MAE": 18.1,
+        "RMSE": 23.061873297718
+      },
+      {
+        "candidate": 33.75,
+        "MAE": 18.25,
+        "RMSE": 23.057807788253
+      },
+      {
+        "candidate": 34.0,
+        "MAE": 18.4,
+        "RMSE": 23.056452459127
+      },
+      {
+        "candidate": 34.25,
+        "MAE": 18.55,
+        "RMSE": 23.057807788253
+      },
+      {
+        "candidate": 34.5,
+        "MAE": 18.7,
+        "RMSE": 23.061873297718
+      },
+      {
+        "candidate": 34.75,
+        "MAE": 18.85,
+        "RMSE": 23.068647554636
+      },
+      {
+        "candidate": 35.0,
+        "MAE": 19.0,
+        "RMSE": 23.078128173663
+      },
+      {
+        "candidate": 35.25,
+        "MAE": 19.15,
+        "RMSE": 23.090311821195
+      },
+      {
+        "candidate": 35.5,
+        "MAE": 19.3,
+        "RMSE": 23.105194221214
+      },
+      {
+        "candidate": 35.75,
+        "MAE": 19.45,
+        "RMSE": 23.122770162764
+      },
+      {
+        "candidate": 36.0,
+        "MAE": 19.6,
+        "RMSE": 23.143033509028
+      },
+      {
+        "candidate": 36.25,
+        "MAE": 19.75,
+        "RMSE": 23.165977207966
+      },
+      {
+        "candidate": 36.5,
+        "MAE": 19.9,
+        "RMSE": 23.191593304471
+      },
+      {
+        "candidate": 36.75,
+        "MAE": 20.05,
+        "RMSE": 23.219872954002
+      },
+      {
+        "candidate": 37.0,
+        "MAE": 20.2,
+        "RMSE": 23.250806437627
+      },
+      {
+        "candidate": 37.25,
+        "MAE": 20.35,
+        "RMSE": 23.284383178431
+      },
+      {
+        "candidate": 37.5,
+        "MAE": 20.5,
+        "RMSE": 23.320591759216
+      },
+      {
+        "candidate": 37.75,
+        "MAE": 20.65,
+        "RMSE": 23.359419941428
+      },
+      {
+        "candidate": 38.0,
+        "MAE": 20.8,
+        "RMSE": 23.400854685246
+      },
+      {
+        "candidate": 38.25,
+        "MAE": 20.95,
+        "RMSE": 23.444882170743
+      },
+      {
+        "candidate": 38.5,
+        "MAE": 21.1,
+        "RMSE": 23.491487820059
+      },
+      {
+        "candidate": 38.75,
+        "MAE": 21.25,
+        "RMSE": 23.540656320502
+      },
+      {
+        "candidate": 39.0,
+        "MAE": 21.4,
+        "RMSE": 23.59237164848
+      },
+      {
+        "candidate": 39.25,
+        "MAE": 21.55,
+        "RMSE": 23.646617094206
+      },
+      {
+        "candidate": 39.5,
+        "MAE": 21.7,
+        "RMSE": 23.703375287077
+      },
+      {
+        "candidate": 39.75,
+        "MAE": 21.85,
+        "RMSE": 23.762628221642
+      },
+      {
+        "candidate": 40.0,
+        "MAE": 22.0,
+        "RMSE": 23.824357284091
+      },
+      {
+        "candidate": 40.25,
+        "MAE": 22.15,
+        "RMSE": 23.888543279154
+      },
+      {
+        "candidate": 40.5,
+        "MAE": 22.3,
+        "RMSE": 23.955166457364
+      },
+      {
+        "candidate": 40.75,
+        "MAE": 22.45,
+        "RMSE": 24.024206542569
+      },
+      {
+        "candidate": 41.0,
+        "MAE": 22.6,
+        "RMSE": 24.095642759636
+      },
+      {
+        "candidate": 41.25,
+        "MAE": 22.75,
+        "RMSE": 24.169453862262
+      },
+      {
+        "candidate": 41.5,
+        "MAE": 22.9,
+        "RMSE": 24.245618160814
+      },
+      {
+        "candidate": 41.75,
+        "MAE": 23.05,
+        "RMSE": 24.324113550138
+      },
+      {
+        "candidate": 42.0,
+        "MAE": 23.2,
+        "RMSE": 24.404917537251
+      },
+      {
+        "candidate": 42.25,
+        "MAE": 23.35,
+        "RMSE": 24.488007268865
+      },
+      {
+        "candidate": 42.5,
+        "MAE": 23.5,
+        "RMSE": 24.573359558677
+      },
+      {
+        "candidate": 42.75,
+        "MAE": 23.65,
+        "RMSE": 24.66095091435
+      },
+      {
+        "candidate": 43.0,
+        "MAE": 23.8,
+        "RMSE": 24.750757564164
+      },
+      {
+        "candidate": 43.25,
+        "MAE": 23.95,
+        "RMSE": 24.842755483239
+      },
+      {
+        "candidate": 43.5,
+        "MAE": 24.1,
+        "RMSE": 24.93692041933
+      },
+      {
+        "candidate": 43.75,
+        "MAE": 24.25,
+        "RMSE": 25.033227918109
+      },
+      {
+        "candidate": 44.0,
+        "MAE": 24.4,
+        "RMSE": 25.13165334792
+      },
+      {
+        "candidate": 44.25,
+        "MAE": 24.55,
+        "RMSE": 25.232171923955
+      },
+      {
+        "candidate": 44.5,
+        "MAE": 24.7,
+        "RMSE": 25.334758731829
+      },
+      {
+        "candidate": 44.75,
+        "MAE": 24.85,
+        "RMSE": 25.439388750518
+      },
+      {
+        "candidate": 45.0,
+        "MAE": 25.0,
+        "RMSE": 25.546036874631
+      },
+      {
+        "candidate": 45.25,
+        "MAE": 25.15,
+        "RMSE": 25.654677936002
+      },
+      {
+        "candidate": 45.5,
+        "MAE": 25.3,
+        "RMSE": 25.765286724584
+      },
+      {
+        "candidate": 45.75,
+        "MAE": 25.45,
+        "RMSE": 25.877838008613
+      },
+      {
+        "candidate": 46.0,
+        "MAE": 25.6,
+        "RMSE": 25.992306554056
+      },
+      {
+        "candidate": 46.25,
+        "MAE": 25.75,
+        "RMSE": 26.108667143307
+      },
+      {
+        "candidate": 46.5,
+        "MAE": 25.9,
+        "RMSE": 26.226894593146
+      },
+      {
+        "candidate": 46.75,
+        "MAE": 26.05,
+        "RMSE": 26.346963771942
+      },
+      {
+        "candidate": 47.0,
+        "MAE": 26.2,
+        "RMSE": 26.468849616105
+      },
+      {
+        "candidate": 47.25,
+        "MAE": 26.35,
+        "RMSE": 26.592527145798
+      },
+      {
+        "candidate": 47.5,
+        "MAE": 26.5,
+        "RMSE": 26.717971479886
+      },
+      {
+        "candidate": 47.75,
+        "MAE": 26.65,
+        "RMSE": 26.84515785016
+      },
+      {
+        "candidate": 48.0,
+        "MAE": 26.8,
+        "RMSE": 26.974061614818
+      },
+      {
+        "candidate": 48.25,
+        "MAE": 26.95,
+        "RMSE": 27.104658271227
+      },
+      {
+        "candidate": 48.5,
+        "MAE": 27.1,
+        "RMSE": 27.236923467969
+      },
+      {
+        "candidate": 48.75,
+        "MAE": 27.25,
+        "RMSE": 27.370833016187
+      },
+      {
+        "candidate": 49.0,
+        "MAE": 27.4,
+        "RMSE": 27.506362900245
+      },
+      {
+        "candidate": 49.25,
+        "MAE": 27.55,
+        "RMSE": 27.643489287715
+      },
+      {
+        "candidate": 49.5,
+        "MAE": 27.7,
+        "RMSE": 27.782188538702
+      },
+      {
+        "candidate": 49.75,
+        "MAE": 27.85,
+        "RMSE": 27.922437214541
+      },
+      {
+        "candidate": 50.0,
+        "MAE": 28.0,
+        "RMSE": 28.064212085858
+      },
+      {
+        "candidate": 50.25,
+        "MAE": 28.15,
+        "RMSE": 28.207490140032
+      },
+      {
+        "candidate": 50.5,
+        "MAE": 28.3,
+        "RMSE": 28.352248588075
+      },
+      {
+        "candidate": 50.75,
+        "MAE": 28.45,
+        "RMSE": 28.498464870936
+      },
+      {
+        "candidate": 51.0,
+        "MAE": 28.6,
+        "RMSE": 28.646116665265
+      },
+      {
+        "candidate": 51.25,
+        "MAE": 28.75,
+        "RMSE": 28.795181888642
+      },
+      {
+        "candidate": 51.5,
+        "MAE": 28.9,
+        "RMSE": 28.945638704302
+      },
+      {
+        "candidate": 51.75,
+        "MAE": 29.05,
+        "RMSE": 29.097465525368
+      },
+      {
+        "candidate": 52.0,
+        "MAE": 29.2,
+        "RMSE": 29.250641018617
+      },
+      {
+        "candidate": 52.25,
+        "MAE": 29.35,
+        "RMSE": 29.405144107792
+      },
+      {
+        "candidate": 52.5,
+        "MAE": 29.5,
+        "RMSE": 29.560953976487
+      },
+      {
+        "candidate": 52.75,
+        "MAE": 29.65,
+        "RMSE": 29.718050070622
+      },
+      {
+        "candidate": 53.0,
+        "MAE": 29.8,
+        "RMSE": 29.876412100518
+      },
+      {
+        "candidate": 53.25,
+        "MAE": 29.95,
+        "RMSE": 30.036020042609
+      },
+      {
+        "candidate": 53.5,
+        "MAE": 30.1,
+        "RMSE": 30.196854140788
+      },
+      {
+        "candidate": 53.75,
+        "MAE": 30.25,
+        "RMSE": 30.358894907424
+      },
+      {
+        "candidate": 54.0,
+        "MAE": 30.4,
+        "RMSE": 30.522123124055
+      },
+      {
+        "candidate": 54.25,
+        "MAE": 30.55,
+        "RMSE": 30.686519841781
+      },
+      {
+        "candidate": 54.5,
+        "MAE": 30.7,
+        "RMSE": 30.852066381363
+      },
+      {
+        "candidate": 54.75,
+        "MAE": 30.85,
+        "RMSE": 31.018744333064
+      },
+      {
+        "candidate": 55.0,
+        "MAE": 31.0,
+        "RMSE": 31.18653555623
+      },
+      {
+        "candidate": 55.25,
+        "MAE": 31.15,
+        "RMSE": 31.355422178628
+      },
+      {
+        "candidate": 55.5,
+        "MAE": 31.3,
+        "RMSE": 31.525386595568
+      },
+      {
+        "candidate": 55.75,
+        "MAE": 31.45,
+        "RMSE": 31.696411468808
+      },
+      {
+        "candidate": 56.0,
+        "MAE": 31.6,
+        "RMSE": 31.868479725271
+      },
+      {
+        "candidate": 56.25,
+        "MAE": 31.75,
+        "RMSE": 32.041574555568
+      },
+      {
+        "candidate": 56.5,
+        "MAE": 31.9,
+        "RMSE": 32.215679412361
+      },
+      {
+        "candidate": 56.75,
+        "MAE": 32.05,
+        "RMSE": 32.390778008563
+      },
+      {
+        "candidate": 57.0,
+        "MAE": 32.2,
+        "RMSE": 32.566854315393
+      },
+      {
+        "candidate": 57.25,
+        "MAE": 32.35,
+        "RMSE": 32.743892560293
+      },
+      {
+        "candidate": 57.5,
+        "MAE": 32.5,
+        "RMSE": 32.921877224727
+      },
+      {
+        "candidate": 57.75,
+        "MAE": 32.65,
+        "RMSE": 33.100793041859
+      },
+      {
+        "candidate": 58.0,
+        "MAE": 32.8,
+        "RMSE": 33.280624994131
+      },
+      {
+        "candidate": 58.25,
+        "MAE": 32.95,
+        "RMSE": 33.461358310744
+      },
+      {
+        "candidate": 58.5,
+        "MAE": 33.1,
+        "RMSE": 33.642978465053
+      },
+      {
+        "candidate": 58.75,
+        "MAE": 33.25,
+        "RMSE": 33.825471171885
+      },
+      {
+        "candidate": 59.0,
+        "MAE": 33.4,
+        "RMSE": 34.008822384787
+      },
+      {
+        "candidate": 59.25,
+        "MAE": 33.55,
+        "RMSE": 34.193018293213
+      },
+      {
+        "candidate": 59.5,
+        "MAE": 33.7,
+        "RMSE": 34.378045319651
+      },
+      {
+        "candidate": 59.75,
+        "MAE": 33.85,
+        "RMSE": 34.56389011671
+      },
+      {
+        "candidate": 60.0,
+        "MAE": 34.0,
+        "RMSE": 34.750539564156
+      }
+    ],
+    "zero_grade_sensitivity": [
+      {
+        "missing_rate": 0.15,
+        "variable": "G3",
+        "method": "Group Median",
+        "metric": "MAE",
+        "mean": 2.197217660096,
+        "std": 0.149536446371,
+        "repeats": 12,
+        "mean_actual_test_rate": 0.162473794549,
+        "mean_test_masked": 25.833333333333
+      },
+      {
+        "missing_rate": 0.15,
+        "variable": "G3",
+        "method": "Group Median",
+        "metric": "RMSE",
+        "mean": 2.696927369126,
+        "std": 0.274739863497,
+        "repeats": 12,
+        "mean_actual_test_rate": 0.162473794549,
+        "mean_test_masked": 25.833333333333
+      },
+      {
+        "missing_rate": 0.15,
+        "variable": "G3",
+        "method": "Mean",
+        "metric": "MAE",
+        "mean": 2.21855097931,
+        "std": 0.240099979365,
+        "repeats": 12,
+        "mean_actual_test_rate": 0.162473794549,
+        "mean_test_masked": 25.833333333333
+      },
+      {
+        "missing_rate": 0.15,
+        "variable": "G3",
+        "method": "Mean",
+        "metric": "RMSE",
+        "mean": 2.682524859951,
+        "std": 0.257097275793,
+        "repeats": 12,
+        "mean_actual_test_rate": 0.162473794549,
+        "mean_test_masked": 25.833333333333
+      },
+      {
+        "missing_rate": 0.15,
+        "variable": "G3",
+        "method": "Median",
+        "metric": "MAE",
+        "mean": 2.192589165538,
+        "std": 0.252093330637,
+        "repeats": 12,
+        "mean_actual_test_rate": 0.162473794549,
+        "mean_test_masked": 25.833333333333
+      },
+      {
+        "missing_rate": 0.15,
+        "variable": "G3",
+        "method": "Median",
+        "metric": "RMSE",
+        "mean": 2.683965882851,
+        "std": 0.254787445625,
+        "repeats": 12,
+        "mean_actual_test_rate": 0.162473794549,
+        "mean_test_masked": 25.833333333333
+      }
+    ],
+    "zeros": {
+      "count": 15,
+      "MS": 14
+    }
+  }
 }

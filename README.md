@@ -4,8 +4,11 @@ Bộ seminar tiếng Việt gồm 9 slide cho 13 phút trình bày và 2 phút h
 
 ## Trình chiếu
 
+Bài đi theo ba câu hỏi. Vì sao giá trị đại diện có thể ước lượng ô thiếu? Khi nào thay thế hợp lý? Dữ liệu sau điền sai lệch ra sao? Ví dụ tuổi được nối với lựa chọn hằng số theo hàm mất mát, điều kiện đại diện của phần quan sát và kiểm chứng trên dữ liệu thực tế.
+
 - [PowerPoint](presentation/seminar_15min.pptx) có ghi chú cho người trình bày. [Bản PDF](presentation/seminar_15min.pdf) dùng ảnh render 1920 × 1080 mỗi slide để trình chiếu dự phòng.
 - [Lời thoại có mốc giờ](presentation/speaker_notes.md), [nội dung từng slide](presentation/slide_content.md), [câu hỏi phản biện](presentation/questions_answers.md) và [nguồn tham khảo](presentation/references.md).
+- [Script có thuật ngữ và giải thích mã](presentation/script_va_thuat_ngu.md) dành cho ôn tập và hỏi đáp.
 - [Notebook đã lưu đầu ra](notebooks/seminar_imputation.ipynb) có thể dùng để mở phần demo hoặc kết quả.
 
 ## Chạy lại thực nghiệm
@@ -28,7 +31,7 @@ Trong JupyterLab, chọn kernel của môi trường vừa cài rồi chạy **R
 
 Trên macOS/Linux, dùng `.venv/bin/python` và `.venv/bin/jupyter-nbconvert`. Chạy riêng `python -m src.prepare_data` nếu chỉ cần các CSV phân tích. Tác vụ `src.run_experiments` đọc dữ liệu gốc và tái tạo mặt nạ, bảng, kết luận và biểu đồ. Slide đã xuất dùng kết quả của lần chạy kèm theo.
 
-Đã chạy toàn bộ 6 cell mã theo thứ tự trên Python 3.14.4 và lưu bảng, hình vào notebook. Máy tạo bộ seminar thiếu kernel Jupyter. Các lệnh JupyterLab và nbconvert ở trên dành cho môi trường đã cài các thư viện trong `requirements.txt`.
+Notebook đã lưu bảng và hình từ các cell chạy theo thứ tự trên Python 3.14.4. Các lệnh JupyterLab và nbconvert ở trên dành cho môi trường đã cài các thư viện trong `requirements.txt`. Phần kiểm tra tại workspace thực thi mã cell trực tiếp bằng Python, do môi trường tạo file thiếu kernel Jupyter.
 
 ## Dataset và thiết kế
 
@@ -55,8 +58,12 @@ Demo mô tả dùng một mặt nạ Bernoulli MCAR 15% và fit trên phần qua
 | `results/distribution_summary.csv`, `category_frequencies.csv` | Thống kê của dữ liệu gốc, quan sát và sau điền, bao gồm SD mẫu, tương quan và tần suất |
 | `results/evaluation.csv` | Trung bình và SD qua các mặt nạ, phân theo mức thiếu, biến, phương pháp và metric |
 | `results/evaluation_by_seed.csv` | Điểm và số ô che thực tế theo từng lần lặp |
+| `results/paired_comparisons.csv` | Hiệu Median trừ Mean, số lần thắng và hòa trên cùng mặt nạ |
+| `results/constant_prediction_loss.csv` | Sai số dự đoán hằng số trên năm tuổi đã quan sát |
+| `results/correlation_repeats.csv` | Tương quan G3–GP qua 300 mặt nạ MCAR 15%, seed 0–299 |
+| `results/zero_grade_sensitivity.csv` | Benchmark G3 sau khi loại điểm 0 rồi chia lại, dùng như phân tích độ nhạy |
 | [Kết luận thực nghiệm](results/conclusions.md) | Số liệu và diễn giải ở mức danh nghĩa 15% |
-| `figures/` | Sáu biểu đồ PNG, gồm lý thuyết, EDA, trước/sau, sai số, người giám hộ và điểm G3 theo trường |
+| `figures/` | Bảy biểu đồ PNG, gồm dự đoán hằng số, lý thuyết, EDA, trước/sau, sai số, người giám hộ và G3 theo trường |
 | `src/`, `tests/` | Mã chuẩn bị dữ liệu, đánh giá, trực quan và kiểm thử |
 
 MAE và RMSE dùng đơn vị gốc của biến, càng thấp càng tốt. Accuracy lưu dưới dạng tỷ lệ 0–1, càng cao càng tốt. SD trong bảng benchmark mô tả sự dao động của mặt nạ ở cùng một lần chia. Tỷ trọng lớp dùng mẫu số là số giá trị có mặt ở mỗi giai đoạn. Điểm và số buổi vắng là biến rời rạc. Benchmark giữ nguyên giá trị dự đoán lẻ để đánh giá dưới hàm mất mát đã chọn. Nếu hệ thống yêu cầu đầu ra nguyên, cần quy định rồi kiểm thử việc làm tròn.

@@ -1,140 +1,126 @@
-# Nội dung trình chiếu · DS111
+# Nội dung trình chiếu DS111
 
-9 slide, 13 phút trình bày và 2 phút hỏi đáp. Xem [lời thoại và mốc giờ](speaker_notes.md).
+9 slide, 13 phút trình bày và 2 phút hỏi đáp. Ba câu hỏi xuyên suốt gồm vì sao dùng giá trị đại diện, khi nào hợp lý và dữ liệu biến dạng thế nào.
 
-## 1. Điền khuyết bằng Mean, Median và Mode · 00:00–00:45
+## 1. Nên điền 23 hay 34? (00:00–01:00)
 
 **Nội dung chiếu**
 
-Điền khuyết bằng Mean, Median và Mode
+Tuổi = [20, 22, 23, 25, 80, NaN]. Mean = 34, Median = 23.
+Vì sao dùng được giá trị đại diện?
+Khi nào thay thế hợp lý?
+Dữ liệu sau điền thay đổi ra sao?
 
-Tuổi quan sát    20   22   23   25   80   NaN
-
-**Nên điền 23 hay 34?**
-
-**Đồ họa** · Dãy tuổi đặt cạnh hai giá trị ứng viên.
+**Đồ họa** · Ví dụ tuổi và ba câu hỏi xuyên suốt.
 
 ---
 
-## 2. Giá trị thiếu trong EDA · 00:45–02:00
+## 2. Giá trị đại diện là một dự đoán chung (01:00–02:30)
 
 **Nội dung chiếu**
 
-- NaN, None, pd.NA hoặc ô trống theo quy ước. 0 có thể là quan sát hợp lệ.
-- Tỷ lệ thiếu = số ô thiếu / tổng số dòng. `df.isna().sum()` và `df.isna().mean()`.
-- Bỏ qua câu hỏi, lỗi thiết bị, câu hỏi không áp dụng.
-- Giảm số quan sát, có thể làm lệch thống kê. Cơ chế thiếu có thể là MCAR, MAR hoặc MNAR.
+Chỉ dùng cột tuổi, dự đoán cùng một giá trị c.
+Cần phần quan sát đại diện phù hợp cho phần bị thiếu.
+MAE trên năm tuổi quan sát nhỏ nhất tại 23.
+RMSE trên năm tuổi quan sát nhỏ nhất tại 34.
+Tuổi thật ở ô NaN vẫn chưa biết.
 
-**Đồ họa** · Công thức tỷ lệ thiếu và hai lệnh pandas.
+**Đồ họa** · Hai đường sai số trên 5 tuổi đã biết.
 
 ---
 
-## 3. Ba thước đo xu hướng trung tâm · 02:00–03:30
+## 3. Mean, Median và Mode theo mục tiêu sai số (02:30–04:00)
 
 **Nội dung chiếu**
 
-- **Mean** · x̄ = Σ xᵢ / n. Dùng độ lớn của mọi quan sát. Nhạy với giá trị cực đoan.
-- **Median** · Giá trị giữa sau khi sắp xếp. n chẵn lấy trung bình hai số giữa. Bền với giá trị cực đoan.
-- **Mode** · Giá trị có tần suất cao nhất. Hợp với nhãn loại. Có thể có nhiều Mode.
+| Mục tiêu của dự đoán chung | Giá trị tối ưu | Thông tin được dùng |
+|---|---|---|
+| Giảm sai số bình phương | Mean   x̄ = Σxᵢ / n | Độ lớn của mọi quan sát |
+| Giảm sai số tuyệt đối | Median | Vị trí giữa theo thứ hạng |
+| Tăng số nhãn đoán đúng | Mode | Tần suất xuất hiện |
+Size [M, M, L, S, NaN, M] có Mode M.
+X [2, 2, 3, 8, 8, NaN] có mốt 2 và 8. SimpleImputer chọn 2.
 
-**Đồ họa** · Ba cột định nghĩa với công thức Mean, cách lấy Median và định nghĩa Mode.
+**Đồ họa** · Bảng mục tiêu và thống kê có thể chỉnh sửa.
 
 ---
 
-## 4. Vị trí của Mean, Median và Mode · 03:30–05:30
+## 4. Khi nào phần quan sát đủ đại diện? (04:00–05:30)
 
 **Nội dung chiếu**
 
-- Đối xứng một đỉnh (Normal): Mean = Median = Mode.
-- Lệch phải (Gamma): Mode < Median < Mean.
-- Lệch trái (Gamma phản chiếu): Mean < Median < Mode.
-- Skewness thường dương với đuôi phải, âm với đuôi trái. Thứ tự trên ứng với ba ví dụ.
+Normal, Gamma và Gamma phản chiếu minh họa hình dạng.
+MCAR cho phép phần quan sát đại diện theo cơ chế che.
+Nếu thiếu liên quan nhóm, cần xét phân phối trong nhóm.
+Chọn theo mục tiêu sai số và ý nghĩa biến.
 
-**Đồ họa** · Ba đường mật độ có mốc Mean, Median và Mode từ các phân phối lý thuyết.
+**Đồ họa** · Ba phân phối lý thuyết và các điều kiện áp dụng.
 
 ---
 
-## 5. Chọn phương pháp theo đặc điểm biến · 05:30–07:00
+## 5. Kiểm chứng trên Student Performance (05:30–07:15)
 
 **Nội dung chiếu**
 
-| Đặc điểm biến | Nên thử trước | Vì sao | Cần kiểm tra |
-|---|---|---|---|
-| Gần đối xứng, ít ngoại lệ | Mean | Dùng mọi độ lớn | Miền giá trị, RMSE |
-| Lệch hoặc có ngoại lệ | Median | Bền theo thứ hạng | MAE và đỉnh sau điền |
-| Nhãn loại | Mode | Nhãn phổ biến nhất | Lớp hiếm, đồng hạng |
-| Các nhóm khác biệt | Thống kê theo nhóm | Tận dụng thông tin nhóm | Cỡ nhóm, leakage |
-| Nhiều đỉnh hoặc đa Mode | Phân tích nhóm trước | Một số khó đại diện | Nguồn gốc các đỉnh |
+UCI Student Performance, 649 dòng môn tiếng Bồ Đào Nha.
+G1 gần đối xứng ở vùng trung tâm, absences lệch phải.
+486 train, 163 test. Fit trên train đã che, chấm ô test đã che.
+MCAR 5%, 15%, 30%, mỗi mức 12 mặt nạ.
 
-Xem đây là điểm bắt đầu. Điều chỉnh theo mục tiêu và ngữ nghĩa biến.
-
-**Đồ họa** · Bảng quyết định có thể chỉnh sửa trong PowerPoint.
+**Đồ họa** · Histogram và boxplot cùng thiết kế train/test.
 
 ---
 
-## 6. Tuổi, nhãn Size và đa Mode · 07:00–08:30
+## 6. Cùng dữ liệu, khác mục tiêu sai số (07:15–09:00)
 
 **Nội dung chiếu**
 
-- **Age** · [20, 22, 23, 25, 80, NaN]. Mean = 170/5 = 34. Median = 23. Tuổi 80 kéo Mean lên.
-- **Size** · [M, M, L, S, NaN, M]. Mode = M.
-- **X** · [2, 2, 3, 8, 8, NaN]. Mode = {2, 8}. Mean = 23/5 = 4,6. Median = 3. Nếu buộc chọn, mặc định scikit-learn chọn 2.
+Mean: MAE 2,83, RMSE 3,69
+Median: MAE 2,52, RMSE 3,86
+Median có MAE thấp hơn 10/12, hòa 1.
+Mean có RMSE thấp hơn 11/12.
+Guardian, Mode có Accuracy 68,87%.
 
-**Đồ họa** · Ba mẫu có NaN và kết quả tính tay.
+**Đồ họa** · Biểu đồ cột editable và số lần thắng theo cặp.
 
 ---
 
-## 7. EDA và cách chạy benchmark · 08:30–10:30
+## 7. Giá trị điền làm đổi phân phối (09:00–10:30)
 
 **Nội dung chiếu**
 
-UCI Student Performance · 649 dòng môn tiếng Bồ Đào Nha
+SD absences từ 4,66 xuống 4,31 khi điền Mean.
+Tỷ trọng mother từ 70,3% lên 74,6%.
+Tương quan G3–GP 0,284 trên bản đầy đủ, trung bình sau điền Mean 0,264 qua 300 lần che.
 
-- Demo: che 94/649 ô absences (14,48%).
-- G1. Skewness 0,01 · 14 điểm gắn cờ.
-- absences. Skewness 2,08 · 18 điểm gắn cờ.
-- Train/test 75/25 · MCAR 5%, 15%, 30% · 12 lần che mỗi mức.
-- Chấm ở ô test bị che.
-
-```python
-imputer.fit(train_masked)
-test_filled = imputer.transform(test_masked)
-```
-
-**Đồ họa** · Histogram theo khoảng nguyên, đường Mean/Median và boxplot trên dữ liệu quan sát từ demo 15%.
+**Đồ họa** · Histogram trước/sau và tỷ trọng mother chỉnh sửa được.
 
 ---
 
-## 8. Sai số và biến dạng phân phối · 10:30–12:30
+## 8. Khi một giá trị chung chưa đủ (10:30–12:00)
 
 **Nội dung chiếu**
 
-Benchmark MCAR 15%, điểm trung bình qua 12 lần che.
+| G3, MCAR 15% | MAE | RMSE |
+|---|---|---|
+| Median chung | 2,42 | 3,17 |
+| Theo trường | 2,35 | 3,19 |
+Giữ 15 điểm G3 = 0 trong phân tích chính, 14 thuộc MS.
+Dùng thông tin nhóm vẫn cần kiểm chứng.
 
-| Metric | Mean | Median |
-|---|---:|---:|
-| MAE | 2,83 | 2,52 |
-| RMSE | 3,69 | 3,86 |
-
-- Median giảm MAE. Mean giảm RMSE.
-- SD mẫu từ 4,66 xuống 4,31 khi điền Mean.
-- Mode đúng 68,87% ô người giám hộ bị che. Tỷ trọng nhãn mẹ từ 70,3% lên 74,6%.
-- Với G3, MAE Median toàn cục 2,42, theo trường 2,35 (mở rộng nêu trong lời thoại).
-
-**Đồ họa** · Biểu đồ cột PowerPoint cho MAE/RMSE và histogram trước/sau của số buổi vắng.
+**Đồ họa** · Histogram từ demo và bảng benchmark trên test.
 
 ---
 
-## 9. Quyết định điền khuyết · 12:30–13:00
+## 9. Trở lại ô tuổi bị thiếu (12:00–13:00)
 
 **Nội dung chiếu**
 
-1. **Hiểu biến.** Kiểu dữ liệu, tỷ lệ thiếu, phân phối và ngoại lệ.
-2. **Chọn phương pháp.** Mean, Median hoặc Mode theo kiểu biến và mục tiêu.
-3. **Kiểm chứng.** Chấm trên ô đã che và đối chiếu phân phối.
+Vì sao dùng được? Giá trị tối ưu cho dự đoán chung theo tổn thất.
+Khi nào hợp lý? Phần quan sát đủ đại diện và kiểu biến phù hợp.
+Sai lệch thế nào? Giảm biến thiên, tăng tần suất và đổi quan hệ.
+23 theo MAE, 34 theo RMSE trên phân phối quan sát. Tuổi thật vẫn chưa biết.
 
-Hỏi đáp · 2 phút.
+**Đồ họa** · Ba câu trả lời và ví dụ mở đầu.
 
-**Đồ họa** · Ba bước tương ứng với quy trình EDA, điền khuyết và đánh giá.
-
-[Nguồn và giới hạn truy cập](references.md)
+[Nguồn tham khảo](references.md)

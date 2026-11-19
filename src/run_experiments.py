@@ -167,6 +167,63 @@ def result_payload(eda, missing, numeric, categories, scores, stages):
     }
 
 
+def supporting_evidence(complete, repeats, out):
+    """Tính các bằng chứng bổ sung cho ba câu hỏi của seminar."""
+    paired = []
+    for variable in NUMERIC:
+        for metric in ("MAE", "RMSE"):
+            sample = repeats.loc[
+                repeats.missing_rate.eq(DEMO_RATE) & repeats.variable.eq(variable)
+                & repeats.metric.eq(metric) & repeats.method.isin(["Mean", "Median"])
+            ]
+            values = sample.pivot(index="mask_seed", columns="method", values="value")
+            difference = (values["Median"] - values["Mean"]).round(12)
+            paired.append({
+                "variable": variable, "metric": metric,
+                "mean_difference": difference.mean(), "std_difference": difference.std(),
+                "median_wins": int(difference.lt(0).sum()),
+                "mean_wins": int(difference.gt(0).sum()), "ties": int(difference.eq(0).sum()),
+            })
+    paired = pd.DataFrame(paired)
+    paired.to_csv(out / "paired_comparisons.csv", index=False)
+
+    correlations = []
+    school = complete[GROUP].eq("GP").astype(int)
+    for seed in range(300):
+        observed, _ = mask_mcar(complete, DEMO_RATE, np.random.default_rng(seed))
+        values = observed["G3"]
+        correlations.append({
+            "mask_seed": seed, "complete": complete["G3"].corr(school),
+            "observed": values.corr(school),
+            "mean_imputed": values.fillna(values.mean()).corr(school),
+        })
+    correlations = pd.DataFrame(correlations)
+    correlations.to_csv(out / "correlation_repeats.csv", index=False)
+
+    zeros = complete.loc[complete["G3"].eq(0)]
+    sensitivity = summarize_scores(benchmark(complete.loc[complete["G3"].ne(0)], rates=(DEMO_RATE,)))
+    sensitivity = sensitivity.loc[sensitivity.variable.eq("G3")].copy()
+    sensitivity.to_csv(out / "zero_grade_sensitivity.csv", index=False)
+
+    ages = np.array([20., 22., 23., 25., 80.])
+    candidates = np.arange(15, 60.01, 0.25)
+    errors = ages[None, :] - candidates[:, None]
+    curve = pd.DataFrame({
+        "candidate": candidates, "MAE": np.abs(errors).mean(axis=1),
+        "RMSE": np.sqrt(np.square(errors).mean(axis=1)),
+    })
+    curve.to_csv(out / "constant_prediction_loss.csv", index=False)
+
+    def records(frame):
+        return json.loads(frame.to_json(orient="records", double_precision=12))
+
+    return {
+        "paired": records(paired), "correlations": correlations.mean().drop("mask_seed").to_dict(),
+        "age_loss_curve": records(curve), "zero_grade_sensitivity": records(sensitivity),
+        "zeros": {"count": len(zeros), "MS": int(zeros[GROUP].eq("MS").sum())},
+    }
+
+
 def write_conclusions(path, payload):
     scores = pd.DataFrame(payload["scores"])
     demo = pd.DataFrame(payload["numeric"]).set_index(["variable", "stage"])
@@ -183,6 +240,14 @@ def write_conclusions(path, payload):
     sym, skew, multi = NUMERIC
     lines = [
         "# Kết luận từ thực nghiệm DS111", "",
+        "**Câu hỏi xuyên suốt:** Tại sao giá trị đại diện có thể ước lượng ô thiếu, "
+        "khi nào hợp lý, và nó làm sai lệch dữ liệu ra sao?", "",
+        "## Vì sao có thể dùng thống kê trung tâm", "",
+        "Khi chỉ dùng một hằng số cho cột, cần chọn theo tổn thất mong muốn. "
+        "Mean tối ưu sai số bình phương, Median tối ưu sai số tuyệt đối, Mode tối ưu số nhãn khớp "
+        "trên tập dùng để tối ưu. Dùng thống kê quan sát để dự đoán ô thiếu còn cần giả định "
+        "phần quan sát đủ đại diện cho phần bị thiếu hoặc cho nhóm tương ứng.", "",
+        "## Khi nào hợp lý và bằng chứng sai số", "",
         f"Tập tiếng Bồ Đào Nha của UCI Student Performance gồm {payload['n_rows']:,} dòng thực tế. "
         "Bốn cột phân tích đầy đủ trước khi che. Chia train/test 75/25, giữ nguyên lần chia.",
         f"Ở mỗi mức thiếu 5%, 15%, 30%, lặp {len(MASK_SEEDS)} bộ mặt nạ MCAR. "
@@ -224,6 +289,16 @@ def write_conclusions(path, payload):
         "Chênh lệch quan sát giữa trường không xác lập tác động nhân quả. Cần kiểm tra trường có sẵn lúc sử dụng và đủ quan sát, "
         "vì benchmark này dùng fallback Median train toàn cục cho nhóm hiếm hoặc chưa gặp.",
         "",
+        "## Biến dạng và giới hạn", "",
+        f"Lặp 300 mặt nạ MCAR 15%, tương quan G3–GP trung bình sau điền Mean là "
+        f"{payload['support']['correlations']['mean_imputed']:.3f}, "
+        f"so với {payload['support']['correlations']['complete']:.3f} trên bản đầy đủ. "
+        "Riêng mặt nạ demo, hệ số 0,287 sau điền gần bản đầy đủ hơn 0,310 trước điền. "
+        "Phân biệt xu hướng trung bình với một lần che.", "",
+        f"Bản gốc có {payload['support']['zeros']['count']} điểm G3 bằng 0, "
+        f"{payload['support']['zeros']['MS']} thuộc MS. Giữ các điểm này trong benchmark chính. "
+        "Bảng zero_grade_sensitivity.csv khảo sát riêng việc loại chúng trước khi chia lại. "
+        "Thay đổi tập mẫu và lần chia khiến kết quả này chỉ là phân tích độ nhạy.", "",
         "Các kết quả giới hạn ở mẫu môn tiếng Bồ Đào Nha, lần chia và cơ chế che MCAR này. "
         "Số liệu do thực nghiệm trên bộ dữ liệu thật tạo ra. Cách thiếu ngoài đời có thể khác.",
     ]
@@ -251,9 +326,10 @@ def run(root: Path = ROOT):
     ]:
         frame.to_csv(out / f"{name}.csv", index=index)
     payload = result_payload(eda, missing, numeric, categories, scores, stages)
+    payload["support"] = supporting_evidence(complete, repeats, out)
     (out / "evidence.json").write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     write_conclusions(out / "conclusions.md", payload)
-    create_figures(root / "figures", stages, scores)
+    create_figures(root / "figures", stages, scores, payload["support"])
     return payload
 
 

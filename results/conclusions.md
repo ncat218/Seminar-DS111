@@ -1,5 +1,13 @@
 # Kết luận từ thực nghiệm DS111
 
+**Câu hỏi xuyên suốt:** Tại sao giá trị đại diện có thể ước lượng ô thiếu, khi nào hợp lý, và nó làm sai lệch dữ liệu ra sao?
+
+## Vì sao có thể dùng thống kê trung tâm
+
+Khi chỉ dùng một hằng số cho cột, cần chọn theo tổn thất mong muốn. Mean tối ưu sai số bình phương, Median tối ưu sai số tuyệt đối, Mode tối ưu số nhãn khớp trên tập dùng để tối ưu. Dùng thống kê quan sát để dự đoán ô thiếu còn cần giả định phần quan sát đủ đại diện cho phần bị thiếu hoặc cho nhóm tương ứng.
+
+## Khi nào hợp lý và bằng chứng sai số
+
 Tập tiếng Bồ Đào Nha của UCI Student Performance gồm 649 dòng thực tế. Bốn cột phân tích đầy đủ trước khi che. Chia train/test 75/25, giữ nguyên lần chia.
 Ở mỗi mức thiếu 5%, 15%, 30%, lặp 12 bộ mặt nạ MCAR. Các sai số dưới đây là trung bình ± SD qua lần che ở mức danh nghĩa 15%. SD mô tả độ dao động theo mặt nạ.
 
@@ -18,5 +26,11 @@ Tập tiếng Bồ Đào Nha của UCI Student Performance gồm 649 dòng thự
 - **Người giám hộ guardian:** Accuracy của Mode đạt 68.87% ± 6.54 điểm phần trăm. Tỷ trọng nhãn mẹ trong các giá trị có mặt tăng từ 70.3% lên 74.6% trong demo EDA. Điền nhãn đa số cho mọi ô che làm giảm khả năng khôi phục các lớp hiếm.
 - **Phân phối:** SD mẫu cột lệch từ 4.66 xuống 4.31 khi điền Mean trong cùng demo. Điền Mean toàn cục cho điểm G3 làm tương quan Pearson với chỉ báo trường GP đổi từ 0.310 thành 0.287. Điền Median cũng tạo một đỉnh nhân tạo. Với hằng số khác Mean quan sát, thay đổi phương sai phụ thuộc vào vị trí hằng số.
 - **Mở rộng theo trường:** MAE của Median G3 toàn cục là 2.42 ± 0.25, Median theo nhóm là 2.35 ± 0.31. RMSE lần lượt là 3.17 ± 0.48 và 3.19 ± 0.52. Chênh lệch quan sát giữa trường không xác lập tác động nhân quả. Cần kiểm tra trường có sẵn lúc sử dụng và đủ quan sát, vì benchmark này dùng fallback Median train toàn cục cho nhóm hiếm hoặc chưa gặp.
+
+## Biến dạng và giới hạn
+
+Lặp 300 mặt nạ MCAR 15%, tương quan G3–GP trung bình sau điền Mean là 0.264, so với 0.284 trên bản đầy đủ. Riêng mặt nạ demo, hệ số 0,287 sau điền gần bản đầy đủ hơn 0,310 trước điền. Phân biệt xu hướng trung bình với một lần che.
+
+Bản gốc có 15 điểm G3 bằng 0, 14 thuộc MS. Giữ các điểm này trong benchmark chính. Bảng zero_grade_sensitivity.csv khảo sát riêng việc loại chúng trước khi chia lại. Thay đổi tập mẫu và lần chia khiến kết quả này chỉ là phân tích độ nhạy.
 
 Các kết quả giới hạn ở mẫu môn tiếng Bồ Đào Nha, lần chia và cơ chế che MCAR này. Số liệu do thực nghiệm trên bộ dữ liệu thật tạo ra. Cách thiếu ngoài đời có thể khác.
