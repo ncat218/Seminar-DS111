@@ -29,6 +29,11 @@ def observed_summary(frame):
         stats.loc[column, "mode"] = ", ".join(f"{value:.6g}" for value in modes)
         low, high = frame[column].quantile([0.25, 0.75])
         fence = 1.5 * (high - low)
+        stats.loc[column, "q1"] = low
+        stats.loc[column, "q3"] = high
+        stats.loc[column, "iqr"] = high - low
+        stats.loc[column, "lower_fence"] = low - fence
+        stats.loc[column, "upper_fence"] = high + fence
         stats.loc[column, "iqr_flag_count"] = (
             frame[column].lt(low - fence) | frame[column].gt(high + fence)
         ).sum()

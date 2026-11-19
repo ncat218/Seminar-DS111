@@ -173,6 +173,25 @@ def constant_loss(out, support):
     save(fig, out, "constant_prediction_loss")
 
 
+def iqr_outliers(out, observed):
+    values = observed["absences"].dropna()
+    q1, q3 = values.quantile([.25, .75])
+    iqr = q3 - q1
+    lower, upper = q1 - 1.5 * iqr, q3 + 1.5 * iqr
+    fig, ax = plt.subplots(figsize=(10.2, 2.4), layout="constrained")
+    ax.boxplot(values, orientation="horizontal", widths=.45, patch_artist=True,
+               boxprops={"facecolor": PALE, "edgecolor": INK},
+               medianprops={"color": TEAL, "linewidth": 2},
+               flierprops={"marker": "o", "markersize": 5, "markeredgecolor": AMBER})
+    for fence in (lower, upper):
+        ax.axvline(fence, color=AMBER, linestyle="--", linewidth=1.5)
+    flagged = int((values.lt(lower) | values.gt(upper)).sum())
+    ax.set(yticks=[], xlabel="Số buổi vắng",
+           title=f"Demo absences · Q1 = {q1:g}, Q3 = {q3:g}, IQR = {iqr:g} · {flagged} điểm gắn cờ",
+           xlim=(lower - 1, values.max() + 2))
+    save(fig, out, "iqr_outliers")
+
+
 def create_figures(out, stages, scores, support):
     out.mkdir(parents=True, exist_ok=True)
     theory(out)
@@ -182,3 +201,4 @@ def create_figures(out, stages, scores, support):
     categorical(out, stages)
     groups(out, stages)
     constant_loss(out, support)
+    iqr_outliers(out, stages["Observed"])

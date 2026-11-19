@@ -31,6 +31,11 @@
       "median": 11.0,
       "skewness": 0.012297404793,
       "mode": "10",
+      "q1": 10.0,
+      "q3": 13.0,
+      "iqr": 3.0,
+      "lower_fence": 5.5,
+      "upper_fence": 17.5,
       "iqr_flag_count": 14.0
     },
     {
@@ -43,6 +48,11 @@
       "median": 2.0,
       "skewness": 2.082430057938,
       "mode": "0",
+      "q1": 0.0,
+      "q3": 6.0,
+      "iqr": 6.0,
+      "lower_fence": -9.0,
+      "upper_fence": 15.0,
       "iqr_flag_count": 18.0
     },
     {
@@ -55,6 +65,11 @@
       "median": 12.0,
       "skewness": -1.002711348057,
       "mode": "11",
+      "q1": 10.0,
+      "q3": 14.0,
+      "iqr": 4.0,
+      "lower_fence": 4.0,
+      "upper_fence": 20.0,
       "iqr_flag_count": 16.0
     }
   ],

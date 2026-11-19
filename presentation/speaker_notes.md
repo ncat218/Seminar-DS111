@@ -1,204 +1,333 @@
 # Lời thoại seminar DS111
 
-9 slide, 13 phút trình bày và 2 phút hỏi đáp. Ba câu hỏi xuyên suốt bài là vì sao có thể dùng giá trị đại diện để ước lượng ô thiếu, khi nào cách thay thế hợp lý, và nó làm biến dạng dữ liệu thế nào.
+13 slide, 13 phút trình bày và 2 phút hỏi đáp. Phần I gồm phân phối, skewness và ngoại lệ. Phần II gồm các thước đo và cơ sở tối ưu, rồi kiểm chứng bằng thực nghiệm.
 
-## 1. Nên điền 23 hay 34? (00:00–01:00)
+## 1. Nên điền 23 hay 34? (00:00–00:45)
 
 **Mục tiêu**
 
-Đặt câu hỏi nghiên cứu từ ví dụ tuổi.
+Giải thích nội dung nên điền 23 hay 34? trong lựa chọn giá trị điền.
 
 **Chỉ hình**
 
-Trỏ dãy tuổi, dừng ở NaN, rồi đọc ba câu hỏi.
+Dãy tuổi và ba câu hỏi xuyên suốt.
 
 **Lời thoại**
 
-Xin chào thầy và tất cả các bạn đến với mini seminar hôm nay. Đầu tiên, mình có một cột tuổi gồm 20, 22, 23, 25, 80 và một ô bị thiếu. Theo các bạn, mình nên điền 23 là Median hay 34 là Mean? [Dừng hai giây.]
+Xin chào thầy và tất cả các bạn đến với mini seminar hôm nay. Mình có cột tuổi gồm 20, 22, 23, 25, 80 và một ô thiếu. Theo các bạn, nên điền 23 là Median hay 34 là Mean? [Dừng hai giây.]
 
-Hôm nay chúng ta cùng tìm hiểu việc vận dụng các thước đo xu hướng trung tâm để điền khuyết dữ liệu. Các bạn có thể đã gặp quy tắc chọn Mean, Median hoặc Mode. Trong bài này, tụi mình sẽ đi sâu vào cơ sở của các lựa chọn đó.
-
-Câu hỏi xuyên suốt là vì sao một giá trị đại diện cho phân phối có thể dùng để ước lượng ô thiếu, khi nào cách thay thế ấy hợp lý, và nó làm dữ liệu sai lệch ra sao. Cuối bài, chúng ta sẽ quay lại lựa chọn 23 hay 34 với một cách lập luận đầy đủ hơn.
+Hôm nay mình tìm hiểu các thước đo xu hướng trung tâm để điền khuyết. Bài trả lời ba câu hỏi. Vì sao giá trị đại diện có thể ước lượng ô thiếu? Khi nào thay thế hợp lý? Và nó làm dữ liệu sai lệch ra sao? Trước hết, ta cần hiểu phân phối và cách thống kê mô tả nó.
 
 **Chuyển tiếp**
 
-Trước tiên, ta đang dự đoán điều gì khi lấy một giá trị chung để điền?
+Tiếp theo là phân phối dữ liệu.
 
-## 2. Giá trị đại diện là một dự đoán chung (01:00–02:30)
+## 2. Phân phối dữ liệu (00:45–02:00)
 
 **Mục tiêu**
 
-Giải thích từ phân phối quan sát đến dự đoán bằng một hằng số.
+Giải thích nội dung phân phối dữ liệu trong lựa chọn giá trị điền.
 
 **Chỉ hình**
 
-Hai đường sai số khi thay đổi giá trị dự đoán c, tính trên năm tuổi đã biết.
+Normal, Gamma và Gamma phản chiếu với ba mốc tâm.
+
+**Công thức và lưu ý để chuẩn bị**
+
+Đối xứng minh họa có $\mathrm{Mean}\approx\mathrm{Median}\approx\mathrm{Mode}$ trên mẫu.
+
+Lệch phải điển hình có $\mathrm{Mode}<\mathrm{Median}<\mathrm{Mean}$.
+
+Lệch trái điển hình có $\mathrm{Mean}<\mathrm{Median}<\mathrm{Mode}$.
+
+Các quan hệ này gắn với dạng phân phối cụ thể. Đối xứng riêng nó chưa bảo đảm Mean tồn tại, chẳng hạn Cauchy.
 
 **Lời thoại**
 
-Khi một ô tuổi bị thiếu, mình chưa biết người đó có đặc điểm gì khác. Nếu chỉ dùng cột tuổi và quyết định điền cùng một số, bài toán trở thành chọn một giá trị dự đoán chung.
+Hình thứ nhất dùng phân phối chuẩn đối xứng một đỉnh. Ở mô hình này, Mean, Median và Mode cùng ở tâm. Trên mẫu hữu hạn, chúng thường chỉ gần nhau. Đối xứng còn gặp ở phân phối tam giác và nhiều dạng khác.
 
-Ta có thể dùng năm tuổi quan sát như một mô tả đơn giản về phân phối mà tuổi bị thiếu có thể đến từ. Nhưng bước này cần một giả định, đó là những người đã có tuổi phải đủ đại diện cho người bị thiếu tuổi. Nếu chỉ người cao tuổi bỏ trống, việc dùng phần quan sát sẽ có vấn đề.
+Hình thứ hai là Gamma lệch phải, đuôi kéo về phía các giá trị lớn. Thu nhập hoặc giá nhà có thể có dạng như vậy. Giá trị lớn đóng góp mạnh vào tổng, kéo Mean sang phải. Trong ví dụ này, Mode nhỏ hơn Median, nhỏ hơn Mean.
 
-Để thấy cách chọn giá trị chung, mình thử nhiều số c rồi chấm c với từng tuổi đã quan sát. Hình bên trái tính sai số tuyệt đối trung bình, nhỏ nhất tại 23. Hình bên phải tính căn của sai số bình phương trung bình, nhỏ nhất tại 34. Cả hai dùng cùng năm tuổi, nhưng đặt trọng số khác nhau cho sai số lớn.
-
-Đường cong này tính trên phần đã biết. Tuổi thật ở ô NaN vẫn chưa biết. Giá trị đại diện cung cấp một dự đoán có cơ sở khi giả định về phần quan sát phù hợp, và chất lượng dự đoán còn phụ thuộc cách mình đo sai số.
+Hình thứ ba là Gamma phản chiếu có đuôi trái. Ta có thể liên tưởng đến bài kiểm tra dễ, nhiều điểm cao và ít điểm rất thấp. Mean bị kéo xuống, nằm phía trái Median. Các thứ tự này là ví dụ thường gặp. Với dữ liệu thực, mình vẫn xem hình dạng, số đỉnh và các điểm ở đuôi trước khi lựa chọn.
 
 **Chuyển tiếp**
 
-Ba thước đo trung tâm tương ứng với ba mục tiêu dự đoán nào?
+Tiếp theo là skewness và ngoại lệ.
 
-## 3. Mean, Median và Mode theo mục tiêu sai số (02:30–04:00)
+## 3. Skewness và ngoại lệ (02:00–03:00)
 
 **Mục tiêu**
 
-Đặt các thống kê trong bài toán tối ưu dự đoán hằng số.
+Giải thích nội dung skewness và ngoại lệ trong lựa chọn giá trị điền.
 
 **Chỉ hình**
 
-Bảng mục tiêu, thống kê và phạm vi áp dụng.
+Bảng dấu skewness, hàng rào và boxplot absences.
+
+**Công thức và lưu ý để chuẩn bị**
+
+$IQR=Q_3-Q_1$, hàng rào $[Q_1-1.5IQR,\ Q_3+1.5IQR]$.
+
+Râu boxplot dừng tại quan sát xa nhất còn trong hàng rào. Một dạng skewness là $g_1=m_3/m_2^{3/2}$, với $m_k=\sum_i(x_i-\bar{x})^k/n$. pandas dùng hệ số Fisher–Pearson hiệu chỉnh cỡ mẫu.
 
 **Lời thoại**
 
-Với biến định lượng, nếu phạt sai số bằng bình phương, Mean làm tổng mức phạt nhỏ nhất trên tập đang xét. Công thức là tổng các giá trị quan sát chia cho số quan sát. RMSE lấy căn sau khi tính trung bình bình phương, nên lựa chọn tối ưu vẫn là Mean.
+Skewness đo bất đối xứng theo moment bậc ba. Dương thường gợi ý đuôi phải, âm thường gợi ý đuôi trái. Gần 0 cần xem hình vì các thành phần moment có thể bù nhau. Mình kết hợp histogram, boxplot và ý nghĩa biến thay vì đặt một ngưỡng chung.
 
-Nếu phạt theo trị tuyệt đối, Median là giá trị tối ưu. Median dùng vị trí giữa sau khi sắp xếp. Vì dựa vào thứ hạng, nó ít nhạy hơn với việc đổi 80 thành 800 trong ví dụ tuổi. Khi có số phần tử chẵn, quy ước thông dụng lấy trung bình hai số giữa.
+Outlier là điểm khác biệt đáng kể so với cấu trúc thường gặp. Một cách gắn cờ dùng IQR bằng Q3 trừ Q1, rồi xét điểm ngoài hai hàng rào trên slide.
 
-Với nhãn loại như người giám hộ, ta muốn đoán đúng nhiều ô nhất. Khi chi phí sai giữa các lớp bằng nhau, nhãn phổ biến nhất là lựa chọn chung hợp lý. Đó là Mode. Ví dụ Size có M, M, L, S, thiếu, M thì Mode bằng M.
-
-Các kết quả tối ưu áp dụng cho một dự đoán cố định trên phân phối hoặc tập dùng để tối ưu. Trong thực nghiệm, mình học thống kê từ train rồi kiểm chứng trên test. Mode còn có thể hòa, chẳng hạn 2 và 8 đều xuất hiện hai lần trong dãy 2, 2, 3, 8, 8. Quy tắc của SimpleImputer là chọn giá trị nhỏ nhất trong các Mode.
+Ở demo số buổi vắng, Q1 bằng 0, Q3 bằng 6, nên IQR bằng 6. Hai hàng rào là âm 9 và 15, có 18 điểm lớn hơn 15 bị gắn cờ. Tụi mình giữ các điểm này để phân tích và kiểm tra nguồn gốc.
 
 **Chuyển tiếp**
 
-Điều kiện nào giúp thống kê học từ phần quan sát áp dụng được cho ô thiếu?
+Tiếp theo là mean — trung bình cộng.
 
-## 4. Khi nào phần quan sát đủ đại diện? (04:00–05:30)
+## 4. Mean — Trung bình cộng (03:00–03:50)
 
 **Mục tiêu**
 
-Nối hình dạng phân phối, cơ chế thiếu và thông tin sử dụng.
+Giải thích nội dung mean — trung bình cộng trong lựa chọn giá trị điền.
 
 **Chỉ hình**
 
-Ba phân phối lý thuyết và điều kiện áp dụng.
+Công thức Mean và ví dụ đổi 80 thành 800.
+
+**Công thức và lưu ý để chuẩn bị**
+
+Với $X=\{x_1,\ldots,x_n\}$,
+\[
+\bar{x}=\frac{1}{n}\sum_{i=1}^{n}x_i.
+\]
+Một quan sát tăng $\Delta$ làm Mean tăng $\Delta/n$.
 
 **Lời thoại**
 
-Mean dùng độ lớn của mọi giá trị nên các điểm ở đuôi có thể kéo nó đi xa. Median dùng thứ hạng nên thường gần cụm phổ biến hơn khi đuôi dài. Trong ba ví dụ trên hình, Normal có ba tâm trùng nhau, Gamma có đuôi phải và Mean lớn hơn Median, còn Gamma phản chiếu có đuôi trái. Skewness thường dương ở đuôi phải và âm ở đuôi trái. Ta đọc cùng histogram và boxplot để thấy cấu trúc thực tế.
+Với n giá trị định lượng quan sát hợp lệ, Mean là tổng chia cho n. Nó dùng độ lớn của tất cả quan sát nên phản ánh mức trung bình của mẫu.
 
-Hình dạng cho biết giá trị nào đại diện cho phần mình nhìn thấy. Muốn dùng nó cho ô thiếu, phải xét cách phát sinh thiếu. MCAR là xác suất thiếu độc lập với các giá trị dữ liệu. Cơ chế này cho phép phần còn lại đại diện theo thiết kế, dù mẫu hữu hạn vẫn dao động.
+Năm tuổi đang có tổng là 170, chia 5 được 34. Nếu chỉ đổi 80 thành 800, Mean tăng lên 178. Một điểm thay đổi rất lớn có thể kéo Mean đi xa phần đông quan sát.
 
-Nếu khả năng thiếu phụ thuộc đặc điểm đã quan sát, ta cần xem có nên điều kiện hóa theo các đặc điểm đó. Nếu còn phụ thuộc chính phần chưa quan sát, ước lượng đòi hỏi thêm giả định. Tỷ lệ thiếu tự nó chưa xác định được cơ chế.
-
-Cuối cùng là ý nghĩa biến. Số 0 có thể hợp lệ. Nhãn mã hóa bằng số vẫn cần xem thang đo trước khi cộng hoặc lấy trung bình. Một thống kê chung cũng có thể bỏ qua khác biệt giữa các nhóm.
+Tổng quát, một giá trị tăng delta thì Mean tăng delta chia n. Đây là lý do cần xem đuôi và các điểm cực đoan khi dùng Mean. Tuổi 80 vẫn có thể là quan sát hợp lệ.
 
 **Chuyển tiếp**
 
-Tụi mình kiểm chứng các lập luận này trên dữ liệu học sinh thực tế.
+Tiếp theo là median — trung vị.
 
-## 5. Kiểm chứng trên Student Performance (05:30–07:15)
+## 5. Median — Trung vị (03:50–04:40)
 
 **Mục tiêu**
 
-Trình bày EDA và cách đánh giá bằng giá trị gốc được giữ riêng.
+Giải thích nội dung median — trung vị trong lựa chọn giá trị điền.
 
 **Chỉ hình**
 
-Histogram và boxplot của G1, absences, rồi quy trình train/test.
+Công thức n lẻ, n chẵn và hai ví dụ.
+
+**Công thức và lưu ý để chuẩn bị**
+
+Sau khi sắp xếp $x_{(1)}\le\ldots\le x_{(n)}$,
+\[
+\tilde{x}=\begin{cases}
+x_{((n+1)/2)}, & n\text{ lẻ},\\
+(x_{(n/2)}+x_{(n/2+1)})/2, & n\text{ chẵn}.
+\end{cases}
+\]
+Trên slide, $x[k]$ là giá trị ở vị trí k sau khi sắp xếp.
 
 **Lời thoại**
 
-Student Performance của UCI có 649 dòng môn tiếng Bồ Đào Nha, thu thập tại hai trường GP và MS. Tụi mình dùng G1 là điểm kỳ đầu, absences là số buổi vắng, guardian là người giám hộ và G3 là điểm cuối kỳ. Cột school được giữ đầy đủ để thử theo nhóm.
+Để tính Median, sắp xếp tăng dần. Nếu n lẻ, lấy giá trị ở vị trí n cộng 1 rồi chia 2. Với n chẵn và dữ liệu định lượng, lấy trung bình hai số giữa.
 
-Bản gốc đầy đủ nên mình giữ giá trị thật rồi chủ động che ô. Trên hình là demo ở mức che danh nghĩa 15%. Riêng absences có 94 trên 649 ô bị che, tương đương 14,48%. Phần trăm thực tế dao động vì mỗi ô có một phép thử ngẫu nhiên.
+Năm tuổi cho Median bằng 23. Nếu chỉ có 20, 22, 23, 25, Median bằng 22,5. Đổi 80 thành 800 vẫn giữ vị trí giữa của mẫu năm tuổi là 23.
 
-G1 có Mean khoảng 11,35, Median 11 và skewness 0,01. Vùng trung tâm khá cân đối nhưng boxplot vẫn gắn cờ 14 điểm. Absences có Mean khoảng 3,71, Median 2 và skewness 2,08. Đuôi phải dài và có 18 điểm bị gắn cờ. Ta giữ cả các số buổi vắng cao và số 0 để phân tích.
-
-Để chấm sai số, chia 486 dòng train và 163 dòng test trước, sau đó mới che riêng hai tập. Bộ điền chỉ học trên train đã che rồi áp lên test. Chỉ các ô test bị che được so với giá trị gốc. Các phương pháp dùng cùng mặt nạ, lặp 12 lần tại mỗi mức 5%, 15% và 30%. Cách này giúp câu hỏi “điền tốt đến đâu” có phép đo cụ thể.
+Đó là tính robust, tức bền hơn Mean trước một vài điểm cực đoan. Median mô tả vị trí theo thứ hạng, còn chất lượng điền vẫn phụ thuộc mục tiêu và cơ chế thiếu.
 
 **Chuyển tiếp**
 
-Kết quả có đúng với cách giải thích theo hàm mất mát không?
+Tiếp theo là mode — mốt.
 
-## 6. Cùng dữ liệu, khác mục tiêu sai số (07:15–09:00)
+## 6. Mode — Mốt (04:40–05:30)
 
 **Mục tiêu**
 
-Dùng kết quả test để kiểm chứng lựa chọn thống kê.
+Giải thích nội dung mode — mốt trong lựa chọn giá trị điền.
 
 **Chỉ hình**
 
-Hai nhóm cột MAE/RMSE của absences và số lần thắng theo cặp.
+Công thức Count, ví dụ một Mode và hai Mode.
+
+**Công thức và lưu ý để chuẩn bị**
+
+\[
+\operatorname{Modes}(X)=\operatorname*{arg\,max}_v\operatorname{Count}(v).
+\]
+Một Mode là một phần tử của tập nghiệm. Nhãn được mã hóa bằng số vẫn cần xem thang đo trước khi lấy trung bình.
 
 **Lời thoại**
 
-Ở mức che 15%, trên cột absences, Median có MAE 2,52 buổi, thấp hơn 2,83 của Mean. Khi đổi sang RMSE, Mean đạt 3,69, thấp hơn 3,86 của Median.
+Mode là giá trị xuất hiện nhiều nhất. Mình đếm tần suất rồi chọn giá trị có số đếm cao nhất. Nó hữu ích với nhãn như nhóm máu, sản phẩm, chuyên ngành hoặc người giám hộ.
 
-Vì sao thứ hạng đổi? Median gần vùng phổ biến của số buổi vắng, giúp giảm sai số tuyệt đối trung bình. Trong RMSE, các ô thật có số buổi vắng cao đóng góp lớn vì sai số bị bình phương. Mean dịch về đuôi phải nên có thể giảm một phần các lỗi lớn đó. Đây là kết quả test của mẫu này, phù hợp với lập luận về hai mục tiêu.
+Với Size trên hình, M xuất hiện ba lần nên là Mode. Dãy 2, 2, 3, 8, 8 có hai Mode 2 và 8. Mean bằng 4,6, Median bằng 3. Khi buộc chọn một Mode, SimpleImputer chọn giá trị nhỏ nhất, tức là 2.
 
-Ta cũng kiểm tra theo từng mặt nạ. Median có MAE thấp hơn ở 10 trên 12 lần, có một lần hòa. Mean có RMSE thấp hơn ở 11 trên 12 lần. Với G1, Mean có RMSE thấp hơn cả 12 lần nhưng chênh lệch trung bình chỉ khoảng 0,08 điểm. Cần đọc cả hướng và độ lớn cải thiện.
-
-Với guardian, Mode chọn mother và Accuracy trung bình khoảng 68,87%. Con số đó bằng tỷ lệ mother thật trong các ô test che, vì mọi ô nhận cùng nhãn. Điểm trung bình và SD qua mặt nạ được lưu trong notebook.
-
-Phân phối giúp hiểu vì sao các giá trị điền khác nhau, còn mục tiêu sai số quyết định mình đánh giá lựa chọn ấy theo tiêu chí nào.
+Nếu mọi giá trị chỉ xuất hiện một lần, phép đếm chưa cho Mode duy nhất. Với biến liên tục, cần phân biệt đếm trùng với ước lượng đỉnh mật độ.
 
 **Chuyển tiếp**
 
-Một phương pháp có sai số chấp nhận được sẽ làm dữ liệu sau điền thay đổi ra sao?
+Tiếp theo là vì sao dùng các thống kê để điền khuyết?.
 
-## 7. Giá trị điền làm đổi phân phối (09:00–10:30)
+## 7. Vì sao dùng các thống kê để điền khuyết? (05:30–06:45)
 
 **Mục tiêu**
 
-Đánh giá tác động của việc thay các giá trị khác nhau bằng một hằng số.
+Giải thích nội dung vì sao dùng các thống kê để điền khuyết? trong lựa chọn giá trị điền.
 
 **Chỉ hình**
 
-Histogram trước/sau bên trái, tỷ trọng nhãn mẹ bên phải và SD.
+Bảng ba loại mất mát và ba công thức argmin.
+
+**Công thức và lưu ý để chuẩn bị**
+
+\[
+\bar{x}=\operatorname*{arg\,min}_a\sum_i(x_i-a)^2,\qquad
+\tilde{x}\in\operatorname*{arg\,min}_a\sum_i|x_i-a|,
+\]
+\[
+x_{\mathrm{mode}}\in\operatorname*{arg\,min}_a\sum_i\mathbf{1}(x_i\ne a).
+\]
+Mean có thể chứng minh bằng $\sum_i(x_i-a)^2=\sum_i(x_i-\bar{x})^2+n(a-\bar{x})^2$.
+
+Mode có thể chứng minh bằng $\sum_i\mathbf{1}(x_i\ne a)=n-\operatorname{Count}(a)$. Chi tiết chứng minh trong tài liệu lý thuyết.
 
 **Lời thoại**
 
-Trong hình absences, điền Median làm cột ở 2 buổi tăng lên. Điền Mean tạo thêm tần suất tại khoảng 3,71 buổi. Tất cả các ô thiếu cùng nhận một số, trong khi các giá trị thật bị che vốn khác nhau.
+Khi dự đoán bằng một hằng số cho mọi ô thiếu, mình cần xác định mức phạt khi sai. Nếu phạt bằng bình phương, Mean làm tổng mức phạt nhỏ nhất. Nếu dùng trị tuyệt đối, Median là một nghiệm tối ưu. Nếu đếm nhãn đúng hoặc sai, Mode giảm số lần sai.
 
-Khi điền bằng Mean của chính phần quan sát, Mean giữ nguyên. Tổng bình phương độ lệch quanh Mean cũng giữ nguyên vì các ô thêm vào có độ lệch bằng 0, còn mẫu số của phương sai tăng. Trong demo, SD absences giảm từ 4,66 xuống 4,31. Công thức phương sai mẫu được ghi trong phần tra cứu.
+Argmin nghĩa là tìm a làm biểu thức phía sau nhỏ nhất. Với Median và Mode, ký hiệu thuộc cho phép nhiều nghiệm. Chẳng hạn ở mẫu chẵn, cả khoảng giữa hai số giữa đều tối ưu tổng sai số tuyệt đối.
 
-Biến loại cũng thay đổi. Tỷ trọng mother trong phần có mặt là 70,3%, sau điền Mode tăng thành 74,6%. Các ô father và other bị che đều được điền sai, dù Accuracy chung gần 69%. Nếu mục tiêu là phân tích cơ cấu người giám hộ, thay đổi này đáng quan tâm.
-
-Quan hệ giữa biến cũng có thể bị ảnh hưởng. Lặp 300 mặt nạ MCAR 15%, tương quan G3 với chỉ báo trường GP trung bình sau điền Mean khoảng 0,264, so với 0,284 trên bản đầy đủ. Một lần che riêng có thể cho diễn biến khác. Vì thế mình xem cả sai số từng ô, hình dạng và quan hệ sau điền.
+Vì vậy lựa chọn còn tùy cách đánh giá. MSE và RMSE cùng có lợi thế lý thuyết cho Mean trong phạm vi dự đoán hằng số. MAE tương ứng với Median, Accuracy tương ứng với Mode khi chi phí sai giữa các lớp bằng nhau. Để dùng cho ô chưa biết, cần kiểm tra phân phối mà ô ấy đến từ.
 
 **Chuyển tiếp**
 
-Dùng thống kê theo nhóm có giải quyết được giới hạn của một giá trị toàn cục không?
+Tiếp theo là từ phần quan sát đến ô bị thiếu.
 
-## 8. Khi một giá trị chung chưa đủ (10:30–12:00)
+## 8. Từ phần quan sát đến ô bị thiếu (06:45–07:35)
 
 **Mục tiêu**
 
-Minh họa dự đoán có điều kiện và giới hạn của việc dựa vào nhóm.
+Giải thích nội dung từ phần quan sát đến ô bị thiếu trong lựa chọn giá trị điền.
 
 **Chỉ hình**
 
-Histogram G3 theo trường từ demo và bảng sai số trên test.
+Hai đường sai số tuổi và giả định đại diện.
 
 **Lời thoại**
 
-Nếu biết trường của học sinh, mình có thể học Median G3 riêng cho GP và MS từ train. Đây là cách dùng thêm thông tin để dự đoán có điều kiện. Hai phân phối quan sát có chồng lấn và khác nhau ở một số vùng. Các mốc trong hình tính từ chính demo.
+Hai đường này chấm các giá trị c trên năm tuổi đã biết. MAE nhỏ nhất tại 23, RMSE nhỏ nhất tại 34. Tuổi thật ở NaN vẫn chưa biết.
 
-Trong benchmark 15%, MAE Median chung khoảng 2,42 điểm và theo trường khoảng 2,35. RMSE lần lượt khoảng 3,17 và 3,19. Mức cải thiện MAE khá nhỏ, còn RMSE hơi tăng. Dùng thêm thông tin nhóm vẫn cần kiểm chứng.
+Muốn dùng thống kê cho ô thiếu, phần quan sát phải đại diện phù hợp cho phần bị thiếu hoặc nhóm tương ứng. MCAR là thiếu độc lập với giá trị, thuận lợi cho tính đại diện theo thiết kế.
 
-EDA còn cho thấy 15 dòng G3 bằng 0, trong đó 14 thuộc MS. UCI quy định điểm trong khoảng 0 đến 20 nên tụi mình giữ các dòng này. Nếu loại chúng trước khi chia lại, MAE Median chung khoảng 2,193 và theo trường khoảng 2,197. Kết quả nhạy với thành phần mẫu. Phân tích đó cũng thay đổi tập đối tượng và lần chia, nên cần tìm hiểu thêm trước khi gán nguyên nhân.
-
-Nhóm phải có sẵn lúc điền và đủ quan sát. Mã dùng Median train toàn cục làm dự phòng cho nhóm chưa gặp hoặc có dưới 20 quan sát. Khi cấu trúc phức tạp hơn, có thể thử phương pháp dùng nhiều biến và đánh giá lại.
+Nếu thiếu liên quan biến đã quan sát, cần xem phân phối có điều kiện. Nếu còn liên quan phần chưa quan sát, cần thêm giả định. Phân phối, cơ chế thiếu và mục tiêu sai số cùng tham gia quyết định.
 
 **Chuyển tiếp**
 
-Quay lại ô tuổi bị thiếu, bây giờ chúng ta trả lời đầy đủ hơn.
+Tiếp theo là kiểm chứng trên student performance.
 
-## 9. Trở lại ô tuổi bị thiếu (12:00–13:00)
+## 9. Kiểm chứng trên Student Performance (07:35–08:45)
 
 **Mục tiêu**
 
-Trả lời trực tiếp ba vế câu hỏi mở đầu.
+Giải thích nội dung kiểm chứng trên student performance trong lựa chọn giá trị điền.
+
+**Chỉ hình**
+
+Histogram, boxplot và thiết kế train/test.
+
+**Lời thoại**
+
+Mình dùng 649 dòng môn tiếng Bồ Đào Nha trong Student Performance của UCI. Bốn cột là G1, absences, guardian và G3. Trường được giữ đầy đủ để thử theo nhóm.
+
+Trong demo, G1 có Mean 11,35, Median 11 và skewness 0,01. Absences có Mean 3,71, Median 2, skewness 2,08. Histogram và boxplot cho thấy vùng trung tâm G1 khá cân đối, số buổi vắng có đuôi phải.
+
+Bản gốc đầy đủ nên mình giữ giá trị thật rồi che thử. Benchmark chia 486 dòng train, 163 dòng test trước khi che. Chỉ học thống kê từ train, áp lên test và chấm ô test bị che. Các phương pháp dùng chung mặt nạ, lặp 12 lần tại mỗi mức 5%, 15%, 30%.
+
+**Chuyển tiếp**
+
+Tiếp theo là cùng dữ liệu, khác mục tiêu sai số.
+
+## 10. Cùng dữ liệu, khác mục tiêu sai số (08:45–10:00)
+
+**Mục tiêu**
+
+Giải thích nội dung cùng dữ liệu, khác mục tiêu sai số trong lựa chọn giá trị điền.
+
+**Chỉ hình**
+
+Hai nhóm cột sai số và số lần thắng theo cặp.
+
+**Lời thoại**
+
+Với absences ở mức 15%, Median có MAE 2,52 buổi, thấp hơn 2,83 của Mean. Nhưng Mean có RMSE 3,69, thấp hơn 3,86 của Median.
+
+Median gần vùng phổ biến, phù hợp với sai số tuyệt đối. Trong RMSE, sai số lớn bị bình phương. Mean dịch về phía đuôi có thể giảm một phần lỗi ở ô có số buổi vắng cao. Kết quả test này phù hợp với cách giải thích theo tổn thất.
+
+Theo từng mặt nạ, Median có MAE thấp hơn 10 trong 12 lần, có một lần hòa. Mean có RMSE thấp hơn 11 lần. Với guardian, Mode chọn mother, Accuracy trung bình 68,87%. Mình đọc đúng metric, độ lớn cải thiện và phạm vi thực nghiệm.
+
+**Chuyển tiếp**
+
+Tiếp theo là giá trị điền làm đổi phân phối.
+
+## 11. Giá trị điền làm đổi phân phối (10:00–11:00)
+
+**Mục tiêu**
+
+Giải thích nội dung giá trị điền làm đổi phân phối trong lựa chọn giá trị điền.
+
+**Chỉ hình**
+
+Histogram trước/sau và tỷ trọng mother.
+
+**Công thức và lưu ý để chuẩn bị**
+
+Với $n$ quan sát và $m$ ô điền Mean quan sát, $s^2_{sau}=s^2_{quan\ sát}(n-1)/(n+m-1)$. Một lần che có thể có diễn biến tương quan khác xu hướng trung bình.
+
+**Lời thoại**
+
+Điền Median làm tần suất ở 2 buổi vắng tăng. Điền Mean thêm cụm tại khoảng 3,71. Các ô được điền mất sự khác nhau vốn có.
+
+Điền Mean của phần quan sát giữ nguyên Mean. Các ô thêm vào có độ lệch bằng 0, tổng bình phương độ lệch giữ nguyên nhưng mẫu số phương sai tăng. SD absences giảm từ 4,66 xuống 4,31.
+
+Với guardian, tỷ trọng mother tăng từ 70,3% lên 74,6%. Các ô father và other bị che nhận sai nhãn. Quan hệ giữa biến cũng có thể đổi. Qua 300 mặt nạ 15%, tương quan G3–GP sau điền Mean trung bình là 0,264, so với 0,284 của bản đầy đủ.
+
+**Chuyển tiếp**
+
+Tiếp theo là khi một giá trị chung chưa đủ.
+
+## 12. Khi một giá trị chung chưa đủ (11:00–12:00)
+
+**Mục tiêu**
+
+Giải thích nội dung khi một giá trị chung chưa đủ trong lựa chọn giá trị điền.
+
+**Chỉ hình**
+
+G3 theo trường, bảng test và nhóm điểm 0.
+
+**Lời thoại**
+
+Nếu biết trường, mình có thể học Median G3 riêng từng trường trên train. Ở 15%, MAE từ 2,42 xuống 2,35, nhưng RMSE từ 3,17 lên 3,19. Lợi ích còn tùy mục tiêu sai số.
+
+EDA thấy 15 dòng G3 bằng 0, gồm 14 dòng MS. UCI ghi miền điểm 0–20 nên mình giữ chúng. Thử loại rồi chia lại cho MAE Median chung 2,193 và theo trường 2,197. Kết quả nhạy với thành phần mẫu.
+
+Cách lọc cũng đổi tập đối tượng và lần chia, nên cần tìm hiểu thêm trước khi gán nguyên nhân. Dùng theo nhóm cần cột nhóm có sẵn, đủ quan sát và thống kê dự phòng.
+
+**Chuyển tiếp**
+
+Tiếp theo là trở lại ô tuổi bị thiếu.
+
+## 13. Trở lại ô tuổi bị thiếu (12:00–13:00)
+
+**Mục tiêu**
+
+Giải thích nội dung trở lại ô tuổi bị thiếu trong lựa chọn giá trị điền.
 
 **Chỉ hình**
 
@@ -216,8 +345,8 @@ Nó làm sai lệch dữ liệu thế nào? Điền hằng số làm mất biế
 
 **Chuyển tiếp**
 
-Mời thầy và các bạn đặt câu hỏi trong hai phút còn lại.
+Dành hai phút còn lại cho hỏi đáp.
 
 ## Hỏi đáp (13:00–15:00)
 
-Mở [câu hỏi phản biện](questions_answers.md), [script có thuật ngữ](script_va_thuat_ngu.md) và [nguồn tham khảo](references.md).
+Mở [lý thuyết đầy đủ](ly_thuyet.md), [script có thuật ngữ](script_va_thuat_ngu.md) và [câu hỏi phản biện](questions_answers.md).

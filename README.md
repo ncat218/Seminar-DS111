@@ -1,6 +1,6 @@
 # DS111 · Điền khuyết bằng Mean, Median và Mode
 
-Bộ seminar tiếng Việt gồm 9 slide cho 13 phút trình bày và 2 phút hỏi đáp. Thực nghiệm dùng dữ liệu thực tế từ **UCI Student Performance** để đo sai số tại các ô được che thử và xem phân phối thay đổi thế nào sau khi điền. [Student Performance — UCI](https://archive.ics.uci.edu/dataset/320/student-performance)
+Bộ seminar tiếng Việt gồm 13 slide cho 13 phút trình bày và 2 phút hỏi đáp. Thực nghiệm dùng dữ liệu thực tế từ **UCI Student Performance** để đo sai số tại các ô được che thử và xem phân phối thay đổi thế nào sau khi điền. [Student Performance — UCI](https://archive.ics.uci.edu/dataset/320/student-performance)
 
 ## Trình chiếu
 
@@ -10,6 +10,8 @@ Bài đi theo ba câu hỏi. Vì sao giá trị đại diện có thể ước l
 - [Lời thoại có mốc giờ](presentation/speaker_notes.md), [nội dung từng slide](presentation/slide_content.md), [câu hỏi phản biện](presentation/questions_answers.md) và [nguồn tham khảo](presentation/references.md).
 - [Script có thuật ngữ và giải thích mã](presentation/script_va_thuat_ngu.md) dành cho ôn tập và hỏi đáp.
 - [Notebook đã lưu đầu ra](notebooks/seminar_imputation.ipynb) có thể dùng để mở phần demo hoặc kết quả.
+
+[Lý thuyết đầy đủ](presentation/ly_thuyet.md) gồm các dạng phân phối, skewness và IQR, công thức Mean/Median/Mode, ba bài toán tối ưu cùng chứng minh.
 
 ## Chạy lại thực nghiệm
 
@@ -63,7 +65,7 @@ Demo mô tả dùng một mặt nạ Bernoulli MCAR 15% và fit trên phần qua
 | `results/correlation_repeats.csv` | Tương quan G3–GP qua 300 mặt nạ MCAR 15%, seed 0–299 |
 | `results/zero_grade_sensitivity.csv` | Benchmark G3 sau khi loại điểm 0 rồi chia lại, dùng như phân tích độ nhạy |
 | [Kết luận thực nghiệm](results/conclusions.md) | Số liệu và diễn giải ở mức danh nghĩa 15% |
-| `figures/` | Bảy biểu đồ PNG, gồm dự đoán hằng số, lý thuyết, EDA, trước/sau, sai số, người giám hộ và G3 theo trường |
+| `figures/` | Tám biểu đồ PNG, gồm dự đoán hằng số, lý thuyết, EDA, trước/sau, sai số, người giám hộ và G3 theo trường |
 | `src/`, `tests/` | Mã chuẩn bị dữ liệu, đánh giá, trực quan và kiểm thử |
 
 MAE và RMSE dùng đơn vị gốc của biến, càng thấp càng tốt. Accuracy lưu dưới dạng tỷ lệ 0–1, càng cao càng tốt. SD trong bảng benchmark mô tả sự dao động của mặt nạ ở cùng một lần chia. Tỷ trọng lớp dùng mẫu số là số giá trị có mặt ở mỗi giai đoạn. Điểm và số buổi vắng là biến rời rạc. Benchmark giữ nguyên giá trị dự đoán lẻ để đánh giá dưới hàm mất mát đã chọn. Nếu hệ thống yêu cầu đầu ra nguyên, cần quy định rồi kiểm thử việc làm tròn.

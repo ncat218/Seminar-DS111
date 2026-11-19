@@ -1,8 +1,8 @@
 # Nội dung trình chiếu DS111
 
-9 slide, 13 phút trình bày và 2 phút hỏi đáp. Ba câu hỏi xuyên suốt gồm vì sao dùng giá trị đại diện, khi nào hợp lý và dữ liệu biến dạng thế nào.
+13 slide, 13 phút trình bày và 2 phút hỏi đáp. Ba câu hỏi xuyên suốt gồm vì sao dùng giá trị đại diện, khi nào hợp lý và dữ liệu biến dạng thế nào.
 
-## 1. Nên điền 23 hay 34? (00:00–01:00)
+## 1. Nên điền 23 hay 34? (00:00–00:45)
 
 **Nội dung chiếu**
 
@@ -15,7 +15,93 @@ Dữ liệu sau điền thay đổi ra sao?
 
 ---
 
-## 2. Giá trị đại diện là một dự đoán chung (01:00–02:30)
+## 2. Phân phối dữ liệu (00:45–02:00)
+
+**Nội dung chiếu**
+
+Đối xứng một đỉnh thường có Mean ≈ Median ≈ Mode.
+Lệch phải điển hình: Mode < Median < Mean.
+Lệch trái điển hình: Mean < Median < Mode.
+Đối xứng có thể gặp ngoài Normal. Các thứ tự là ví dụ thường gặp.
+
+**Đồ họa** · Normal, Gamma và Gamma phản chiếu.
+
+---
+
+## 3. Skewness và ngoại lệ (02:00–03:00)
+
+**Nội dung chiếu**
+
+Skewness gần 0 cần kiểm tra hình. Dương thường lệch phải, âm thường lệch trái.
+IQR = Q3 − Q1.
+Hàng rào [Q1 − 1,5 × IQR ; Q3 + 1,5 × IQR].
+Demo absences có Q1=0, Q3=6, hàng rào −9 và 15, 18 điểm gắn cờ.
+
+**Đồ họa** · Bảng dấu skewness, công thức hàng rào và boxplot absences.
+
+---
+
+## 4. Mean — Trung bình cộng (03:00–03:50)
+
+**Nội dung chiếu**
+
+Với n quan sát hợp lệ: x̄ = (1/n) Σᵢ xᵢ.
+Mean dùng độ lớn của toàn bộ quan sát.
+Tuổi [20,22,23,25,80] cho Mean = 34.
+Đổi 80 thành 800, Mean = 178.
+Một giá trị tăng Δ thì Mean tăng Δ/n.
+
+**Đồ họa** · Công thức và ví dụ thay đổi một quan sát.
+
+---
+
+## 5. Median — Trung vị (03:50–04:40)
+
+**Nội dung chiếu**
+
+Sắp xếp x(1) ≤ … ≤ x(n).
+Nếu n lẻ: Median = x((n+1)/2).
+Nếu n chẵn: Median = [x(n/2) + x(n/2+1)]/2.
+Ví dụ năm tuổi có Median=23. Bốn số [20,22,23,25] có Median=22,5.
+Median bền hơn Mean với một vài giá trị cực đoan.
+
+**Đồ họa** · Công thức cho n lẻ và chẵn, cùng hai ví dụ.
+
+---
+
+## 6. Mode — Mốt (04:40–05:30)
+
+**Nội dung chiếu**
+
+Modes(X) = arg max_v Count(v).
+Hữu ích với nhóm máu, sản phẩm, chuyên ngành và nhãn người giám hộ.
+Size [M,M,L,S,NaN,M] có Mode M.
+X [2,2,3,8,8,NaN] có hai Mode {2,8}, Mean 4,6, Median 3.
+Mọi giá trị xuất hiện một lần thì chưa có Mode duy nhất.
+
+**Đồ họa** · Công thức tần suất và ví dụ một Mode, nhiều Mode.
+
+---
+
+## 7. Vì sao dùng các thống kê để điền khuyết? (05:30–06:45)
+
+**Nội dung chiếu**
+
+| Thước đo | Tối ưu theo | Ý nghĩa |
+|---|---|---|
+| Mean | Sai số bình phương | Giảm tổng bình phương độ lệch |
+| Median | Sai số tuyệt đối | Giảm tổng khoảng cách tuyệt đối |
+| Mode | Sai số nhãn 0–1 | Giảm số lần đoán sai |
+Mean = arg min_a Σ_i(x_i−a)^2.
+Median thuộc arg min_a Σ_i|x_i−a|.
+Mode thuộc arg min_a Σ_i 1(x_i≠a).
+Tối ưu trong phạm vi dự đoán bằng một hằng số trên tập đang xét.
+
+**Đồ họa** · Bảng ba tổn thất và ba công thức tối ưu.
+
+---
+
+## 8. Từ phần quan sát đến ô bị thiếu (06:45–07:35)
 
 **Nội dung chiếu**
 
@@ -29,36 +115,7 @@ Tuổi thật ở ô NaN vẫn chưa biết.
 
 ---
 
-## 3. Mean, Median và Mode theo mục tiêu sai số (02:30–04:00)
-
-**Nội dung chiếu**
-
-| Mục tiêu của dự đoán chung | Giá trị tối ưu | Thông tin được dùng |
-|---|---|---|
-| Giảm sai số bình phương | Mean   x̄ = Σxᵢ / n | Độ lớn của mọi quan sát |
-| Giảm sai số tuyệt đối | Median | Vị trí giữa theo thứ hạng |
-| Tăng số nhãn đoán đúng | Mode | Tần suất xuất hiện |
-Size [M, M, L, S, NaN, M] có Mode M.
-X [2, 2, 3, 8, 8, NaN] có mốt 2 và 8. SimpleImputer chọn 2.
-
-**Đồ họa** · Bảng mục tiêu và thống kê có thể chỉnh sửa.
-
----
-
-## 4. Khi nào phần quan sát đủ đại diện? (04:00–05:30)
-
-**Nội dung chiếu**
-
-Normal, Gamma và Gamma phản chiếu minh họa hình dạng.
-MCAR cho phép phần quan sát đại diện theo cơ chế che.
-Nếu thiếu liên quan nhóm, cần xét phân phối trong nhóm.
-Chọn theo mục tiêu sai số và ý nghĩa biến.
-
-**Đồ họa** · Ba phân phối lý thuyết và các điều kiện áp dụng.
-
----
-
-## 5. Kiểm chứng trên Student Performance (05:30–07:15)
+## 9. Kiểm chứng trên Student Performance (07:35–08:45)
 
 **Nội dung chiếu**
 
@@ -71,7 +128,7 @@ MCAR 5%, 15%, 30%, mỗi mức 12 mặt nạ.
 
 ---
 
-## 6. Cùng dữ liệu, khác mục tiêu sai số (07:15–09:00)
+## 10. Cùng dữ liệu, khác mục tiêu sai số (08:45–10:00)
 
 **Nội dung chiếu**
 
@@ -85,7 +142,7 @@ Guardian, Mode có Accuracy 68,87%.
 
 ---
 
-## 7. Giá trị điền làm đổi phân phối (09:00–10:30)
+## 11. Giá trị điền làm đổi phân phối (10:00–11:00)
 
 **Nội dung chiếu**
 
@@ -97,7 +154,7 @@ Tương quan G3–GP 0,284 trên bản đầy đủ, trung bình sau điền Mea
 
 ---
 
-## 8. Khi một giá trị chung chưa đủ (10:30–12:00)
+## 12. Khi một giá trị chung chưa đủ (11:00–12:00)
 
 **Nội dung chiếu**
 
@@ -112,7 +169,7 @@ Dùng thông tin nhóm vẫn cần kiểm chứng.
 
 ---
 
-## 9. Trở lại ô tuổi bị thiếu (12:00–13:00)
+## 13. Trở lại ô tuổi bị thiếu (12:00–13:00)
 
 **Nội dung chiếu**
 

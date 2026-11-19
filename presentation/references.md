@@ -20,3 +20,5 @@
 Paulo Cortez (2014), *Student Performance*, UCI Machine Learning Repository, DOI 10.24432/C5TG7T. Dùng `student-por.csv`, 649 dòng môn tiếng Bồ Đào Nha tại hai trường trung học. Sao chép tệp gốc và ghi riêng bản trích cột, bản che nhân tạo và mặt nạ. Kết quả benchmark và biểu đồ được tính từ các tệp này. [Dữ liệu và từ điển biến](https://archive.ics.uci.edu/dataset/320/student-performance) · [Giấy phép CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
 
 Ví dụ tính tay tuổi, Size và đa Mode lấy từ đặc tả. Ba đường mật độ minh họa dùng Normal, Gamma và Gamma phản chiếu.
+
+Hàng rào IQR dùng để gắn cờ quan sát cần kiểm tra. [NIST, Detection of Outliers](https://www.itl.nist.gov/div898/handbook/eda/section3/eda35h.htm)
