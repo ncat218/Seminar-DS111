@@ -1,0 +1,35 @@
+{
+  "status": "pass",
+  "original_uci_sha256": "a7594a11d7771c0efe1a740824e0e833da9c4cad07c39a9766a874575563fb3f",
+  "model_fits": 370,
+  "persisted_predictions": 117360,
+  "independently_recomputed_metrics": 8640,
+  "notebook_executed_cells": 8,
+  "notebook_figures": 11,
+  "presentations": [
+    {
+      "name": "seminar_day_du",
+      "slides": 24,
+      "charts": 4,
+      "notes": 24,
+      "pdf_pages": 24,
+      "render_pixels": [
+        1920,
+        1080
+      ]
+    },
+    {
+      "name": "seminar_15min_cap_nhat",
+      "slides": 13,
+      "charts": 2,
+      "notes": 13,
+      "pdf_pages": 13,
+      "render_pixels": [
+        1920,
+        1080
+      ]
+    }
+  ],
+  "tests_passed": 14,
+  "limits": "Python notebook cells executed directly with display capture; no Jupyter kernel or native PowerPoint execution. PDFs package the verified slide renders."
+}

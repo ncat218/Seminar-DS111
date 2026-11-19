@@ -164,3 +164,137 @@ Các kết quả trên chứng minh tối ưu trong phạm vi **một dự đoá
 Cần giả định phần quan sát đủ đại diện cho phần thiếu hoặc nhóm đang xét. MCAR là điều kiện thuận lợi theo cơ chế che. Với các quan hệ có điều kiện, có thể cần thống kê theo nhóm hoặc phương pháp dùng thêm biến. Tối ưu trên train chưa bảo đảm thứ hạng trên mọi test.
 
 Ở mẫu tuổi, MAE trên năm số đã quan sát nhỏ nhất tại 23 và RMSE nhỏ nhất tại 34. Tuổi thật ở ô NaN vẫn chưa biết. Trên absences của Student Performance, benchmark MCAR 15% cho MAE Median = 2,52 và Mean = 2,83, nhưng RMSE Mean = 3,69 và Median = 3,86. Các kết quả này minh họa vai trò của hàm mất mát khi lựa chọn phương pháp.
+
+## III. Từ cơ sở toán học đến ảnh hưởng lên mô hình
+
+### 1. Đại lượng nào cần ước lượng?
+
+Gọi $X$ là một biến cần điền, $M=1$ nếu quan sát được và $M=0$ nếu thiếu. Nếu mọi ô thiếu cùng nhận một giá trị $a$, mục tiêu thích hợp là
+
+\[
+a^*_{\mathrm{mis}}=\operatorname*{arg\,min}_a
+\mathbb E[L(X,a)\mid M=0].
+\]
+
+Các giá trị $X$ ở ô thiếu không có sẵn để tính trực tiếp. Ta thường ước lượng bằng
+
+\[
+\hat a=\operatorname*{arg\,min}_a\frac{1}{n_{\mathrm{obs}}}
+\sum_{i:M_i=1}L(x_i,a).
+\]
+
+Muốn dùng nghiệm quan sát cho phần thiếu, phải có căn cứ để chuyển thông tin giữa hai phân phối. Dưới MCAR, $X$ độc lập $M$, nên hai phân phối có điều kiện bằng nhau theo mô hình,
+
+\[
+F_{X\mid M=0}=F_{X\mid M=1}=F_X.
+\]
+
+Mẫu hữu hạn vẫn gây sai số ước lượng. Nếu phần thiếu thuộc các nhóm khác với phần quan sát, một thống kê toàn cục có thể lệch.
+
+### 2. Vì sao Mean là nghiệm cho sai số bình phương?
+
+Gọi $\mu=\mathbb E[X]$ và giả sử $\mathbb E[X^2]$ hữu hạn. Khai triển
+
+\[
+\mathbb E[(X-a)^2]
+=\mathbb E[(X-\mu+\mu-a)^2]
+=\operatorname{Var}(X)+(\mu-a)^2.
+\]
+
+Số hạng chéo bằng 0 vì $\mathbb E[X-\mu]=0$. Phương sai không phụ thuộc $a$, nên nghiệm là $a^*=\mu$. Mean mẫu ước lượng $\mu$ từ phần quan sát.
+
+Nghiệm tối ưu vẫn để lại sai số kỳ vọng $\operatorname{Var}(X)$. Điều này giải thích vì sao giá trị đại diện tốt nhất theo tiêu chí ấy vẫn có thể khác tuổi thật của một người.
+
+Trên mẫu, cũng có thể lấy đạo hàm
+
+\[
+f(a)=\sum_i(x_i-a)^2,\quad
+f'(a)=2na-2\sum_i x_i,\quad f''(a)=2n>0.
+\]
+
+Nghiệm duy nhất là $\bar x$. Tối ưu trên phần train không có nghĩa sai số test luôn nhỏ nhất so với mọi phương pháp.
+
+### 3. Vì sao Median là nghiệm cho sai số tuyệt đối?
+
+Với $g(a)=\sum_i|x_i-a|$, khi $a$ nằm giữa hai quan sát và dịch sang phải một đoạn nhỏ, mỗi điểm bên trái làm tổng tăng, mỗi điểm bên phải làm tổng giảm. Độ dốc tại các vị trí không trùng quan sát bằng
+
+\[
+g'(a)=\#\{i:x_i<a\}-\#\{i:x_i>a\}.
+\]
+
+Tổng nhỏ nhất khi $a$ ở vùng cân bằng hai phía theo nghĩa trung vị. Với số phần tử chẵn, mọi điểm giữa hai quan sát giữa đều tối ưu.
+
+Ở mức tổng thể, một Median $m$ thỏa
+
+\[
+\Pr(X\le m)\ge\tfrac12,\qquad
+\Pr(X\ge m)\ge\tfrac12.
+\]
+
+Nếu phân phối liên tục và đủ điều kiện lấy đạo hàm, đạo hàm của $\mathbb E|X-a|$ bằng $2F_X(a)-1$, nên nghiệm nằm ở phân vị 50%. Các bất đẳng thức trên còn dùng được khi phân phối có khối xác suất tại một điểm.
+
+### 4. Vì sao Mode là nghiệm cho mất mát nhãn 0–1?
+
+Với nhãn loại và chi phí đúng/sai như nhau,
+
+\[
+\mathbb E[\mathbf1(X\ne a)]=1-\Pr(X=a).
+\]
+
+Do đó, giảm sai số kỳ vọng tương đương tăng xác suất nhãn được chọn. Trên mẫu, xác suất được ước lượng bằng tần suất, dẫn đến chọn Mode.
+
+Nếu chi phí nhầm giữa các lớp khác nhau, tiêu chí chọn nhãn cần dùng bảng chi phí tương ứng. Mode tối ưu cho cấu hình mất mát 0–1 đang xét.
+
+### 5. Khi biết thêm đặc điểm của từng dòng
+
+Gọi $Z$ là thông tin đã quan sát, chẳng hạn trường học. Khi đó mục tiêu có thể là
+
+\[
+a^*(z)=\operatorname*{arg\,min}_a\mathbb E[L(X,a)\mid Z=z,M=0].
+\]
+
+Với điều kiện đại diện trong nhóm phù hợp, ba nghiệm tương ứng là Mean, Median hoặc Mode của phân phối có điều kiện. Mean/Median theo trường là một cách đơn giản khai thác điều này. Mô hình dùng thêm biến có thể khai thác quan hệ phong phú hơn.
+
+### 6. Vì sao sai số điền thấp chưa bảo đảm mô hình tốt?
+
+Sai số điền xét các giá trị của một đặc trưng $X$, còn mô hình dự đoán một đích $Y$ từ nhiều đặc trưng. Hai mục tiêu khác nhau,
+
+\[
+R_{\mathrm{imp}}=\mathbb E[L(X_{\mathrm{mis}},\hat a)],
+\qquad
+R_{\mathrm{task}}=\mathbb E[\ell(Y,\hat f(\widetilde{\mathbf X}))].
+\]
+
+Với một mô hình tuyến tính đã cố định hệ số, nếu riêng đặc trưng $j$ đổi từ giá trị thật $x_j$ sang $\hat a_j$, thay đổi dự đoán bằng
+
+\[
+\Delta\hat y=\beta_j(\hat a_j-x_j).
+\]
+
+Các đặc trưng được mô hình dùng với mức ảnh hưởng khác nhau. Khi huấn luyện lại trên dữ liệu đã điền, các hệ số cũng đổi. Với ma trận đặc trưng và đích đã trừ trung bình, Ridge có nghiệm
+
+\[
+\hat\beta=(Z_c^\top Z_c+\lambda I)^{-1}Z_c^\top y_c.
+\]
+
+Điền khuyết làm đổi các tích chéo và quan hệ với đích. Random Forest cũng có thể đổi các ngưỡng chia, số quan sát ở lá và dự đoán lá. Vì vậy cần huấn luyện thật, giữ điều kiện so sánh và chấm bằng đích đúng trên test.
+
+### 7. Thực nghiệm huấn luyện trong project
+
+- Đích là G3, giữ đầy đủ và loại khỏi danh sách đặc trưng.
+- Đầu vào số gồm G1, G2, age, absences. Đầu vào loại gồm guardian và school.
+- Mean, Median, Mode được so trên biến số rời rạc. Biến loại đều dùng Mode để giữ cùng cách xử lý.
+- Pipeline học imputer, mã hóa, chuẩn hóa và mô hình chỉ trên train.
+- Ridge có alpha 1. Random Forest có 100 cây, min_samples_leaf 3, random_state 42.
+- Có 5 lần chia × 4 mặt nạ tại mỗi mức thiếu 5%, 15%, 30%. Mỗi phương pháp dùng cùng hàng và mặt nạ.
+- Cùng pipeline đã fit được chấm ở test đầy đủ và test có đầu vào thiếu. Điểm chính tính trên mọi dòng test bằng G3 thật.
+
+MAE và RMSE giữ đơn vị điểm. Hệ số xác định dùng
+
+\[
+R^2=1-\frac{\sum_i(y_i-\hat y_i)^2}{\sum_i(y_i-\bar y_{\mathrm{test}})^2}.
+\]
+
+R² có thể âm nếu sai số lớn hơn việc dùng Mean của chính tập test trong mẫu số. Mốc dự đoán Mean train được báo riêng, tránh dùng đích test để tạo dự đoán.
+
+Kết quả đầy đủ trong [báo cáo huấn luyện](../results/model_conclusions.md). Các điều kiện Pipeline, ColumnTransformer và chống rò rỉ theo tài liệu thư viện. [Pipeline](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html), [Data leakage](https://scikit-learn.org/stable/common_pitfalls.html#data-leakage)

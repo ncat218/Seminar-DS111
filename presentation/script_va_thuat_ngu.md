@@ -1,10 +1,8 @@
-# Lời thoại seminar DS111
+# Lời thoại seminar DS111 — bản đầy đủ có thuật ngữ
 
-13 slide, 13 phút trình bày và 2 phút hỏi đáp. Phần I gồm phân phối, skewness và ngoại lệ. Phần II gồm các thước đo và cơ sở tối ưu, rồi kiểm chứng bằng thực nghiệm.
+24 slide, khoảng 25 phút. [Bản nói 15 phút](speaker_notes_15min.md) và [lộ trình](lo_trinh_15phut.md) có lời thoại rút gọn. Công thức và thuật ngữ dùng để chuẩn bị.
 
-Công thức, thuật ngữ và phụ lục dùng để ôn tập. Thời lượng dành cho lời thoại chính.
-
-## 1. Nên điền 23 hay 34? (00:00–00:45)
+## 1. Nên điền 23 hay 34? (00:00–01:00)
 
 **Mục tiêu**
 
@@ -30,7 +28,7 @@ Hôm nay mình tìm hiểu các thước đo xu hướng trung tâm để điề
 
 Tiếp theo là phân phối dữ liệu.
 
-## 2. Phân phối dữ liệu (00:45–02:00)
+## 2. Phân phối dữ liệu (01:00–02:00)
 
 **Mục tiêu**
 
@@ -104,7 +102,7 @@ Outlier là điểm khác biệt đáng kể so với cấu trúc thường gặ
 
 Tiếp theo là mean — trung bình cộng.
 
-## 4. Mean — Trung bình cộng (03:00–03:50)
+## 4. Mean — Trung bình cộng (03:00–04:00)
 
 **Mục tiêu**
 
@@ -140,7 +138,7 @@ Tổng quát, một giá trị tăng delta thì Mean tăng delta chia n. Đây l
 
 Tiếp theo là median — trung vị.
 
-## 5. Median — Trung vị (03:50–04:40)
+## 5. Median — Trung vị (04:00–05:00)
 
 **Mục tiêu**
 
@@ -179,7 +177,7 @@ Năm tuổi cho Median bằng 23. Nếu chỉ có 20, 22, 23, 25, Median bằng 
 
 Tiếp theo là mode — mốt.
 
-## 6. Mode — Mốt (04:40–05:30)
+## 6. Mode — Mốt (05:00–06:00)
 
 **Mục tiêu**
 
@@ -215,7 +213,141 @@ Nếu mọi giá trị chỉ xuất hiện một lần, phép đếm chưa cho M
 
 Tiếp theo là vì sao dùng các thống kê để điền khuyết?.
 
-## 7. Vì sao dùng các thống kê để điền khuyết? (05:30–06:45)
+## 7. Điền khuyết là ước lượng điều gì? (06:00–07:00)
+
+**Mục tiêu**
+
+Điền khuyết là ước lượng điều gì?.
+
+**Chỉ hình**
+
+Chỉ công thức, bảng hoặc biểu đồ rồi giải thích theo lời thoại.
+
+**Công thức và lưu ý để chuẩn bị**
+
+$a^*\in\arg\min_a E[L(X,a)\mid M=0]$ là đích; $\hat a\in\arg\min_a\sum_{i:M_i=1}L(x_i,a)$ là ước lượng từ phần quan sát. Dưới MCAR, $F_{X\mid M=0}=F_{X\mid M=1}$. Nếu có thông tin nhóm, xét phân phối có điều kiện phù hợp.
+
+**Lời thoại**
+
+Khi một ô tuổi thiếu, tuổi thật của người đó chưa biết. Nếu chỉ cho phép điền một hằng số cho mọi người thiếu, ta cần định nghĩa thế nào là điền tốt. Ký hiệu L là mức phạt khi dùng a thay cho X. M bằng 1 nghĩa là quan sát được, M bằng 0 nghĩa là thiếu. Công thức đầu tiên chọn a để mức phạt trung bình trên phần thiếu nhỏ nhất.
+
+Khó khăn là mình không biết X ở phần thiếu để tính mức phạt đó. Vì vậy mình học a từ những giá trị quan sát được, như công thức thứ hai. Bước chuyển này cần một giả định: phần quan sát phải cung cấp thông tin phù hợp về phần thiếu. Trong MCAR, hai phần có cùng phân phối theo cơ chế che, nhưng thống kê từ mẫu vẫn có sai số.
+
+Vì vậy có hai câu hỏi riêng. Một là tối ưu theo loại sai số nào? Hai là mẫu đang quan sát có đại diện cho đối tượng bị thiếu hay không? Ba công thức tiếp theo trả lời câu hỏi thứ nhất.
+
+**Thuật ngữ để chuẩn bị**
+
+- **Loss — hàm mất mát**: mức phạt cho một dự đoán.
+- **Risk — rủi ro kỳ vọng**: mất mát trung bình theo phân phối mục tiêu.
+- **argmin**: giá trị hoặc tập giá trị làm biểu thức đạt nhỏ nhất.
+- **M**: chỉ báo quan sát, quy ước 1 là quan sát và 0 là thiếu trong bài này.
+
+**Chuyển tiếp**
+
+Nối kết luận vừa nêu với câu hỏi ở slide kế tiếp.
+
+## 8. Vì sao Mean tối ưu sai số bình phương? (07:00–08:30)
+
+**Mục tiêu**
+
+Vì sao Mean tối ưu sai số bình phương?.
+
+**Chỉ hình**
+
+Chỉ công thức, bảng hoặc biểu đồ rồi giải thích theo lời thoại.
+
+**Công thức và lưu ý để chuẩn bị**
+
+$E[(X-a)^2]=\operatorname{Var}(X)+(\mu-a)^2$. Trên mẫu: $f'(a)=2na-2\sum x_i$ và $f''(a)=2n>0$. Nghiệm là $\bar x$. RMSE là căn của MSE nên có cùng nghiệm trên cùng tập dự đoán.
+
+**Lời thoại**
+
+Bắt đầu với Mean. Mình gọi mu là trung bình của phân phối và giả sử moment bậc hai hữu hạn. Khi khai triển bình phương X trừ a, rồi lấy kỳ vọng, kết quả tách thành phương sai cộng với bình phương khoảng cách từ a đến mu. Số hạng chéo bằng 0 vì kỳ vọng của X trừ mu bằng 0.
+
+Phương sai là một đặc điểm của phân phối, không đổi theo a. Phần mình điều khiển được là bình phương mu trừ a, nhỏ nhất bằng 0 khi a bằng mu. Do đó Mean là hằng số tốt nhất nếu đánh giá bằng sai số bình phương. Trên mẫu quan sát, lấy đạo hàm tổng bình phương sai số cũng cho a bằng tổng các giá trị chia n.
+
+Nhưng hãy nhìn lại phần phương sai: ngay cả lựa chọn tối ưu vẫn để lại sai số. Điền 34 trong ví dụ tuổi có cơ sở theo tiêu chí bình phương trên phân phối quan sát; công thức không nói tuổi thật của người thiếu là 34. Phân biệt này rất quan trọng khi giải thích ý nghĩa của điền khuyết.
+
+**Thuật ngữ để chuẩn bị**
+
+- **μ — mu**: Mean của phân phối; Mean mẫu dùng để ước lượng nó.
+- **Var(X)**: phương sai, đo mức phân tán quanh Mean.
+- **Moment bậc hai hữu hạn**: E[X²] hữu hạn.
+- **Đạo hàm**: độ dốc của hàm; ở đây dùng tìm điểm nhỏ nhất.
+
+**Chuyển tiếp**
+
+Nối kết luận vừa nêu với câu hỏi ở slide kế tiếp.
+
+## 9. Vì sao Median tối ưu sai số tuyệt đối? (08:30–10:00)
+
+**Mục tiêu**
+
+Vì sao Median tối ưu sai số tuyệt đối?.
+
+**Chỉ hình**
+
+Chỉ công thức, bảng hoặc biểu đồ rồi giải thích theo lời thoại.
+
+**Công thức và lưu ý để chuẩn bị**
+
+Ở vị trí không trùng quan sát, $g'(a)=\#\{x_i<a\}-\#\{x_i>a\}$. Median $m$ thỏa $P(X\le m)\ge1/2$ và $P(X\ge m)\ge1/2$. Nếu E|X| hữu hạn và phân phối liên tục thích hợp, đạo hàm rủi ro là $2F(a)-1$.
+
+**Lời thoại**
+
+Với Median, mức phạt là khoảng cách tuyệt đối. Hãy tưởng tượng đặt một điểm a trên trục số rồi cộng khoảng cách từ a đến mọi quan sát.
+
+Khi dịch a sang phải một chút và không đi qua quan sát nào, mỗi điểm ở bên trái làm tổng khoảng cách tăng. Mỗi điểm bên phải làm tổng giảm. Nếu còn nhiều điểm bên phải hơn, dịch phải làm tổng nhỏ đi. Khi đến vùng cân bằng giữa hai phía, mình không thể giảm tổng bằng cách dịch tiếp theo một hướng. Đó là vùng trung vị.
+
+Với số phần tử chẵn, mọi điểm giữa hai giá trị giữa đều có thể tối ưu; lấy trung bình hai số là quy ước. Với phân phối rời rạc có nhiều giá trị bằng nhau, mình dùng hai bất đẳng thức trên slide: ít nhất nửa khối xác suất ở mỗi phía tính cả điểm trung vị.
+
+Đây cũng là lý do Median ít nhạy với độ lớn của một điểm cực đoan. Độ dốc phụ thuộc số điểm ở mỗi phía; Mean chịu thêm tác động của độ lớn khoảng cách vì bình phương sai số. Vì vậy Median thích hợp cho dự đoán hằng số dưới sai số tuyệt đối, với giả định đại diện phù hợp.
+
+**Thuật ngữ để chuẩn bị**
+
+- **Absolute error — sai số tuyệt đối**: |x−a|, giữ đơn vị gốc.
+- **Robust — vững**: ít thay đổi trước một tỷ lệ nhỏ giá trị cực đoan.
+- **Phân vị 50%**: vị trí trung vị; với khối xác suất dùng bất đẳng thức.
+- **Tập nghiệm**: argmin có thể chứa nhiều giá trị.
+
+**Chuyển tiếp**
+
+Nối kết luận vừa nêu với câu hỏi ở slide kế tiếp.
+
+## 10. Vì sao Mode tối ưu số lần đoán sai? (10:00–11:00)
+
+**Mục tiêu**
+
+Vì sao Mode tối ưu số lần đoán sai?.
+
+**Chỉ hình**
+
+Chỉ công thức, bảng hoặc biểu đồ rồi giải thích theo lời thoại.
+
+**Công thức và lưu ý để chuẩn bị**
+
+$\sum_i\mathbf1(x_i\ne a)=n-\operatorname{Count}(a)$; $E[\mathbf1(X\ne a)]=1-P(X=a)$. Nhãn đồng tần suất cực đại cùng tối ưu. Dùng nhãn rời rạc và chi phí sai bằng nhau.
+
+**Lời thoại**
+
+Với biến loại, khoảng cách số học giữa hai nhãn thường không có ý nghĩa. Mình phạt 0 nếu nhãn điền đúng và phạt 1 nếu sai. Giả sử điền cùng nhãn a cho n quan sát: số lần sai bằng n trừ số lần nhãn a thực sự xuất hiện.
+
+Muốn số sai nhỏ nhất, mình chọn nhãn có số đếm lớn nhất, chính là Mode. Trong ví dụ M, M, L, S, M, điền M thì sai hai lần. Điền L thì sai bốn lần. Với toàn bộ phân phối, xác suất sai bằng 1 trừ xác suất của nhãn được chọn.
+
+Kết luận này dùng chi phí nhầm bằng nhau. Nếu bỏ sót một lớp hiếm gây thiệt hại lớn hơn, mình cần hàm chi phí khác. Accuracy cao khi luôn điền nhãn đa số cũng không có nghĩa đã phục hồi được các lớp hiếm. Chút nữa guardian sẽ cho thấy tần suất nhãn đa số còn tăng sau khi điền.
+
+**Thuật ngữ để chuẩn bị**
+
+- **0–1 loss**: đúng nhận 0, sai nhận 1.
+- **Indicator — hàm chỉ báo**: 1 khi điều kiện đúng, 0 khi sai.
+- **Count(a)**: số lần giá trị a xuất hiện.
+- **Accuracy**: tỷ lệ dự đoán khớp trên tập chấm.
+
+**Chuyển tiếp**
+
+Nối kết luận vừa nêu với câu hỏi ở slide kế tiếp.
+
+## 11. Vì sao dùng các thống kê để điền khuyết? (11:00–12:00)
 
 **Mục tiêu**
 
@@ -260,7 +392,7 @@ Vì vậy lựa chọn còn tùy cách đánh giá. MSE và RMSE cùng có lợi
 
 Tiếp theo là từ phần quan sát đến ô bị thiếu.
 
-## 8. Từ phần quan sát đến ô bị thiếu (06:45–07:35)
+## 12. Từ phần quan sát đến ô bị thiếu (12:00–13:00)
 
 **Mục tiêu**
 
@@ -290,7 +422,7 @@ Nếu thiếu liên quan biến đã quan sát, cần xem phân phối có đi�
 
 Tiếp theo là kiểm chứng trên student performance.
 
-## 9. Kiểm chứng trên Student Performance (07:35–08:45)
+## 13. Kiểm chứng trên Student Performance (13:00–14:00)
 
 **Mục tiêu**
 
@@ -326,7 +458,40 @@ Bản gốc đầy đủ nên mình giữ giá trị thật rồi che thử. Ben
 
 Tiếp theo là cùng dữ liệu, khác mục tiêu sai số.
 
-## 10. Cùng dữ liệu, khác mục tiêu sai số (08:45–10:00)
+## 14. Hai mức đánh giá điền khuyết (14:00–15:00)
+
+**Mục tiêu**
+
+Hai mức đánh giá điền khuyết.
+
+**Chỉ hình**
+
+Chỉ công thức, bảng hoặc biểu đồ rồi giải thích theo lời thoại.
+
+**Công thức và lưu ý để chuẩn bị**
+
+Với một mô hình tuyến tính cố định, khi riêng đặc trưng j được thay, $\Delta\hat y=\beta_j(\hat a_j-x_j)$. Đồng nhất thức này không mô tả đầy đủ việc huấn luyện lại.
+
+**Lời thoại**
+
+Sau phần toán, mình cần phân biệt hai thí nghiệm. Thí nghiệm một hỏi: mình điền ô bị che gần giá trị thật đến đâu? Khi đó chỉ chấm những ô test đã che, vì các ô còn nguyên không cần dự đoán.
+
+Thí nghiệm hai hỏi: sau khi xử lý thiếu và huấn luyện, mô hình còn dự đoán điểm G3 tốt đến đâu? Khi đó giữ điểm thật G3 đầy đủ và chấm mọi học sinh test. Giá trị bị điền nằm ở các biến đầu vào.
+
+Hai tiêu chí có liên quan nhưng không đồng nhất. Với một mô hình tuyến tính đã cố định, sai lệch ở đặc trưng j làm dự đoán đổi bằng hệ số beta j nhân sai lệch của đặc trưng đó. Đặc trưng có ảnh hưởng khác nhau sẽ truyền sai số khác nhau. Khi huấn luyện lại, chính các hệ số hoặc các nhánh của cây cũng có thể đổi. Vì vậy histogram và lỗi khôi phục ô chưa trả lời hết tác động đến mô hình.
+
+**Thuật ngữ để chuẩn bị**
+
+- **Feature — đặc trưng**: biến đầu vào của mô hình.
+- **Target — đích/nhãn**: đại lượng cần dự đoán, ở đây là G3.
+- **Downstream task**: bài toán sử dụng dữ liệu sau bước điền.
+- **βj**: hệ số của đặc trưng j trong mô hình tuyến tính cố định.
+
+**Chuyển tiếp**
+
+Nối kết luận vừa nêu với câu hỏi ở slide kế tiếp.
+
+## 15. Cùng dữ liệu, khác mục tiêu sai số (15:00–16:00)
 
 **Mục tiêu**
 
@@ -360,7 +525,7 @@ Theo từng mặt nạ, Median có MAE thấp hơn 10 trong 12 lần, có một 
 
 Tiếp theo là giá trị điền làm đổi phân phối.
 
-## 11. Giá trị điền làm đổi phân phối (10:00–11:00)
+## 16. Giá trị điền làm đổi phân phối (16:00–17:00)
 
 **Mục tiêu**
 
@@ -398,7 +563,215 @@ Với guardian, tỷ trọng mother tăng từ 70,3% lên 74,6%. Các ô father 
 
 Tiếp theo là khi một giá trị chung chưa đủ.
 
-## 12. Khi một giá trị chung chưa đủ (11:00–12:00)
+## 17. Bài toán huấn luyện dự đoán G3 (17:00–18:00)
+
+**Mục tiêu**
+
+Bài toán huấn luyện dự đoán G3.
+
+**Chỉ hình**
+
+Chỉ công thức, bảng hoặc biểu đồ rồi giải thích theo lời thoại.
+
+**Công thức và lưu ý để chuẩn bị**
+
+Số: G1, G2, age, absences. Loại: guardian, school. Khi huấn luyện, G3 là y và không có trong X. Thí nghiệm khôi phục G3 là một thí nghiệm độc lập.
+
+**Lời thoại**
+
+Mình dùng cùng bộ UCI Student Performance môn tiếng Bồ Đào Nha. Đích là G3, điểm cuối kỳ từ 0 đến 20. Sáu đầu vào gồm G1, G2, tuổi, số buổi vắng, người giám hộ và trường học.
+
+G3 được giữ đầy đủ và không nằm trong danh sách đầu vào. Mình che sáu đặc trưng bằng mặt nạ MCAR rồi so sánh ba cách điền cho biến số: Mean, Median và Mode. Cả ba cấu hình đều dùng Mode cho biến loại để giữ cùng cách xử lý phần đó. Các cột số ở đây là điểm hoặc số nguyên, nên Mode có ý nghĩa để làm phép so sánh.
+
+G1 và G2 đã có trước G3 trong bối cảnh này. Bài toán là dự đoán điểm cuối kỳ sau khi có các điểm trước đó. Nếu muốn cảnh báo từ đầu năm, mình cần bỏ G1/G2 rồi chạy lại một bài toán khác. Cách đặt mốc thời gian quyết định dữ liệu nào được phép dùng.
+
+**Thuật ngữ để chuẩn bị**
+
+- **G1/G2/G3**: điểm kỳ đầu, kỳ hai và cuối kỳ trong dataset.
+- **Regression — hồi quy**: dự đoán đại lượng số.
+- **MCAR**: cơ chế che độc lập với giá trị dữ liệu.
+- **Baseline**: cấu hình tham chiếu để đo mức thay đổi.
+
+**Chuyển tiếp**
+
+Nối kết luận vừa nêu với câu hỏi ở slide kế tiếp.
+
+## 18. Pipeline huấn luyện và kiểm tra (18:00–19:00)
+
+**Mục tiêu**
+
+Pipeline huấn luyện và kiểm tra.
+
+**Chỉ hình**
+
+Chỉ công thức, bảng hoặc biểu đồ rồi giải thích theo lời thoại.
+
+**Công thức và lưu ý để chuẩn bị**
+
+$R^2=1-\sum(y_i-\hat y_i)^2/\sum(y_i-\bar y_\mathrm{test})^2$. Mean test chỉ ở định nghĩa metric, không dùng tạo dự đoán. Predict train mean dùng Mean y_train. [Pipeline chống rò rỉ](https://scikit-learn.org/stable/common_pitfalls.html#data-leakage).
+
+**Lời thoại**
+
+Để so sánh công bằng, mình dùng năm lần chia ngẫu nhiên 75 phần trăm train và 25 phần trăm test. Mỗi lần chia có bốn mặt nạ cho từng mức thiếu 5, 15 và 30 phần trăm. Các phương pháp nhận đúng cùng hàng và mặt nạ tương ứng.
+
+Ridge là hồi quy tuyến tính có phạt độ lớn hệ số; mình cố định alpha bằng 1 và chuẩn hóa các biến số sau khi điền. Random Forest lấy trung bình dự đoán của 100 cây, đặt tối thiểu ba mẫu ở một lá. Hai loại mô hình giúp xem tác động trong cách học tuyến tính và cách chia cây.
+
+Mọi thống kê điền, mã hóa nhãn, chuẩn hóa và mô hình đều fit trên train. Test chỉ được transform và dự đoán. Tổng cộng có 360 pipeline train có thiếu và 10 mốc đầy đủ, tức 370 lần fit. Siêu tham số được cố định trước, không chọn bằng điểm test.
+
+Mình báo MAE, RMSE và R bình phương trên G3 thật của toàn bộ 163 dòng test. Các lần chia có chồng lấn nên độ lệch chuẩn mô tả dao động thực nghiệm, không phải khoảng tin cậy từ 20 mẫu độc lập.
+
+**Thuật ngữ để chuẩn bị**
+
+- **Pipeline**: chuỗi các bước học biến đổi và mô hình.
+- **One-hot encoding**: chuyển nhãn loại thành cột chỉ báo.
+- **Standardization**: trừ Mean và chia SD học từ train.
+- **Ridge**: hồi quy tuyến tính với phạt L2.
+- **Random Forest**: tập hợp cây hồi quy lấy trung bình dự đoán.
+- **Hyperparameter — siêu tham số**: cấu hình đặt trước khi fit.
+- **R²**: so sai số bình phương với biến thiên quanh Mean test; có thể âm.
+
+**Chuyển tiếp**
+
+Nối kết luận vừa nêu với câu hỏi ở slide kế tiếp.
+
+## 19. Mô hình sau điền thay đổi thế nào? (19:00–20:00)
+
+**Mục tiêu**
+
+Mô hình sau điền thay đổi thế nào?.
+
+**Chỉ hình**
+
+Chỉ công thức, bảng hoặc biểu đồ rồi giải thích theo lời thoại.
+
+**Công thức và lưu ý để chuẩn bị**
+
+Bảng lấy tự động từ results/model_evaluation.csv và model_reference.csv. Đây là trung bình RMSE từng lần chạy; không gộp các lần chia chồng lấn thành một test độc lập.
+
+**Lời thoại**
+
+Đây là kết quả đã chạy, ở mức thiếu 15 phần trăm trong cả train và test. Mỗi số là trung bình của 20 tổ hợp chia và che.
+
+Với Ridge, đầu vào đầy đủ cho RMSE khoảng 1,379 điểm. Sau khi có thiếu và điền Mean, RMSE lên 1,728; điền Median là 1,734 và Mode là 1,748. Với Random Forest, mốc đầy đủ là 1,359; ba cách điền lần lượt khoảng 1,614, 1,640 và 1,646.
+
+Như vậy mô hình vẫn dự đoán được, nhưng mất thông tin đầu vào đã làm tăng sai số. Trong thiết kế này, khác biệt giữa ba cách điền nhỏ hơn mức giảm hiệu năng từ đầy đủ sang có thiếu. Mean cho RMSE thấp nhất trong ba cấu hình ở mức này, nhưng chưa phải chứng minh Mean luôn tốt hơn, và mình chưa xác lập ý nghĩa thống kê của chênh lệch.
+
+Trước đó Median có MAE thấp hơn khi khôi phục absences. Ở đây mình chấm G3 của mô hình dùng sáu đặc trưng và thay cách điền nhiều biến số. Hai phép đo không cùng mục tiêu, nên không thể lấy kết luận của một cột áp thẳng cho toàn pipeline.
+
+**Thuật ngữ để chuẩn bị**
+
+- **RMSE G3**: căn trung bình bình phương sai số điểm cuối kỳ.
+- **ΔRMSE**: sau điền trừ mốc đầy đủ, dương là sai số tăng.
+- **R² thấp hơn**: sai số bình phương tương đối lớn hơn.
+- **Paired comparison**: cùng lần chia và mặt nạ giữa phương pháp.
+
+**Chuyển tiếp**
+
+Nối kết luận vừa nêu với câu hỏi ở slide kế tiếp.
+
+## 20. Ảnh hưởng khi mức thiếu tăng (20:00–21:00)
+
+**Mục tiêu**
+
+Ảnh hưởng khi mức thiếu tăng.
+
+**Chỉ hình**
+
+Chỉ công thức, bảng hoặc biểu đồ rồi giải thích theo lời thoại.
+
+**Công thức và lưu ý để chuẩn bị**
+
+model_performance.png có Mean ± SD. Với sáu cột che độc lập xác suất p, xác suất một hàng có ít nhất một ô thiếu là 1−(1−p)^6; tại p=0,15 xấp xỉ 62,3% theo thiết kế.
+
+**Lời thoại**
+
+Bây giờ thay vì chỉ nhìn 15 phần trăm, mình tăng xác suất che từ 5 lên 15 rồi 30 phần trăm. Trục dọc là RMSE G3 và đường ngang là mô hình có đầu vào đầy đủ trên cùng các lần chia.
+
+Trong các cấu hình đã chạy, RMSE tăng khi mức thiếu tăng ở cả Ridge và Random Forest. Chẳng hạn với Mean, Ridge từ khoảng 1,543 ở mức 5 phần trăm lên 1,980 ở mức 30 phần trăm. Random Forest từ 1,484 lên 1,890.
+
+Điền đủ ô giúp pipeline chạy được nhưng thông tin cá nhân đã mất chưa được phục hồi bằng một giá trị chung. Các đường của ba phương pháp khá gần nhau. Hình trong notebook có thêm SD để thấy dao động, tránh đọc khoảng cách nhỏ giữa đường trung bình như kết luận chắc chắn.
+
+Mức thiếu là xác suất cho mỗi ô đầu vào. Nó không bằng tỷ lệ học sinh có ít nhất một đặc trưng thiếu; với sáu đặc trưng, tỷ lệ học sinh bị ảnh hưởng có thể lớn hơn.
+
+**Thuật ngữ để chuẩn bị**
+
+- **Nominal missing rate**: xác suất che đặt trước.
+- **Error bar**: ở đây biểu diễn SD giữa lần chạy.
+- **Full-data reference**: cùng loại mô hình fit trên train đầy đủ.
+
+**Chuyển tiếp**
+
+Nối kết luận vừa nêu với câu hỏi ở slide kế tiếp.
+
+## 21. Thiếu khi học và thiếu khi áp dụng (21:00–22:00)
+
+**Mục tiêu**
+
+Thiếu khi học và thiếu khi áp dụng.
+
+**Chỉ hình**
+
+Chỉ công thức, bảng hoặc biểu đồ rồi giải thích theo lời thoại.
+
+**Công thức và lưu ý để chuẩn bị**
+
+Hai pha chấm mọi dòng test của cùng split. Mốc đầy đủ dùng pipeline tham chiếu khác fit trên train đầy đủ. Không cộng trừ các cột như kết luận nhân quả ngoài thiết kế.
+
+**Lời thoại**
+
+Mình tách thêm hai thời điểm ảnh hưởng. Cột train thiếu nghĩa là pipeline học từ train có ô điền, nhưng kiểm tra trên test đầy đủ. Cột cuối dùng đúng pipeline đã fit đó để dự đoán test cũng có thiếu.
+
+Với Median ở mức 15 phần trăm, RMSE Ridge từ mốc đầy đủ 1,379 lên 1,457 khi chỉ train thiếu, và 1,734 khi test cũng thiếu. Random Forest lần lượt là 1,359, 1,431 và 1,640.
+
+Một phần thay đổi đến từ học trên đặc trưng đã điền, phần khác đến từ không biết đủ thông tin lúc áp dụng. Hai pha test dùng cùng mô hình đã fit nên không có khác biệt do huấn luyện lại giữa hai cột cuối.
+
+Đây là phép đối chiếu có kiểm soát trong bộ dữ liệu và các mặt nạ đang xét, chưa phải phân rã nhân quả phổ quát. Cũng không dùng test đầy đủ để học thống kê điền.
+
+**Thuật ngữ để chuẩn bị**
+
+- **Training phase**: giai đoạn học tham số.
+- **Inference/application phase**: áp dụng pipeline đã học.
+- **Clean test**: đầu vào test đầy đủ để đối chiếu.
+- **Masked test**: đầu vào test che; G3 vẫn đầy đủ để chấm.
+
+**Chuyển tiếp**
+
+Nối kết luận vừa nêu với câu hỏi ở slide kế tiếp.
+
+## 22. Dự đoán từng học sinh thay đổi ra sao? (22:00–23:00)
+
+**Mục tiêu**
+
+Dự đoán từng học sinh thay đổi ra sao?.
+
+**Chỉ hình**
+
+Chỉ công thức, bảng hoặc biểu đồ rồi giải thích theo lời thoại.
+
+**Công thức và lưu ý để chuẩn bị**
+
+results/model_predictions.csv lưu từng dự đoán với row_id và cấu hình. Đây là ví dụ một lần chạy, không thay trung bình qua 20 tổ hợp.
+
+**Lời thoại**
+
+Trên hình, trục ngang là G3 thật, trục dọc là điểm mô hình dự đoán. Dự đoán chính xác nằm trên đường chéo. Mình lấy ví dụ split 42, mặt nạ 42, thiếu 30 phần trăm và điền Median.
+
+Các điểm của mô hình đầu vào đã điền được so với dự đoán của mô hình đầy đủ. Một số điểm rời xa đường chéo hơn, thể hiện sai số tăng; từng học sinh vẫn có thể được dự đoán tốt hơn hoặc kém hơn. Điền khuyết không làm mọi dự đoán dịch cùng một hướng.
+
+Hình giúp thấy tác động ở mức cá nhân, còn kết luận tổng thể dựa vào bảng qua nhiều lần chạy. Project lưu từng dòng dự đoán, điểm thật và cờ có thiếu đầu vào để kiểm tra lại hoặc chọn ví dụ khi hỏi đáp.
+
+**Thuật ngữ để chuẩn bị**
+
+- **Scatter plot**: biểu đồ điểm của các cặp giá trị.
+- **y_true / y_pred**: điểm thật và điểm dự đoán.
+- **Đường y=x**: dự đoán bằng giá trị thật.
+- **Prediction shift**: thay đổi dự đoán so với mốc đầy đủ cùng hàng.
+
+**Chuyển tiếp**
+
+Nối kết luận vừa nêu với câu hỏi ở slide kế tiếp.
+
+## 23. Khi một giá trị chung chưa đủ (23:00–24:00)
 
 **Mục tiêu**
 
@@ -429,7 +802,7 @@ Cách lọc cũng đổi tập đối tượng và lần chia, nên cần tìm h
 
 Tiếp theo là trở lại ô tuổi bị thiếu.
 
-## 13. Trở lại ô tuổi bị thiếu (12:00–13:00)
+## 24. Trở lại ô tuổi bị thiếu (24:00–25:00)
 
 **Mục tiêu**
 
@@ -441,13 +814,11 @@ Ba câu trả lời và lựa chọn 23 hay 34.
 
 **Lời thoại**
 
-Vì sao dùng được một giá trị đại diện? Khi chỉ dự đoán bằng một hằng số, ta chọn giá trị làm nhỏ nhất tổn thất trên phân phối phù hợp. Mean, Median và Mode tương ứng với các mục tiêu khác nhau.
+Trở lại ô tuổi mở đầu, chọn 23 hay 34 phải gắn với mức phạt mình muốn giảm. Mean, Median, Mode có cơ sở tối ưu trong phạm vi một dự đoán hằng số và giả định đại diện phù hợp; chúng không tiết lộ chắc chắn giá trị thật của từng người.
 
-Khi nào hợp lý? Khi kiểu biến, mục tiêu sai số và giả định về phần quan sát phù hợp với phần thiếu. Nếu có thông tin nhóm hữu ích thì kiểm chứng cách dùng thông tin ấy.
+Thực nghiệm trả lời thêm hai mức câu hỏi. Điền hằng số làm đổi phân phối, tăng tần suất tại giá trị điền và có thể đổi liên hệ giữa biến. Khi đưa vào huấn luyện dự đoán G3, cả hai mô hình đều có RMSE tăng so với đầu vào đầy đủ ở thiết kế này. Chọn cách điền còn phải kiểm chứng bằng chỉ tiêu của bài toán sử dụng dữ liệu.
 
-Nó làm sai lệch dữ liệu thế nào? Điền hằng số làm mất biến thiên ở các ô điền, tăng tần suất tại một điểm hoặc một nhãn và có thể đổi tương quan.
-
-Ở ví dụ tuổi, 23 phù hợp khi tối ưu sai số tuyệt đối trên phân phối quan sát, còn 34 phù hợp với sai số bình phương. Tuổi thật bị thiếu vẫn chưa biết. Lựa chọn có cơ sở cần đi cùng kiểm chứng và giới hạn. Mình cảm ơn thầy và các bạn.
+Vì vậy quy trình của mình là xác định kiểu biến và mục tiêu, kiểm tra phân phối cùng cơ chế thiếu, học thống kê từ train, rồi đánh giá cả lỗi khôi phục và hiệu năng mô hình. Nếu cần giữ bất định hay quan hệ phức tạp, hãy thử phương pháp có điều kiện hoặc multiple imputation với giả định phù hợp.
 
 **Thuật ngữ để chuẩn bị**
 
@@ -460,10 +831,6 @@ Nó làm sai lệch dữ liệu thế nào? Điền hằng số làm mất biế
 **Chuyển tiếp**
 
 Dành hai phút còn lại cho hỏi đáp.
-
-## Hỏi đáp (13:00–15:00)
-
-Mở [lý thuyết đầy đủ](ly_thuyet.md), [script có thuật ngữ](script_va_thuat_ngu.md) và [câu hỏi phản biện](questions_answers.md).
 
 ## Phụ lục lý thuyết đầy đủ
 
@@ -634,6 +1001,141 @@ Cần giả định phần quan sát đủ đại diện cho phần thiếu ho�
 
 Ở mẫu tuổi, MAE trên năm số đã quan sát nhỏ nhất tại 23 và RMSE nhỏ nhất tại 34. Tuổi thật ở ô NaN vẫn chưa biết. Trên absences của Student Performance, benchmark MCAR 15% cho MAE Median = 2,52 và Mean = 2,83, nhưng RMSE Mean = 3,69 và Median = 3,86. Các kết quả này minh họa vai trò của hàm mất mát khi lựa chọn phương pháp.
 
+#### III. Từ cơ sở toán học đến ảnh hưởng lên mô hình
+
+##### 1. Đại lượng nào cần ước lượng?
+
+Gọi $X$ là một biến cần điền, $M=1$ nếu quan sát được và $M=0$ nếu thiếu. Nếu mọi ô thiếu cùng nhận một giá trị $a$, mục tiêu thích hợp là
+
+\[
+a^*_{\mathrm{mis}}=\operatorname*{arg\,min}_a
+\mathbb E[L(X,a)\mid M=0].
+\]
+
+Các giá trị $X$ ở ô thiếu không có sẵn để tính trực tiếp. Ta thường ước lượng bằng
+
+\[
+\hat a=\operatorname*{arg\,min}_a\frac{1}{n_{\mathrm{obs}}}
+\sum_{i:M_i=1}L(x_i,a).
+\]
+
+Muốn dùng nghiệm quan sát cho phần thiếu, phải có căn cứ để chuyển thông tin giữa hai phân phối. Dưới MCAR, $X$ độc lập $M$, nên hai phân phối có điều kiện bằng nhau theo mô hình,
+
+\[
+F_{X\mid M=0}=F_{X\mid M=1}=F_X.
+\]
+
+Mẫu hữu hạn vẫn gây sai số ước lượng. Nếu phần thiếu thuộc các nhóm khác với phần quan sát, một thống kê toàn cục có thể lệch.
+
+##### 2. Vì sao Mean là nghiệm cho sai số bình phương?
+
+Gọi $\mu=\mathbb E[X]$ và giả sử $\mathbb E[X^2]$ hữu hạn. Khai triển
+
+\[
+\mathbb E[(X-a)^2]
+=\mathbb E[(X-\mu+\mu-a)^2]
+=\operatorname{Var}(X)+(\mu-a)^2.
+\]
+
+Số hạng chéo bằng 0 vì $\mathbb E[X-\mu]=0$. Phương sai không phụ thuộc $a$, nên nghiệm là $a^*=\mu$. Mean mẫu ước lượng $\mu$ từ phần quan sát.
+
+Nghiệm tối ưu vẫn để lại sai số kỳ vọng $\operatorname{Var}(X)$. Điều này giải thích vì sao giá trị đại diện tốt nhất theo tiêu chí ấy vẫn có thể khác tuổi thật của một người.
+
+Trên mẫu, cũng có thể lấy đạo hàm
+
+\[
+f(a)=\sum_i(x_i-a)^2,\quad
+f'(a)=2na-2\sum_i x_i,\quad f''(a)=2n>0.
+\]
+
+Nghiệm duy nhất là $\bar x$. Tối ưu trên phần train không có nghĩa sai số test luôn nhỏ nhất so với mọi phương pháp.
+
+##### 3. Vì sao Median là nghiệm cho sai số tuyệt đối?
+
+Với $g(a)=\sum_i|x_i-a|$, khi $a$ nằm giữa hai quan sát và dịch sang phải một đoạn nhỏ, mỗi điểm bên trái làm tổng tăng, mỗi điểm bên phải làm tổng giảm. Độ dốc tại các vị trí không trùng quan sát bằng
+
+\[
+g'(a)=\#\{i:x_i<a\}-\#\{i:x_i>a\}.
+\]
+
+Tổng nhỏ nhất khi $a$ ở vùng cân bằng hai phía theo nghĩa trung vị. Với số phần tử chẵn, mọi điểm giữa hai quan sát giữa đều tối ưu.
+
+Ở mức tổng thể, một Median $m$ thỏa
+
+\[
+\Pr(X\le m)\ge\tfrac12,\qquad
+\Pr(X\ge m)\ge\tfrac12.
+\]
+
+Nếu phân phối liên tục và đủ điều kiện lấy đạo hàm, đạo hàm của $\mathbb E|X-a|$ bằng $2F_X(a)-1$, nên nghiệm nằm ở phân vị 50%. Các bất đẳng thức trên còn dùng được khi phân phối có khối xác suất tại một điểm.
+
+##### 4. Vì sao Mode là nghiệm cho mất mát nhãn 0–1?
+
+Với nhãn loại và chi phí đúng/sai như nhau,
+
+\[
+\mathbb E[\mathbf1(X\ne a)]=1-\Pr(X=a).
+\]
+
+Do đó, giảm sai số kỳ vọng tương đương tăng xác suất nhãn được chọn. Trên mẫu, xác suất được ước lượng bằng tần suất, dẫn đến chọn Mode.
+
+Nếu chi phí nhầm giữa các lớp khác nhau, tiêu chí chọn nhãn cần dùng bảng chi phí tương ứng. Mode tối ưu cho cấu hình mất mát 0–1 đang xét.
+
+##### 5. Khi biết thêm đặc điểm của từng dòng
+
+Gọi $Z$ là thông tin đã quan sát, chẳng hạn trường học. Khi đó mục tiêu có thể là
+
+\[
+a^*(z)=\operatorname*{arg\,min}_a\mathbb E[L(X,a)\mid Z=z,M=0].
+\]
+
+Với điều kiện đại diện trong nhóm phù hợp, ba nghiệm tương ứng là Mean, Median hoặc Mode của phân phối có điều kiện. Mean/Median theo trường là một cách đơn giản khai thác điều này. Mô hình dùng thêm biến có thể khai thác quan hệ phong phú hơn.
+
+##### 6. Vì sao sai số điền thấp chưa bảo đảm mô hình tốt?
+
+Sai số điền xét các giá trị của một đặc trưng $X$, còn mô hình dự đoán một đích $Y$ từ nhiều đặc trưng. Hai mục tiêu khác nhau,
+
+\[
+R_{\mathrm{imp}}=\mathbb E[L(X_{\mathrm{mis}},\hat a)],
+\qquad
+R_{\mathrm{task}}=\mathbb E[\ell(Y,\hat f(\widetilde{\mathbf X}))].
+\]
+
+Với một mô hình tuyến tính đã cố định hệ số, nếu riêng đặc trưng $j$ đổi từ giá trị thật $x_j$ sang $\hat a_j$, thay đổi dự đoán bằng
+
+\[
+\Delta\hat y=\beta_j(\hat a_j-x_j).
+\]
+
+Các đặc trưng được mô hình dùng với mức ảnh hưởng khác nhau. Khi huấn luyện lại trên dữ liệu đã điền, các hệ số cũng đổi. Với ma trận đặc trưng và đích đã trừ trung bình, Ridge có nghiệm
+
+\[
+\hat\beta=(Z_c^\top Z_c+\lambda I)^{-1}Z_c^\top y_c.
+\]
+
+Điền khuyết làm đổi các tích chéo và quan hệ với đích. Random Forest cũng có thể đổi các ngưỡng chia, số quan sát ở lá và dự đoán lá. Vì vậy cần huấn luyện thật, giữ điều kiện so sánh và chấm bằng đích đúng trên test.
+
+##### 7. Thực nghiệm huấn luyện trong project
+
+- Đích là G3, giữ đầy đủ và loại khỏi danh sách đặc trưng.
+- Đầu vào số gồm G1, G2, age, absences. Đầu vào loại gồm guardian và school.
+- Mean, Median, Mode được so trên biến số rời rạc. Biến loại đều dùng Mode để giữ cùng cách xử lý.
+- Pipeline học imputer, mã hóa, chuẩn hóa và mô hình chỉ trên train.
+- Ridge có alpha 1. Random Forest có 100 cây, min_samples_leaf 3, random_state 42.
+- Có 5 lần chia × 4 mặt nạ tại mỗi mức thiếu 5%, 15%, 30%. Mỗi phương pháp dùng cùng hàng và mặt nạ.
+- Cùng pipeline đã fit được chấm ở test đầy đủ và test có đầu vào thiếu. Điểm chính tính trên mọi dòng test bằng G3 thật.
+
+MAE và RMSE giữ đơn vị điểm. Hệ số xác định dùng
+
+\[
+R^2=1-\frac{\sum_i(y_i-\hat y_i)^2}{\sum_i(y_i-\bar y_{\mathrm{test}})^2}.
+\]
+
+R² có thể âm nếu sai số lớn hơn việc dùng Mean của chính tập test trong mẫu số. Mốc dự đoán Mean train được báo riêng, tránh dùng đích test để tạo dự đoán.
+
+Kết quả đầy đủ trong [báo cáo huấn luyện](../results/model_conclusions.md). Các điều kiện Pipeline, ColumnTransformer và chống rò rỉ theo tài liệu thư viện. [Pipeline](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html), [Data leakage](https://scikit-learn.org/stable/common_pitfalls.html#data-leakage)
+
+
 ## Phụ lục tra cứu mã và công cụ
 
 Phần này dùng để ôn tập và trả lời câu hỏi về cách chạy thực nghiệm.
@@ -701,3 +1203,19 @@ Phần này dùng để ôn tập và trả lời câu hỏi về cách chạy t
 - Chiến lược và quy tắc chọn Mode của bộ điền. [SimpleImputer](https://scikit-learn.org/stable/modules/generated/sklearn.impute.SimpleImputer.html)
 - Giả thuyết kiểm định và xử lý hiệu bằng 0, giá trị hòa. [SciPy về Wilcoxon](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.wilcoxon.html)
 - Điền đa biến và điền nhiều lần. [scikit-learn về imputation](https://scikit-learn.org/stable/modules/impute.html#multiple-vs-single-imputation)
+
+
+### Huấn luyện và chấm mô hình
+
+| Code | Ý nghĩa |
+|---|---|
+| `Pipeline(...)` | Học tiền xử lý và mô hình trong cùng chuỗi |
+| `ColumnTransformer(...)` | Tách biến số và loại |
+| `OneHotEncoder(handle_unknown="ignore")` | Mã hóa loại, xử lý nhãn mới ở test |
+| `StandardScaler()` sau bộ điền | Chuẩn hóa từ train cho Ridge |
+| `Ridge(alpha=1)` | Hồi quy có phạt L2 cố định |
+| `RandomForestRegressor(n_estimators=100, min_samples_leaf=3)` | Cấu hình 100 cây cố định |
+| `pipeline.fit(X_train_missing, y_train)` | Học từ train thiếu và G3 train thật |
+| `pipeline.predict(X_test_missing)` | Áp dụng pipeline đã học lên test |
+
+Thí nghiệm khôi phục giữ school đầy đủ để làm nhóm; thí nghiệm mô hình che cả sáu đầu vào, gồm school. G3 chỉ là đích trong thí nghiệm mô hình và không được điền. [Kết quả mô hình](../results/model_conclusions.md).

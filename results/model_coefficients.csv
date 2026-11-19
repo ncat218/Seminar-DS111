@@ -1,0 +1,37 @@
+method,feature,coefficient
+Complete reference,numeric__G1,0.503598396972416
+Complete reference,numeric__G2,2.4930299194443912
+Complete reference,numeric__age,-0.04334752506866559
+Complete reference,numeric__absences,0.09467574518847358
+Complete reference,categorical__guardian_father,-0.12371139952662788
+Complete reference,categorical__guardian_mother,-0.09458105620456093
+Complete reference,categorical__guardian_other,0.21829245573125325
+Complete reference,categorical__school_GP,0.12190790532693847
+Complete reference,categorical__school_MS,-0.12190790532546204
+Mean,numeric__G1,1.2341811390938142
+Mean,numeric__G2,1.6725289002571202
+Mean,numeric__age,0.0529499071097857
+Mean,numeric__absences,0.08058767276136312
+Mean,categorical__guardian_father,0.008317473606568149
+Mean,categorical__guardian_mother,0.09085135231190383
+Mean,categorical__guardian_other,-0.09916882591849538
+Mean,categorical__school_GP,0.2196923307125866
+Mean,categorical__school_MS,-0.2196923307120033
+Median,numeric__G1,1.206622985917862
+Median,numeric__G2,1.7052778770768535
+Median,numeric__age,0.03465011432770849
+Median,numeric__absences,0.08245613687437031
+Median,categorical__guardian_father,-0.016612286417230088
+Median,categorical__guardian_mother,0.10296442314786199
+Median,categorical__guardian_other,-0.08635213673064068
+Median,categorical__school_GP,0.21368441885526718
+Median,categorical__school_MS,-0.21368441885465747
+Mode,numeric__G1,1.1403856462819497
+Mode,numeric__G2,1.7659596115935954
+Mode,numeric__age,0.04576956263272858
+Mode,numeric__absences,0.0720109284441116
+Mode,categorical__guardian_father,-0.0008216074910867931
+Mode,categorical__guardian_mother,0.1205722309530915
+Mode,categorical__guardian_other,-0.11975062346208547
+Mode,categorical__school_GP,0.22358013327017345
+Mode,categorical__school_MS,-0.22358013326954557

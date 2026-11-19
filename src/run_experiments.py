@@ -332,6 +332,8 @@ def run(root: Path = ROOT):
         frame.to_csv(out / f"{name}.csv", index=index)
     payload = result_payload(eda, missing, numeric, categories, scores, stages)
     payload["support"] = supporting_evidence(complete, repeats, out)
+    from src.run_model_experiments import run as run_models
+    payload["models"] = run_models(root)
     (out / "evidence.json").write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     write_conclusions(out / "conclusions.md", payload)
     create_figures(root / "figures", stages, scores, payload["support"])

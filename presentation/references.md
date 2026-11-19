@@ -10,7 +10,7 @@
 - Mode chọn lớp phổ biến nhất khi dùng dự đoán cố định theo chi phí đúng/sai bằng nhau. [DummyClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyClassifier.html)
 
 - Định nghĩa thước đo vị trí, sự nhạy với đuôi phân phối và cách hiểu Mode cho biến liên tục. [NIST/SEMATECH, Measures of Location](https://www.itl.nist.gov/div898/handbook/eda/section3/eda351.htm)
-- Skewness Fisher–Pearson dùng moment bậc ba chuẩn hóa. Khối lượng ở xa tâm có ảnh hưởng mạnh lên hệ số. Các thứ tự Mean/Median/Mode trên slide 4 là ví dụ của Normal, Gamma và Gamma phản chiếu. Skewness bằng 0 hoặc Mean gần Median đều có thể xuất hiện ngoài phân phối chuẩn. [NIST/SEMATECH, Measures of Skewness and Kurtosis](https://www.itl.nist.gov/div898/handbook/eda/section3/eda35b.htm)
+- Skewness Fisher–Pearson dùng moment bậc ba chuẩn hóa. Khối lượng ở xa tâm có ảnh hưởng mạnh lên hệ số. Các thứ tự Mean/Median/Mode trong slide phân phối là ví dụ của Normal, Gamma và Gamma phản chiếu. Skewness bằng 0 hoặc Mean gần Median đều có thể xuất hiện ngoài phân phối chuẩn. [NIST/SEMATECH, Measures of Skewness and Kurtosis](https://www.itl.nist.gov/div898/handbook/eda/section3/eda35b.htm)
 - Cơ chế thiếu và điều kiện suy luận khi quá trình tạo thiếu phụ thuộc dữ liệu. Seminar mô phỏng MCAR để có ground truth và tập trung vào ba phương pháp điền hằng số. [Rubin (1976), Inference and Missing Data](https://doi.org/10.1093/biomet/63.3.581)
 - Mean, Median và Mode dùng `SimpleImputer`. `most_frequent` chọn giá trị nhỏ nhất khi hòa, với nhãn chuỗi đồng nhất là thứ tự từ điển. [Tài liệu SimpleImputer](https://scikit-learn.org/stable/modules/generated/sklearn.impute.SimpleImputer.html)
 - Train/test chia trước khi fit tiền xử lý. Trong cross-validation, đưa imputer vào pipeline để fit trong từng fold. [scikit-learn, Data leakage](https://scikit-learn.org/stable/common_pitfalls.html#data-leakage)
@@ -22,3 +22,13 @@ Paulo Cortez (2014), *Student Performance*, UCI Machine Learning Repository, DOI
 Ví dụ tính tay tuổi, Size và đa Mode lấy từ đặc tả. Ba đường mật độ minh họa dùng Normal, Gamma và Gamma phản chiếu.
 
 Hàng rào IQR dùng để gắn cờ quan sát cần kiểm tra. [NIST, Detection of Outliers](https://www.itl.nist.gov/div898/handbook/eda/section3/eda35h.htm)
+
+
+## Mô hình dự đoán
+
+- Chuỗi tiền xử lý và mô hình. [Pipeline](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html), [ColumnTransformer](https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html).
+- Sai số bình phương và phạt L2. [Ridge](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html).
+- Tập hợp cây hồi quy với cấu hình cố định. [RandomForestRegressor](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html).
+- Định nghĩa MAE, RMSE, R². [Regression metrics](https://scikit-learn.org/stable/modules/model_evaluation.html#regression-metrics).
+
+Các chứng minh được trình bày trực tiếp trong lý thuyết. Số thực nghiệm do mã project tính. Tài liệu trực tuyến có thể khác phiên bản cài đặt; phiên bản thực tế lưu cùng kết quả.

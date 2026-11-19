@@ -1,0 +1,433 @@
+missing_rate,method,model,phase,subset,metric,mean,std,runs,mean_n_scored
+0.05,Mean,Random Forest,"Masked train, clean test",All test,MAE,0.8367010682946221,0.07299272912381487,20,163.0
+0.05,Mean,Random Forest,"Masked train, clean test",All test,Prediction shift,0.15030287061855016,0.023149509845580073,20,163.0
+0.05,Mean,Random Forest,"Masked train, clean test",All test,R2,0.8242709820492375,0.016444164656999053,20,163.0
+0.05,Mean,Random Forest,"Masked train, clean test",All test,RMSE,1.3910712351046723,0.1531911922156568,20,163.0
+0.05,Mean,Random Forest,"Masked train, clean test",Complete input,MAE,0.8550484768260092,0.10218146975068591,20,119.7
+0.05,Mean,Random Forest,"Masked train, clean test",Complete input,Prediction shift,0.14883706921532058,0.022746761563726976,20,119.7
+0.05,Mean,Random Forest,"Masked train, clean test",Complete input,R2,0.8081811949925705,0.04000571868470111,20,119.7
+0.05,Mean,Random Forest,"Masked train, clean test",Complete input,RMSE,1.4485934916444019,0.23773419144310282,20,119.7
+0.05,Mean,Random Forest,"Masked train, clean test",Missing input,MAE,0.790376144508039,0.13095586759704833,20,43.3
+0.05,Mean,Random Forest,"Masked train, clean test",Missing input,Prediction shift,0.15574490880609562,0.04434771200977672,20,43.3
+0.05,Mean,Random Forest,"Masked train, clean test",Missing input,R2,0.8607550357956472,0.06514124297391292,20,43.3
+0.05,Mean,Random Forest,"Masked train, clean test",Missing input,RMSE,1.163067004454093,0.33634007549534684,20,43.3
+0.05,Mean,Random Forest,"Masked train, masked test",All test,MAE,0.8875753515048668,0.08524710334448929,20,163.0
+0.05,Mean,Random Forest,"Masked train, masked test",All test,Prediction shift,0.242046725604407,0.043988366733950776,20,163.0
+0.05,Mean,Random Forest,"Masked train, masked test",All test,R2,0.7988983330393031,0.034833355903142856,20,163.0
+0.05,Mean,Random Forest,"Masked train, masked test",All test,RMSE,1.4841887964688012,0.18369282223613714,20,163.0
+0.05,Mean,Random Forest,"Masked train, masked test",Complete input,MAE,0.8550484768260092,0.10218146975068591,20,119.7
+0.05,Mean,Random Forest,"Masked train, masked test",Complete input,Prediction shift,0.14883706921532058,0.022746761563726976,20,119.7
+0.05,Mean,Random Forest,"Masked train, masked test",Complete input,R2,0.8081811949925705,0.04000571868470111,20,119.7
+0.05,Mean,Random Forest,"Masked train, masked test",Complete input,RMSE,1.4485934916444019,0.23773419144310282,20,119.7
+0.05,Mean,Random Forest,"Masked train, masked test",Missing input,MAE,0.9847981097154571,0.2036256643569019,20,43.3
+0.05,Mean,Random Forest,"Masked train, masked test",Missing input,Prediction shift,0.5043350041376369,0.16796923385337104,20,43.3
+0.05,Mean,Random Forest,"Masked train, masked test",Missing input,R2,0.7695733048479758,0.09386139052492831,20,43.3
+0.05,Mean,Random Forest,"Masked train, masked test",Missing input,RMSE,1.520834348610726,0.47372574736838424,20,43.3
+0.05,Mean,Ridge,"Masked train, clean test",All test,MAE,0.8548086290333851,0.07559341161931256,20,163.0
+0.05,Mean,Ridge,"Masked train, clean test",All test,Prediction shift,0.15553986972194705,0.06217827395881635,20,163.0
+0.05,Mean,Ridge,"Masked train, clean test",All test,R2,0.8204416712731307,0.027152727724621288,20,163.0
+0.05,Mean,Ridge,"Masked train, clean test",All test,RMSE,1.4052921766135416,0.19142570176643697,20,163.0
+0.05,Mean,Ridge,"Masked train, clean test",Complete input,MAE,0.8694555609045942,0.10878716840379622,20,119.7
+0.05,Mean,Ridge,"Masked train, clean test",Complete input,Prediction shift,0.15617630328068133,0.06219907962516428,20,119.7
+0.05,Mean,Ridge,"Masked train, clean test",Complete input,R2,0.8070076157592349,0.044405036231296595,20,119.7
+0.05,Mean,Ridge,"Masked train, clean test",Complete input,RMSE,1.4544109799227205,0.2735401336226917,20,119.7
+0.05,Mean,Ridge,"Masked train, clean test",Missing input,MAE,0.8211392133081974,0.13571132262470664,20,43.3
+0.05,Mean,Ridge,"Masked train, clean test",Missing input,Prediction shift,0.15460316682879222,0.06522167400671824,20,43.3
+0.05,Mean,Ridge,"Masked train, clean test",Missing input,R2,0.8461183881542838,0.07166089563952552,20,43.3
+0.05,Mean,Ridge,"Masked train, clean test",Missing input,RMSE,1.2076928938495026,0.3382261855377764,20,43.3
+0.05,Mean,Ridge,"Masked train, masked test",All test,MAE,0.9267264323793032,0.09449211483097732,20,163.0
+0.05,Mean,Ridge,"Masked train, masked test",All test,Prediction shift,0.26489792036511306,0.07361579970860944,20,163.0
+0.05,Mean,Ridge,"Masked train, masked test",All test,R2,0.7817631564918573,0.04893103631894678,20,163.0
+0.05,Mean,Ridge,"Masked train, masked test",All test,RMSE,1.543354637173393,0.22318460503013507,20,163.0
+0.05,Mean,Ridge,"Masked train, masked test",Complete input,MAE,0.8694555609045942,0.10878716840379622,20,119.7
+0.05,Mean,Ridge,"Masked train, masked test",Complete input,Prediction shift,0.15617630328068133,0.06219907962516428,20,119.7
+0.05,Mean,Ridge,"Masked train, masked test",Complete input,R2,0.8070076157592349,0.044405036231296595,20,119.7
+0.05,Mean,Ridge,"Masked train, masked test",Complete input,RMSE,1.4544109799227205,0.2735401336226917,20,119.7
+0.05,Mean,Ridge,"Masked train, masked test",Missing input,MAE,1.0982196551760686,0.20307001115895146,20,43.3
+0.05,Mean,Ridge,"Masked train, masked test",Missing input,Prediction shift,0.5727129867845508,0.18112981432137928,20,43.3
+0.05,Mean,Ridge,"Masked train, masked test",Missing input,R2,0.7011882789674013,0.11238673870252697,20,43.3
+0.05,Mean,Ridge,"Masked train, masked test",Missing input,RMSE,1.7278743565807613,0.4724581309906069,20,43.3
+0.05,Median,Random Forest,"Masked train, clean test",All test,MAE,0.8540484032414956,0.07008545460817142,20,163.0
+0.05,Median,Random Forest,"Masked train, clean test",All test,Prediction shift,0.18562651683616876,0.0349379594107318,20,163.0
+0.05,Median,Random Forest,"Masked train, clean test",All test,R2,0.8195192130338459,0.016837710135010224,20,163.0
+0.05,Median,Random Forest,"Masked train, clean test",All test,RMSE,1.4090035686477917,0.1470442745230883,20,163.0
+0.05,Median,Random Forest,"Masked train, clean test",Complete input,MAE,0.8724718653018899,0.09990961232773568,20,119.7
+0.05,Median,Random Forest,"Masked train, clean test",Complete input,Prediction shift,0.18731533009668588,0.040525046114277735,20,119.7
+0.05,Median,Random Forest,"Masked train, clean test",Complete input,R2,0.803350542425808,0.04289206537655601,20,119.7
+0.05,Median,Random Forest,"Masked train, clean test",Complete input,RMSE,1.4649845226100189,0.2345677897305306,20,119.7
+0.05,Median,Random Forest,"Masked train, clean test",Missing input,MAE,0.8076380296091458,0.12257644777709492,20,43.3
+0.05,Median,Random Forest,"Masked train, clean test",Missing input,Prediction shift,0.18357444857326663,0.0555876213027252,20,43.3
+0.05,Median,Random Forest,"Masked train, clean test",Missing input,R2,0.8535713362655896,0.06885706897028092,20,43.3
+0.05,Median,Random Forest,"Masked train, clean test",Missing input,RMSE,1.1891684030113916,0.3274802077660712,20,43.3
+0.05,Median,Random Forest,"Masked train, masked test",All test,MAE,0.9044197526775128,0.08513513971344551,20,163.0
+0.05,Median,Random Forest,"Masked train, masked test",All test,Prediction shift,0.275752860479794,0.05497047350540356,20,163.0
+0.05,Median,Random Forest,"Masked train, masked test",All test,R2,0.7939054807942634,0.03661095223396306,20,163.0
+0.05,Median,Random Forest,"Masked train, masked test",All test,RMSE,1.501856152052584,0.18272053861435242,20,163.0
+0.05,Median,Random Forest,"Masked train, masked test",Complete input,MAE,0.8724718653018899,0.09990961232773568,20,119.7
+0.05,Median,Random Forest,"Masked train, masked test",Complete input,Prediction shift,0.18731533009668588,0.040525046114277735,20,119.7
+0.05,Median,Random Forest,"Masked train, masked test",Complete input,R2,0.803350542425808,0.04289206537655601,20,119.7
+0.05,Median,Random Forest,"Masked train, masked test",Complete input,RMSE,1.4649845226100189,0.2345677897305306,20,119.7
+0.05,Median,Random Forest,"Masked train, masked test",Missing input,MAE,1.0013997568165371,0.2026667007074398,20,43.3
+0.05,Median,Random Forest,"Masked train, masked test",Missing input,Prediction shift,0.5268770844891458,0.17813576498844141,20,43.3
+0.05,Median,Random Forest,"Masked train, masked test",Missing input,R2,0.7592974642260311,0.10385936797155805,20,43.3
+0.05,Median,Random Forest,"Masked train, masked test",Missing input,RMSE,1.5453878627630322,0.4775457741100991,20,43.3
+0.05,Median,Ridge,"Masked train, clean test",All test,MAE,0.8552578942013994,0.0755059665894932,20,163.0
+0.05,Median,Ridge,"Masked train, clean test",All test,Prediction shift,0.1592036542148769,0.06407614457677581,20,163.0
+0.05,Median,Ridge,"Masked train, clean test",All test,R2,0.8200193891477354,0.02719130041585252,20,163.0
+0.05,Median,Ridge,"Masked train, clean test",All test,RMSE,1.4069730598876586,0.19175639764090768,20,163.0
+0.05,Median,Ridge,"Masked train, clean test",Complete input,MAE,0.869866326315749,0.10873795580488084,20,119.7
+0.05,Median,Ridge,"Masked train, clean test",Complete input,Prediction shift,0.16025006118130794,0.06443852345521321,20,119.7
+0.05,Median,Ridge,"Masked train, clean test",Complete input,R2,0.8065207341277609,0.04449593212174236,20,119.7
+0.05,Median,Ridge,"Masked train, clean test",Complete input,RMSE,1.4563093596551,0.27431777177701355,20,119.7
+0.05,Median,Ridge,"Masked train, clean test",Missing input,MAE,0.8214810394336028,0.13258913191947294,20,43.3
+0.05,Median,Ridge,"Masked train, clean test",Missing input,Prediction shift,0.1570215383390557,0.06651368017963173,20,43.3
+0.05,Median,Ridge,"Masked train, clean test",Missing input,R2,0.8461160693301142,0.07101020773482626,20,43.3
+0.05,Median,Ridge,"Masked train, clean test",Missing input,RMSE,1.208534655880885,0.3369968840043526,20,43.3
+0.05,Median,Ridge,"Masked train, masked test",All test,MAE,0.9297589546761988,0.09420121631708103,20,163.0
+0.05,Median,Ridge,"Masked train, masked test",All test,Prediction shift,0.2717825011964766,0.07181159535690695,20,163.0
+0.05,Median,Ridge,"Masked train, masked test",All test,R2,0.7807799528541441,0.046995392393717236,20,163.0
+0.05,Median,Ridge,"Masked train, masked test",All test,RMSE,1.5474017457635014,0.22003258478553836,20,163.0
+0.05,Median,Ridge,"Masked train, masked test",Complete input,MAE,0.869866326315749,0.10873795580488084,20,119.7
+0.05,Median,Ridge,"Masked train, masked test",Complete input,Prediction shift,0.16025006118130794,0.06443852345521321,20,119.7
+0.05,Median,Ridge,"Masked train, masked test",Complete input,R2,0.8065207341277609,0.04449593212174236,20,119.7
+0.05,Median,Ridge,"Masked train, masked test",Complete input,RMSE,1.4563093596551,0.27431777177701355,20,119.7
+0.05,Median,Ridge,"Masked train, masked test",Missing input,MAE,1.1094697567930836,0.20195182063961872,20,43.3
+0.05,Median,Ridge,"Masked train, masked test",Missing input,Prediction shift,0.5880325314334272,0.17005617920092736,20,43.3
+0.05,Median,Ridge,"Masked train, masked test",Missing input,R2,0.6951700397486607,0.10949345435474361,20,43.3
+0.05,Median,Ridge,"Masked train, masked test",Missing input,RMSE,1.7427194337292082,0.44271074529279364,20,43.3
+0.05,Mode,Random Forest,"Masked train, clean test",All test,MAE,0.85125671770739,0.07711953084042372,20,163.0
+0.05,Mode,Random Forest,"Masked train, clean test",All test,Prediction shift,0.1834920070244545,0.033337839519196215,20,163.0
+0.05,Mode,Random Forest,"Masked train, clean test",All test,R2,0.820010441397474,0.01958047344873051,20,163.0
+0.05,Mode,Random Forest,"Masked train, clean test",All test,RMSE,1.4070724812903859,0.1575310010245037,20,163.0
+0.05,Mode,Random Forest,"Masked train, clean test",Complete input,MAE,0.8724034451795195,0.10567134003521896,20,119.7
+0.05,Mode,Random Forest,"Masked train, clean test",Complete input,Prediction shift,0.18304447645518346,0.03659659642639565,20,119.7
+0.05,Mode,Random Forest,"Masked train, clean test",Complete input,R2,0.802118425054618,0.044461429421227945,20,119.7
+0.05,Mode,Random Forest,"Masked train, clean test",Complete input,RMSE,1.469375617651679,0.24185398601467437,20,119.7
+0.05,Mode,Random Forest,"Masked train, clean test",Missing input,MAE,0.7963765915447684,0.12308983929339326,20,43.3
+0.05,Mode,Random Forest,"Masked train, clean test",Missing input,Prediction shift,0.18697098871828233,0.055632029610128496,20,43.3
+0.05,Mode,Random Forest,"Masked train, clean test",Missing input,R2,0.8575616748438643,0.0689336028606766,20,43.3
+0.05,Mode,Random Forest,"Masked train, clean test",Missing input,RMSE,1.1676409302978445,0.320499503632318,20,43.3
+0.05,Mode,Random Forest,"Masked train, masked test",All test,MAE,0.9056635546162207,0.09469712913551757,20,163.0
+0.05,Mode,Random Forest,"Masked train, masked test",All test,Prediction shift,0.2767842408602285,0.05682270479504039,20,163.0
+0.05,Mode,Random Forest,"Masked train, masked test",All test,R2,0.7917265464972382,0.040267233911857464,20,163.0
+0.05,Mode,Random Forest,"Masked train, masked test",All test,RMSE,1.50890006201337,0.1929108416136857,20,163.0
+0.05,Mode,Random Forest,"Masked train, masked test",Complete input,MAE,0.8724034451795195,0.10567134003521896,20,119.7
+0.05,Mode,Random Forest,"Masked train, masked test",Complete input,Prediction shift,0.18304447645518346,0.03659659642639565,20,119.7
+0.05,Mode,Random Forest,"Masked train, masked test",Complete input,R2,0.802118425054618,0.044461429421227945,20,119.7
+0.05,Mode,Random Forest,"Masked train, masked test",Complete input,RMSE,1.469375617651679,0.24185398601467437,20,119.7
+0.05,Mode,Random Forest,"Masked train, masked test",Missing input,MAE,1.005551364012376,0.22580688580485284,20,43.3
+0.05,Mode,Random Forest,"Masked train, masked test",Missing input,Prediction shift,0.5418199660976657,0.18348689964618234,20,43.3
+0.05,Mode,Random Forest,"Masked train, masked test",Missing input,R2,0.7562801635175971,0.11123573480219069,20,43.3
+0.05,Mode,Random Forest,"Masked train, masked test",Missing input,RMSE,1.553665629538805,0.5027911714659279,20,43.3
+0.05,Mode,Ridge,"Masked train, clean test",All test,MAE,0.8530247664450356,0.07646865268071643,20,163.0
+0.05,Mode,Ridge,"Masked train, clean test",All test,Prediction shift,0.15498180079534002,0.06306846225263037,20,163.0
+0.05,Mode,Ridge,"Masked train, clean test",All test,R2,0.8206261696770987,0.02738682459539469,20,163.0
+0.05,Mode,Ridge,"Masked train, clean test",All test,RMSE,1.4046777193953615,0.19344731330343987,20,163.0
+0.05,Mode,Ridge,"Masked train, clean test",Complete input,MAE,0.8671316777788057,0.10994134371615842,20,119.7
+0.05,Mode,Ridge,"Masked train, clean test",Complete input,Prediction shift,0.15609343144137086,0.06342877381636769,20,119.7
+0.05,Mode,Ridge,"Masked train, clean test",Complete input,R2,0.8072628571090817,0.044565605885713205,20,119.7
+0.05,Mode,Ridge,"Masked train, clean test",Complete input,RMSE,1.4537119118300434,0.2765580183846116,20,119.7
+0.05,Mode,Ridge,"Masked train, clean test",Missing input,MAE,0.8204662511550772,0.13177884601793302,20,43.3
+0.05,Mode,Ridge,"Masked train, clean test",Missing input,Prediction shift,0.15272711827579924,0.06610283395416368,20,43.3
+0.05,Mode,Ridge,"Masked train, clean test",Missing input,R2,0.8470112407625651,0.0697742885399137,20,43.3
+0.05,Mode,Ridge,"Masked train, clean test",Missing input,RMSE,1.2062246217812211,0.3380905998007938,20,43.3
+0.05,Mode,Ridge,"Masked train, masked test",All test,MAE,0.9315213358145977,0.09666509067440675,20,163.0
+0.05,Mode,Ridge,"Masked train, masked test",All test,Prediction shift,0.27251561615376285,0.0710103426912739,20,163.0
+0.05,Mode,Ridge,"Masked train, masked test",All test,R2,0.7799864821134139,0.04801604272625548,20,163.0
+0.05,Mode,Ridge,"Masked train, masked test",All test,RMSE,1.5499218611000296,0.22247465069763767,20,163.0
+0.05,Mode,Ridge,"Masked train, masked test",Complete input,MAE,0.8671316777788057,0.10994134371615842,20,119.7
+0.05,Mode,Ridge,"Masked train, masked test",Complete input,Prediction shift,0.15609343144137086,0.06342877381636769,20,119.7
+0.05,Mode,Ridge,"Masked train, masked test",Complete input,R2,0.8072628571090817,0.044565605885713205,20,119.7
+0.05,Mode,Ridge,"Masked train, masked test",Complete input,RMSE,1.4537119118300434,0.2765580183846116,20,119.7
+0.05,Mode,Ridge,"Masked train, masked test",Missing input,MAE,1.1240506161706594,0.20905458489151305,20,43.3
+0.05,Mode,Ridge,"Masked train, masked test",Missing input,Prediction shift,0.6019919530260549,0.16827054161592528,20,43.3
+0.05,Mode,Ridge,"Masked train, masked test",Missing input,R2,0.690299055672284,0.11161430451634202,20,43.3
+0.05,Mode,Ridge,"Masked train, masked test",Missing input,RMSE,1.7567479728178026,0.44620765362745923,20,43.3
+0.15,Mean,Random Forest,"Masked train, clean test",All test,MAE,0.856206436394995,0.07509358196910315,20,163.0
+0.15,Mean,Random Forest,"Masked train, clean test",All test,Prediction shift,0.26360763181621316,0.026988129742219445,20,163.0
+0.15,Mean,Random Forest,"Masked train, clean test",All test,R2,0.819716095147092,0.01691187476923975,20,163.0
+0.15,Mean,Random Forest,"Masked train, clean test",All test,RMSE,1.4081348653704964,0.1455980665316578,20,163.0
+0.15,Mean,Random Forest,"Masked train, clean test",Complete input,MAE,0.8698646764901575,0.12555999478175256,20,59.2
+0.15,Mean,Random Forest,"Masked train, clean test",Complete input,Prediction shift,0.2689895359733791,0.048377029771235716,20,59.2
+0.15,Mean,Random Forest,"Masked train, clean test",Complete input,R2,0.8129827455094247,0.07930444404827854,20,59.2
+0.15,Mean,Random Forest,"Masked train, clean test",Complete input,RMSE,1.4062013545643235,0.3503585528798452,20,59.2
+0.15,Mean,Random Forest,"Masked train, clean test",Missing input,MAE,0.8483300242865933,0.08889953350300844,20,103.8
+0.15,Mean,Random Forest,"Masked train, clean test",Missing input,Prediction shift,0.2605745055736508,0.028047235982813803,20,103.8
+0.15,Mean,Random Forest,"Masked train, clean test",Missing input,R2,0.8221656093076163,0.036239351078652976,20,103.8
+0.15,Mean,Random Forest,"Masked train, clean test",Missing input,RMSE,1.3845129332714026,0.2158374149418651,20,103.8
+0.15,Mean,Random Forest,"Masked train, masked test",All test,MAE,0.9732010645123241,0.09755104139624564,20,163.0
+0.15,Mean,Random Forest,"Masked train, masked test",All test,Prediction shift,0.4749634197384965,0.06749493586630205,20,163.0
+0.15,Mean,Random Forest,"Masked train, masked test",All test,R2,0.7597308893103831,0.060196136805189156,20,163.0
+0.15,Mean,Random Forest,"Masked train, masked test",All test,RMSE,1.6136760371917505,0.2005470136672886,20,163.0
+0.15,Mean,Random Forest,"Masked train, masked test",Complete input,MAE,0.8698646764901575,0.12555999478175256,20,59.2
+0.15,Mean,Random Forest,"Masked train, masked test",Complete input,Prediction shift,0.2689895359733791,0.048377029771235716,20,59.2
+0.15,Mean,Random Forest,"Masked train, masked test",Complete input,R2,0.8129827455094247,0.07930444404827854,20,59.2
+0.15,Mean,Random Forest,"Masked train, masked test",Complete input,RMSE,1.4062013545643235,0.3503585528798452,20,59.2
+0.15,Mean,Random Forest,"Masked train, masked test",Missing input,MAE,1.0323545792353923,0.13347807255408248,20,103.8
+0.15,Mean,Random Forest,"Masked train, masked test",Missing input,Prediction shift,0.5929829217248985,0.10156160576593914,20,103.8
+0.15,Mean,Random Forest,"Masked train, masked test",Missing input,R2,0.7303526705737566,0.0721121539630541,20,103.8
+0.15,Mean,Random Forest,"Masked train, masked test",Missing input,RMSE,1.6983700901587873,0.2841603752064022,20,103.8
+0.15,Mean,Ridge,"Masked train, clean test",All test,MAE,0.9177410463961575,0.07336974268650857,20,163.0
+0.15,Mean,Ridge,"Masked train, clean test",All test,Prediction shift,0.3203893844737958,0.06219479613536876,20,163.0
+0.15,Mean,Ridge,"Masked train, clean test",All test,R2,0.8082567067234583,0.0205486767364857,20,163.0
+0.15,Mean,Ridge,"Masked train, clean test",All test,RMSE,1.4522107316902713,0.16144295607595158,20,163.0
+0.15,Mean,Ridge,"Masked train, clean test",Complete input,MAE,0.9140929227030758,0.11510528914575989,20,59.2
+0.15,Mean,Ridge,"Masked train, clean test",Complete input,Prediction shift,0.31390972026450764,0.06618470755042372,20,59.2
+0.15,Mean,Ridge,"Masked train, clean test",Complete input,R2,0.8006707119431182,0.07790567423384144,20,59.2
+0.15,Mean,Ridge,"Masked train, clean test",Complete input,RMSE,1.4523893427525012,0.3345165340314275,20,59.2
+0.15,Mean,Ridge,"Masked train, clean test",Missing input,MAE,0.9206502116370961,0.09312332127836415,20,103.8
+0.15,Mean,Ridge,"Masked train, clean test",Missing input,Prediction shift,0.3249555336251801,0.06441709380673487,20,103.8
+0.15,Mean,Ridge,"Masked train, clean test",Missing input,R2,0.8101063648565872,0.03960836450088077,20,103.8
+0.15,Mean,Ridge,"Masked train, clean test",Missing input,RMSE,1.4306418752137524,0.23454213554466186,20,103.8
+0.15,Mean,Ridge,"Masked train, masked test",All test,MAE,1.0737135205873962,0.10433447544474797,20,163.0
+0.15,Mean,Ridge,"Masked train, masked test",All test,Prediction shift,0.578991971695722,0.07356679874714196,20,163.0
+0.15,Mean,Ridge,"Masked train, masked test",All test,R2,0.7249942401129428,0.06577534737305628,20,163.0
+0.15,Mean,Ridge,"Masked train, masked test",All test,RMSE,1.727954388395404,0.2293430945618354,20,163.0
+0.15,Mean,Ridge,"Masked train, masked test",Complete input,MAE,0.9140929227030758,0.11510528914575989,20,59.2
+0.15,Mean,Ridge,"Masked train, masked test",Complete input,Prediction shift,0.31390972026450764,0.06618470755042372,20,59.2
+0.15,Mean,Ridge,"Masked train, masked test",Complete input,R2,0.8006707119431182,0.07790567423384144,20,59.2
+0.15,Mean,Ridge,"Masked train, masked test",Complete input,RMSE,1.4523893427525012,0.3345165340314275,20,59.2
+0.15,Mean,Ridge,"Masked train, masked test",Missing input,MAE,1.1682551639342058,0.15680226810186132,20,103.8
+0.15,Mean,Ridge,"Masked train, masked test",Missing input,Prediction shift,0.7326061923079968,0.10120466182530168,20,103.8
+0.15,Mean,Ridge,"Masked train, masked test",Missing input,R2,0.6810516289387757,0.08638553581379328,20,103.8
+0.15,Mean,Ridge,"Masked train, masked test",Missing input,RMSE,1.8487582001737266,0.33871663135187596,20,103.8
+0.15,Median,Random Forest,"Masked train, clean test",All test,MAE,0.8811971936597756,0.0666905022595816,20,163.0
+0.15,Median,Random Forest,"Masked train, clean test",All test,Prediction shift,0.3113932688543475,0.03595349658374253,20,163.0
+0.15,Median,Random Forest,"Masked train, clean test",All test,R2,0.8136738686972074,0.016226777333945383,20,163.0
+0.15,Median,Random Forest,"Masked train, clean test",All test,RMSE,1.4314235876088146,0.14223663293402491,20,163.0
+0.15,Median,Random Forest,"Masked train, clean test",Complete input,MAE,0.8951130583145981,0.12141810407848316,20,59.2
+0.15,Median,Random Forest,"Masked train, clean test",Complete input,Prediction shift,0.31981472601323496,0.05537586650447171,20,59.2
+0.15,Median,Random Forest,"Masked train, clean test",Complete input,R2,0.8063312601408301,0.07994709824377749,20,59.2
+0.15,Median,Random Forest,"Masked train, clean test",Complete input,RMSE,1.4317700708018704,0.33813401277043864,20,59.2
+0.15,Median,Random Forest,"Masked train, clean test",Missing input,MAE,0.8738983720993376,0.08470592475618532,20,103.8
+0.15,Median,Random Forest,"Masked train, clean test",Missing input,Prediction shift,0.30698651593664594,0.043054574719538725,20,103.8
+0.15,Median,Random Forest,"Masked train, clean test",Missing input,R2,0.8155107470069531,0.036735784541412145,20,103.8
+0.15,Median,Random Forest,"Masked train, clean test",Missing input,RMSE,1.409740035923185,0.21271675435320642,20,103.8
+0.15,Median,Random Forest,"Masked train, masked test",All test,MAE,1.0005160542105405,0.0940424072595676,20,163.0
+0.15,Median,Random Forest,"Masked train, masked test",All test,Prediction shift,0.5200465959760983,0.07220004130879873,20,163.0
+0.15,Median,Random Forest,"Masked train, masked test",All test,R2,0.7516040418627196,0.0638158340035152,20,163.0
+0.15,Median,Random Forest,"Masked train, masked test",All test,RMSE,1.640302615223931,0.20929363352079558,20,163.0
+0.15,Median,Random Forest,"Masked train, masked test",Complete input,MAE,0.8951130583145981,0.12141810407848316,20,59.2
+0.15,Median,Random Forest,"Masked train, masked test",Complete input,Prediction shift,0.31981472601323496,0.05537586650447171,20,59.2
+0.15,Median,Random Forest,"Masked train, masked test",Complete input,R2,0.8063312601408301,0.07994709824377749,20,59.2
+0.15,Median,Random Forest,"Masked train, masked test",Complete input,RMSE,1.4317700708018704,0.33813401277043864,20,59.2
+0.15,Median,Random Forest,"Masked train, masked test",Missing input,MAE,1.0619526835976882,0.13593005618507478,20,103.8
+0.15,Median,Random Forest,"Masked train, masked test",Missing input,Prediction shift,0.6352332313508727,0.10950402056127422,20,103.8
+0.15,Median,Random Forest,"Masked train, masked test",Missing input,R2,0.7209536666218985,0.07573335109923354,20,103.8
+0.15,Median,Random Forest,"Masked train, masked test",Missing input,RMSE,1.7282414968870867,0.2951707631585344,20,103.8
+0.15,Median,Ridge,"Masked train, clean test",All test,MAE,0.9192561591170982,0.07088974363181168,20,163.0
+0.15,Median,Ridge,"Masked train, clean test",All test,Prediction shift,0.32723475511016786,0.06291247572613753,20,163.0
+0.15,Median,Ridge,"Masked train, clean test",All test,R2,0.8071394913169099,0.020189728996109792,20,163.0
+0.15,Median,Ridge,"Masked train, clean test",All test,RMSE,1.4565323357506057,0.1609958180615639,20,163.0
+0.15,Median,Ridge,"Masked train, clean test",Complete input,MAE,0.9171101242456808,0.11410700334877,20,59.2
+0.15,Median,Ridge,"Masked train, clean test",Complete input,Prediction shift,0.3230807768902917,0.06791707934395158,20,59.2
+0.15,Median,Ridge,"Masked train, clean test",Complete input,R2,0.7991292918622139,0.07803203678517413,20,59.2
+0.15,Median,Ridge,"Masked train, clean test",Complete input,RMSE,1.4588674703465776,0.33683888725329436,20,59.2
+0.15,Median,Ridge,"Masked train, clean test",Missing input,MAE,0.9215133712327315,0.0925040083371935,20,103.8
+0.15,Median,Ridge,"Masked train, clean test",Missing input,Prediction shift,0.3304188329452683,0.0647126164761219,20,103.8
+0.15,Median,Ridge,"Masked train, clean test",Missing input,R2,0.8093498151087448,0.03986827127317762,20,103.8
+0.15,Median,Ridge,"Masked train, clean test",Missing input,RMSE,1.4333081959484955,0.2351320687878098,20,103.8
+0.15,Median,Ridge,"Masked train, masked test",All test,MAE,1.0783066091713918,0.10295418909653758,20,163.0
+0.15,Median,Ridge,"Masked train, masked test",All test,Prediction shift,0.589080868637957,0.07424139855997122,20,163.0
+0.15,Median,Ridge,"Masked train, masked test",All test,R2,0.7233431533910777,0.06387757492432916,20,163.0
+0.15,Median,Ridge,"Masked train, masked test",All test,RMSE,1.7337999962983688,0.22662794445668857,20,163.0
+0.15,Median,Ridge,"Masked train, masked test",Complete input,MAE,0.9171101242456808,0.11410700334877,20,59.2
+0.15,Median,Ridge,"Masked train, masked test",Complete input,Prediction shift,0.3230807768902917,0.06791707934395158,20,59.2
+0.15,Median,Ridge,"Masked train, masked test",Complete input,R2,0.7991292918622139,0.07803203678517413,20,59.2
+0.15,Median,Ridge,"Masked train, masked test",Complete input,RMSE,1.4588674703465776,0.33683888725329436,20,59.2
+0.15,Median,Ridge,"Masked train, masked test",Missing input,MAE,1.173975662355086,0.1587462485168655,20,103.8
+0.15,Median,Ridge,"Masked train, masked test",Missing input,Prediction shift,0.7432127084886135,0.10116121757229866,20,103.8
+0.15,Median,Ridge,"Masked train, masked test",Missing input,R2,0.6793043288674183,0.08446297204393126,20,103.8
+0.15,Median,Ridge,"Masked train, masked test",Missing input,RMSE,1.8546637362017169,0.335305110624534,20,103.8
+0.15,Mode,Random Forest,"Masked train, clean test",All test,MAE,0.8761038538677951,0.07143807755186614,20,163.0
+0.15,Mode,Random Forest,"Masked train, clean test",All test,Prediction shift,0.30630912437714847,0.0380718884894498,20,163.0
+0.15,Mode,Random Forest,"Masked train, clean test",All test,R2,0.8153201402137192,0.017417136073490467,20,163.0
+0.15,Mode,Random Forest,"Masked train, clean test",All test,RMSE,1.424958160498457,0.14410111712222992,20,163.0
+0.15,Mode,Random Forest,"Masked train, clean test",Complete input,MAE,0.890333275025921,0.1269067538983348,20,59.2
+0.15,Mode,Random Forest,"Masked train, clean test",Complete input,Prediction shift,0.3138970103298052,0.05663454606638949,20,59.2
+0.15,Mode,Random Forest,"Masked train, clean test",Complete input,R2,0.8089820353653525,0.08106522763459136,20,59.2
+0.15,Mode,Random Forest,"Masked train, clean test",Complete input,RMSE,1.4218405458450412,0.350499241355383,20,59.2
+0.15,Mode,Random Forest,"Masked train, clean test",Missing input,MAE,0.8673671451934514,0.08944642650306592,20,103.8
+0.15,Mode,Random Forest,"Masked train, clean test",Missing input,Prediction shift,0.3019254705131646,0.04135665851496989,20,103.8
+0.15,Mode,Random Forest,"Masked train, clean test",Missing input,R2,0.816994366666362,0.03900495238827473,20,103.8
+0.15,Mode,Random Forest,"Masked train, clean test",Missing input,RMSE,1.4015568875860986,0.21514988534279192,20,103.8
+0.15,Mode,Random Forest,"Masked train, masked test",All test,MAE,1.0035843474224841,0.0863916124660988,20,163.0
+0.15,Mode,Random Forest,"Masked train, masked test",All test,Prediction shift,0.5249126656762997,0.07103663153971687,20,163.0
+0.15,Mode,Random Forest,"Masked train, masked test",All test,R2,0.7503309672360603,0.05972891068870881,20,163.0
+0.15,Mode,Random Forest,"Masked train, masked test",All test,RMSE,1.6455781439791817,0.19470976633697118,20,163.0
+0.15,Mode,Random Forest,"Masked train, masked test",Complete input,MAE,0.890333275025921,0.1269067538983348,20,59.2
+0.15,Mode,Random Forest,"Masked train, masked test",Complete input,Prediction shift,0.3138970103298052,0.05663454606638949,20,59.2
+0.15,Mode,Random Forest,"Masked train, masked test",Complete input,R2,0.8089820353653525,0.08106522763459136,20,59.2
+0.15,Mode,Random Forest,"Masked train, masked test",Complete input,RMSE,1.4218405458450412,0.350499241355383,20,59.2
+0.15,Mode,Random Forest,"Masked train, masked test",Missing input,MAE,1.0676385520989462,0.12160663579690166,20,103.8
+0.15,Mode,Random Forest,"Masked train, masked test",Missing input,Prediction shift,0.6453143923260736,0.09816421703716198,20,103.8
+0.15,Mode,Random Forest,"Masked train, masked test",Missing input,R2,0.7178123471533725,0.0727411811927688,20,103.8
+0.15,Mode,Random Forest,"Masked train, masked test",Missing input,RMSE,1.737095947412539,0.2841496394040768,20,103.8
+0.15,Mode,Ridge,"Masked train, clean test",All test,MAE,0.9134764663538555,0.06897480751872101,20,163.0
+0.15,Mode,Ridge,"Masked train, clean test",All test,Prediction shift,0.32807429392261306,0.06666905734301044,20,163.0
+0.15,Mode,Ridge,"Masked train, clean test",All test,R2,0.8076106142801397,0.018873608060300237,20,163.0
+0.15,Mode,Ridge,"Masked train, clean test",All test,RMSE,1.4551129627336388,0.15955848226069214,20,163.0
+0.15,Mode,Ridge,"Masked train, clean test",Complete input,MAE,0.9101379374122992,0.11602757199440318,20,59.2
+0.15,Mode,Ridge,"Masked train, clean test",Complete input,Prediction shift,0.3264592196331489,0.07532088693716457,20,59.2
+0.15,Mode,Ridge,"Masked train, clean test",Complete input,R2,0.8009545674428964,0.07778117552449057,20,59.2
+0.15,Mode,Ridge,"Masked train, clean test",Complete input,RMSE,1.4535223455050172,0.34475199124988537,20,59.2
+0.15,Mode,Ridge,"Masked train, clean test",Missing input,MAE,0.9160790554032181,0.08943306303731166,20,103.8
+0.15,Mode,Ridge,"Masked train, clean test",Missing input,Prediction shift,0.3296324163158154,0.0652858000179954,20,103.8
+0.15,Mode,Ridge,"Masked train, clean test",Missing input,R2,0.8092782215642101,0.03966632758491188,20,103.8
+0.15,Mode,Ridge,"Masked train, clean test",Missing input,RMSE,1.432860969820012,0.23299613446044198,20,103.8
+0.15,Mode,Ridge,"Masked train, masked test",All test,MAE,1.0874896925631725,0.09707673701574777,20,163.0
+0.15,Mode,Ridge,"Masked train, masked test",All test,Prediction shift,0.6055682944357674,0.074508495403168,20,163.0
+0.15,Mode,Ridge,"Masked train, masked test",All test,R2,0.7191869902048087,0.061287882195104545,20,163.0
+0.15,Mode,Ridge,"Masked train, masked test",All test,RMSE,1.747826830164841,0.219483482235411,20,163.0
+0.15,Mode,Ridge,"Masked train, masked test",Complete input,MAE,0.9101379374122992,0.11602757199440318,20,59.2
+0.15,Mode,Ridge,"Masked train, masked test",Complete input,Prediction shift,0.3264592196331489,0.07532088693716457,20,59.2
+0.15,Mode,Ridge,"Masked train, masked test",Complete input,R2,0.8009545674428964,0.07778117552449057,20,59.2
+0.15,Mode,Ridge,"Masked train, masked test",Complete input,RMSE,1.4535223455050172,0.34475199124988537,20,59.2
+0.15,Mode,Ridge,"Masked train, masked test",Missing input,MAE,1.192318201071203,0.14942176903257026,20,103.8
+0.15,Mode,Ridge,"Masked train, masked test",Missing input,Prediction shift,0.7671631919346218,0.09814886772438376,20,103.8
+0.15,Mode,Ridge,"Masked train, masked test",Missing input,R2,0.6715898752227201,0.08260291280587909,20,103.8
+0.15,Mode,Ridge,"Masked train, masked test",Missing input,RMSE,1.8769782317669452,0.3276563457526427,20,103.8
+0.3,Mean,Random Forest,"Masked train, clean test",All test,MAE,0.9012664280437173,0.0623317684589185,20,163.0
+0.3,Mean,Random Forest,"Masked train, clean test",All test,Prediction shift,0.37438678082438215,0.03858817421063232,20,163.0
+0.3,Mean,Random Forest,"Masked train, clean test",All test,R2,0.8052917881210764,0.015824236545379664,20,163.0
+0.3,Mean,Random Forest,"Masked train, clean test",All test,RMSE,1.4624506201818723,0.13086390131463413,20,163.0
+0.3,Mean,Random Forest,"Masked train, clean test",Complete input,MAE,0.9669153315653949,0.4464189322628159,20,18.7
+0.3,Mean,Random Forest,"Masked train, clean test",Complete input,Prediction shift,0.383216271157814,0.15481916488365377,20,18.7
+0.3,Mean,Random Forest,"Masked train, clean test",Complete input,R2,0.7754822380358011,0.11253757903901973,20,18.7
+0.3,Mean,Random Forest,"Masked train, clean test",Complete input,RMSE,1.4758156397425273,0.8478665796306303,20,18.7
+0.3,Mean,Random Forest,"Masked train, clean test",Missing input,MAE,0.8983507352472626,0.07968371724028715,20,144.3
+0.3,Mean,Random Forest,"Masked train, clean test",Missing input,Prediction shift,0.37531880659048217,0.03958740150112852,20,144.3
+0.3,Mean,Random Forest,"Masked train, clean test",Missing input,R2,0.811674713147014,0.030779080216215515,20,144.3
+0.3,Mean,Random Forest,"Masked train, clean test",Missing input,RMSE,1.440537431994558,0.19579516235006889,20,144.3
+0.3,Mean,Random Forest,"Masked train, masked test",All test,MAE,1.1552201761033845,0.12313758902536351,20,163.0
+0.3,Mean,Random Forest,"Masked train, masked test",All test,Prediction shift,0.7425413611649064,0.09139874630312186,20,163.0
+0.3,Mean,Random Forest,"Masked train, masked test",All test,R2,0.6726128165870083,0.061858634328540274,20,163.0
+0.3,Mean,Random Forest,"Masked train, masked test",All test,RMSE,1.889662082810067,0.22197535798864054,20,163.0
+0.3,Mean,Random Forest,"Masked train, masked test",Complete input,MAE,0.9669153315653949,0.4464189322628159,20,18.7
+0.3,Mean,Random Forest,"Masked train, masked test",Complete input,Prediction shift,0.383216271157814,0.15481916488365377,20,18.7
+0.3,Mean,Random Forest,"Masked train, masked test",Complete input,R2,0.7754822380358011,0.11253757903901973,20,18.7
+0.3,Mean,Random Forest,"Masked train, masked test",Complete input,RMSE,1.4758156397425273,0.8478665796306303,20,18.7
+0.3,Mean,Random Forest,"Masked train, masked test",Missing input,MAE,1.1838679406632786,0.12489234683202972,20,144.3
+0.3,Mean,Random Forest,"Masked train, masked test",Missing input,Prediction shift,0.7898825867593022,0.09622686219820753,20,144.3
+0.3,Mean,Random Forest,"Masked train, masked test",Missing input,R2,0.662891033391827,0.06661456764330832,20,144.3
+0.3,Mean,Random Forest,"Masked train, masked test",Missing input,RMSE,1.9219168796739914,0.25048896915459923,20,144.3
+0.3,Mean,Ridge,"Masked train, clean test",All test,MAE,1.0552178567570396,0.07661005150171311,20,163.0
+0.3,Mean,Ridge,"Masked train, clean test",All test,Prediction shift,0.5465433109749339,0.0793064321328009,20,163.0
+0.3,Mean,Ridge,"Masked train, clean test",All test,R2,0.7777242192136342,0.01875766271980771,20,163.0
+0.3,Mean,Ridge,"Masked train, clean test",All test,RMSE,1.5611289059978115,0.12328160398966756,20,163.0
+0.3,Mean,Ridge,"Masked train, clean test",Complete input,MAE,1.0928508793598741,0.3711209234395323,20,18.7
+0.3,Mean,Ridge,"Masked train, clean test",Complete input,Prediction shift,0.5314821863304344,0.11735348743950987,20,18.7
+0.3,Mean,Ridge,"Masked train, clean test",Complete input,R2,0.7343788822103018,0.13783607524620672,20,18.7
+0.3,Mean,Ridge,"Masked train, clean test",Complete input,RMSE,1.5624668422783732,0.7931071526447855,20,18.7
+0.3,Mean,Ridge,"Masked train, clean test",Missing input,MAE,1.055085146420232,0.07546787634614738,20,144.3
+0.3,Mean,Ridge,"Masked train, clean test",Missing input,Prediction shift,0.5478312138671683,0.0784532812977004,20,144.3
+0.3,Mean,Ridge,"Masked train, clean test",Missing input,R2,0.7824316806927436,0.030112281792572543,20,144.3
+0.3,Mean,Ridge,"Masked train, clean test",Missing input,RMSE,1.547232200125762,0.17012803452300934,20,144.3
+0.3,Mean,Ridge,"Masked train, masked test",All test,MAE,1.2769775818390103,0.12042404738375564,20,163.0
+0.3,Mean,Ridge,"Masked train, masked test",All test,Prediction shift,0.8922163077202144,0.08546290801651998,20,163.0
+0.3,Mean,Ridge,"Masked train, masked test",All test,R2,0.6409374153100867,0.05555916066096553,20,163.0
+0.3,Mean,Ridge,"Masked train, masked test",All test,RMSE,1.9804966960391905,0.1982130582023685,20,163.0
+0.3,Mean,Ridge,"Masked train, masked test",Complete input,MAE,1.0928508793598741,0.3711209234395323,20,18.7
+0.3,Mean,Ridge,"Masked train, masked test",Complete input,Prediction shift,0.5314821863304344,0.11735348743950987,20,18.7
+0.3,Mean,Ridge,"Masked train, masked test",Complete input,R2,0.7343788822103018,0.13783607524620672,20,18.7
+0.3,Mean,Ridge,"Masked train, masked test",Complete input,RMSE,1.5624668422783732,0.7931071526447855,20,18.7
+0.3,Mean,Ridge,"Masked train, masked test",Missing input,MAE,1.3062165847872993,0.13159036872096155,20,144.3
+0.3,Mean,Ridge,"Masked train, masked test",Missing input,Prediction shift,0.938395656049936,0.08784431960831636,20,144.3
+0.3,Mean,Ridge,"Masked train, masked test",Missing input,R2,0.6290921865378795,0.068661505342591,20,144.3
+0.3,Mean,Ridge,"Masked train, masked test",Missing input,RMSE,2.016828122783214,0.25065388502293,20,144.3
+0.3,Median,Random Forest,"Masked train, clean test",All test,MAE,0.9346541133847308,0.07424598114302218,20,163.0
+0.3,Median,Random Forest,"Masked train, clean test",All test,Prediction shift,0.4385477434176832,0.047139732968295094,20,163.0
+0.3,Median,Random Forest,"Masked train, clean test",All test,R2,0.7980130467964834,0.01488633612595937,20,163.0
+0.3,Median,Random Forest,"Masked train, clean test",All test,RMSE,1.4897570055130127,0.13126490420575113,20,163.0
+0.3,Median,Random Forest,"Masked train, clean test",Complete input,MAE,1.0198296878831354,0.42998345238357194,20,18.7
+0.3,Median,Random Forest,"Masked train, clean test",Complete input,Prediction shift,0.46223839682913354,0.15811754927431612,20,18.7
+0.3,Median,Random Forest,"Masked train, clean test",Complete input,R2,0.7434752049840074,0.13959333221698847,20,18.7
+0.3,Median,Random Forest,"Masked train, clean test",Complete input,RMSE,1.533738107577728,0.8115578920196713,20,18.7
+0.3,Median,Random Forest,"Masked train, clean test",Missing input,MAE,0.9298771329027282,0.0838837236081489,20,144.3
+0.3,Median,Random Forest,"Masked train, clean test",Missing input,Prediction shift,0.4371580847866238,0.049119844355233123,20,144.3
+0.3,Median,Random Forest,"Masked train, clean test",Missing input,R2,0.8044198462384596,0.02538083451358463,20,144.3
+0.3,Median,Random Forest,"Masked train, clean test",Missing input,RMSE,1.4690126222497848,0.17612324165399248,20,144.3
+0.3,Median,Random Forest,"Masked train, masked test",All test,MAE,1.1710119268512849,0.12303478296371058,20,163.0
+0.3,Median,Random Forest,"Masked train, masked test",All test,Prediction shift,0.7753671159523619,0.07863675362068619,20,163.0
+0.3,Median,Random Forest,"Masked train, masked test",All test,R2,0.6697096079158577,0.06055538730882422,20,163.0
+0.3,Median,Random Forest,"Masked train, masked test",All test,RMSE,1.8984118126848464,0.2160489124400504,20,163.0
+0.3,Median,Random Forest,"Masked train, masked test",Complete input,MAE,1.0198296878831354,0.42998345238357194,20,18.7
+0.3,Median,Random Forest,"Masked train, masked test",Complete input,Prediction shift,0.46223839682913354,0.15811754927431612,20,18.7
+0.3,Median,Random Forest,"Masked train, masked test",Complete input,R2,0.7434752049840074,0.13959333221698847,20,18.7
+0.3,Median,Random Forest,"Masked train, masked test",Complete input,RMSE,1.533738107577728,0.8115578920196713,20,18.7
+0.3,Median,Random Forest,"Masked train, masked test",Missing input,MAE,1.196024145907121,0.13034992984665303,20,144.3
+0.3,Median,Random Forest,"Masked train, masked test",Missing input,Prediction shift,0.8171413989765796,0.08419913036810468,20,144.3
+0.3,Median,Random Forest,"Masked train, masked test",Missing input,R2,0.6609901340417335,0.0668405012577125,20,144.3
+0.3,Median,Random Forest,"Masked train, masked test",Missing input,RMSE,1.9276969301905893,0.25094054189882864,20,144.3
+0.3,Median,Ridge,"Masked train, clean test",All test,MAE,1.0612974490946685,0.0778088922153399,20,163.0
+0.3,Median,Ridge,"Masked train, clean test",All test,Prediction shift,0.5556787875598256,0.08458298175327136,20,163.0
+0.3,Median,Ridge,"Masked train, clean test",All test,R2,0.7758796749975787,0.0188281868296947,20,163.0
+0.3,Median,Ridge,"Masked train, clean test",All test,RMSE,1.5676792691128982,0.12488517997829723,20,163.0
+0.3,Median,Ridge,"Masked train, clean test",Complete input,MAE,1.1049992271359772,0.3556146023103965,20,18.7
+0.3,Median,Ridge,"Masked train, clean test",Complete input,Prediction shift,0.549675247897385,0.11556516193390423,20,18.7
+0.3,Median,Ridge,"Masked train, clean test",Complete input,R2,0.7328905859583001,0.12931044364113659,20,18.7
+0.3,Median,Ridge,"Masked train, clean test",Complete input,RMSE,1.5739530869114247,0.7940093974509601,20,18.7
+0.3,Median,Ridge,"Masked train, clean test",Missing input,MAE,1.0603998249154758,0.07432860354809281,20,144.3
+0.3,Median,Ridge,"Masked train, clean test",Missing input,Prediction shift,0.5560907736742047,0.08423115702043388,20,144.3
+0.3,Median,Ridge,"Masked train, clean test",Missing input,R2,0.7806606884532153,0.029839799010708053,20,144.3
+0.3,Median,Ridge,"Masked train, clean test",Missing input,RMSE,1.5535500924446868,0.16927806200762674,20,144.3
+0.3,Median,Ridge,"Masked train, masked test",All test,MAE,1.291222324413361,0.12178782852239617,20,163.0
+0.3,Median,Ridge,"Masked train, masked test",All test,Prediction shift,0.91070761941501,0.08117041189927926,20,163.0
+0.3,Median,Ridge,"Masked train, masked test",All test,R2,0.6367405055023991,0.053139773130157684,20,163.0
+0.3,Median,Ridge,"Masked train, masked test",All test,RMSE,1.9928725788920765,0.19594249820515222,20,163.0
+0.3,Median,Ridge,"Masked train, masked test",Complete input,MAE,1.1049992271359772,0.3556146023103965,20,18.7
+0.3,Median,Ridge,"Masked train, masked test",Complete input,Prediction shift,0.549675247897385,0.11556516193390423,20,18.7
+0.3,Median,Ridge,"Masked train, masked test",Complete input,R2,0.7328905859583001,0.12931044364113659,20,18.7
+0.3,Median,Ridge,"Masked train, masked test",Complete input,RMSE,1.5739530869114247,0.7940093974509601,20,18.7
+0.3,Median,Ridge,"Masked train, masked test",Missing input,MAE,1.3208545063076331,0.13304220611949935,20,144.3
+0.3,Median,Ridge,"Masked train, masked test",Missing input,Prediction shift,0.9572729621664529,0.08399616257878054,20,144.3
+0.3,Median,Ridge,"Masked train, masked test",Missing input,R2,0.624550916641924,0.06559205648528496,20,144.3
+0.3,Median,Ridge,"Masked train, masked test",Missing input,RMSE,2.029942817409074,0.24467620843254786,20,144.3
+0.3,Mode,Random Forest,"Masked train, clean test",All test,MAE,0.9172635227482788,0.07275252838576547,20,163.0
+0.3,Mode,Random Forest,"Masked train, clean test",All test,Prediction shift,0.4300309106239088,0.05622252550604772,20,163.0
+0.3,Mode,Random Forest,"Masked train, clean test",All test,R2,0.8022396178663902,0.01553347983624206,20,163.0
+0.3,Mode,Random Forest,"Masked train, clean test",All test,RMSE,1.4737938779628343,0.12873017683996926,20,163.0
+0.3,Mode,Random Forest,"Masked train, clean test",Complete input,MAE,0.9710517469083859,0.44146627341341793,20,18.7
+0.3,Mode,Random Forest,"Masked train, clean test",Complete input,Prediction shift,0.44188163478369635,0.14720212751202963,20,18.7
+0.3,Mode,Random Forest,"Masked train, clean test",Complete input,R2,0.776460910950958,0.1318892805922298,20,18.7
+0.3,Mode,Random Forest,"Masked train, clean test",Complete input,RMSE,1.462701449502337,0.8668183621972937,20,18.7
+0.3,Mode,Random Forest,"Masked train, clean test",Missing input,MAE,0.9156036493647635,0.08229745585926278,20,144.3
+0.3,Mode,Random Forest,"Masked train, clean test",Missing input,Prediction shift,0.42934208784586103,0.05568063388050024,20,144.3
+0.3,Mode,Random Forest,"Masked train, clean test",Missing input,R2,0.8081861270269517,0.028020527261243246,20,144.3
+0.3,Mode,Random Forest,"Masked train, clean test",Missing input,RMSE,1.4540534828317258,0.18080363012929385,20,144.3
+0.3,Mode,Random Forest,"Masked train, masked test",All test,MAE,1.1763462863628085,0.1132312583357236,20,163.0
+0.3,Mode,Random Forest,"Masked train, masked test",All test,Prediction shift,0.8001319475282742,0.07924543281297532,20,163.0
+0.3,Mode,Random Forest,"Masked train, masked test",All test,R2,0.6675033564099235,0.06030240113091369,20,163.0
+0.3,Mode,Random Forest,"Masked train, masked test",All test,RMSE,1.9040626514411791,0.1989364628014383,20,163.0
+0.3,Mode,Random Forest,"Masked train, masked test",Complete input,MAE,0.9710517469083859,0.44146627341341793,20,18.7
+0.3,Mode,Random Forest,"Masked train, masked test",Complete input,Prediction shift,0.44188163478369635,0.14720212751202963,20,18.7
+0.3,Mode,Random Forest,"Masked train, masked test",Complete input,R2,0.776460910950958,0.1318892805922298,20,18.7
+0.3,Mode,Random Forest,"Masked train, masked test",Complete input,RMSE,1.462701449502337,0.8668183621972937,20,18.7
+0.3,Mode,Random Forest,"Masked train, masked test",Missing input,MAE,1.2074929220755466,0.11865538383939837,20,144.3
+0.3,Mode,Random Forest,"Masked train, masked test",Missing input,Prediction shift,0.8468686961844145,0.08031114360129255,20,144.3
+0.3,Mode,Random Forest,"Masked train, masked test",Missing input,R2,0.6572526777786474,0.06671385509068124,20,144.3
+0.3,Mode,Random Forest,"Masked train, masked test",Missing input,RMSE,1.9371454758329816,0.23315528891962667,20,144.3
+0.3,Mode,Ridge,"Masked train, clean test",All test,MAE,1.0581219945826388,0.08644763200874422,20,163.0
+0.3,Mode,Ridge,"Masked train, clean test",All test,Prediction shift,0.5692289061659184,0.09365732059347218,20,163.0
+0.3,Mode,Ridge,"Masked train, clean test",All test,R2,0.7751191003480514,0.019280391339652293,20,163.0
+0.3,Mode,Ridge,"Masked train, clean test",All test,RMSE,1.5708388532244353,0.13390272721057914,20,163.0
+0.3,Mode,Ridge,"Masked train, clean test",Complete input,MAE,1.0962788896895064,0.3815084370605336,20,18.7
+0.3,Mode,Ridge,"Masked train, clean test",Complete input,Prediction shift,0.5727495194849557,0.1334846471631276,20,18.7
+0.3,Mode,Ridge,"Masked train, clean test",Complete input,R2,0.7443432005551369,0.11492539284837225,20,18.7
+0.3,Mode,Ridge,"Masked train, clean test",Complete input,RMSE,1.5659213512158012,0.8388084892814464,20,18.7
+0.3,Mode,Ridge,"Masked train, clean test",Missing input,MAE,1.0576263773046652,0.07995627310452093,20,144.3
+0.3,Mode,Ridge,"Masked train, clean test",Missing input,Prediction shift,0.5688907666226789,0.09263429870758372,20,144.3
+0.3,Mode,Ridge,"Masked train, clean test",Missing input,R2,0.779875191720437,0.028847992222752677,20,144.3
+0.3,Mode,Ridge,"Masked train, clean test",Missing input,RMSE,1.5566639455179343,0.1693382591370696,20,144.3
+0.3,Mode,Ridge,"Masked train, masked test",All test,MAE,1.3193391337062423,0.12639258617558763,20,163.0
+0.3,Mode,Ridge,"Masked train, masked test",All test,Prediction shift,0.946715139701275,0.09583612511080901,20,163.0
+0.3,Mode,Ridge,"Masked train, masked test",All test,R2,0.6222800629848478,0.051346482370869646,20,163.0
+0.3,Mode,Ridge,"Masked train, masked test",All test,RMSE,2.0325190031138503,0.1885574696788975,20,163.0
+0.3,Mode,Ridge,"Masked train, masked test",Complete input,MAE,1.0962788896895064,0.3815084370605336,20,18.7
+0.3,Mode,Ridge,"Masked train, masked test",Complete input,Prediction shift,0.5727495194849557,0.1334846471631276,20,18.7
+0.3,Mode,Ridge,"Masked train, masked test",Complete input,R2,0.7443432005551369,0.11492539284837225,20,18.7
+0.3,Mode,Ridge,"Masked train, masked test",Complete input,RMSE,1.5659213512158012,0.8388084892814464,20,18.7
+0.3,Mode,Ridge,"Masked train, masked test",Missing input,MAE,1.353417297250649,0.12809950528572797,20,144.3
+0.3,Mode,Ridge,"Masked train, masked test",Missing input,Prediction shift,0.9954709288565977,0.0950270938575856,20,144.3
+0.3,Mode,Ridge,"Masked train, masked test",Missing input,R2,0.6080616161649675,0.06171519867851103,20,144.3
+0.3,Mode,Ridge,"Masked train, masked test",Missing input,RMSE,2.074144051294789,0.22542920858318505,20,144.3
