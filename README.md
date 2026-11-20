@@ -4,6 +4,8 @@ Bộ seminar có **bản đầy đủ 24 slide, khoảng 25 phút** và **bản 
 
 ## Trình chiếu
 
+[Bản thuyết trình đầy đủ dạng PDF](output/pdf/ban_thuyet_trinh_day_du.pdf) có 32 trang A4, gồm lời thoại biên tập cho đủ 24 slide, câu chuyển ý cụ thể, hướng dẫn chỉ hình, giải thích học thuật và phụ lục. Mỗi slide có một trang lời thoại riêng. Mục lục và bookmark giúp tra nhanh. Bản này dùng khoảng 25 phút trình bày; lộ trình 15 phút có lời thoại rút gọn riêng bên dưới.
+
 Bài đi theo ba câu hỏi. Vì sao giá trị đại diện có thể ước lượng ô thiếu? Khi nào thay thế hợp lý? Dữ liệu sau điền sai lệch ra sao? Ví dụ tuổi được nối với lựa chọn hằng số theo hàm mất mát, điều kiện đại diện của phần quan sát và kiểm chứng trên dữ liệu thực tế.
 
 - [PowerPoint đầy đủ 24 slide](presentation/seminar_day_du.pptx) · [PDF đầy đủ](presentation/seminar_day_du.pdf).
@@ -14,6 +16,15 @@ Bài đi theo ba câu hỏi. Vì sao giá trị đại diện có thể ước l
 - [Notebook đã lưu đầu ra](notebooks/seminar_imputation.ipynb) có thể dùng để mở phần demo hoặc kết quả.
 
 [Lý thuyết đầy đủ](presentation/ly_thuyet.md) gồm các dạng phân phối, skewness và IQR, công thức Mean/Median/Mode, ba bài toán tối ưu cùng chứng minh.
+
+Để xuất lại PDF lời thuyết trình từ [nguồn lời thoại đã biên tập](presentation/script_pdf_content.json):
+
+```powershell
+python -m pip install -r requirements-pdf.txt
+python -m src.build_speech_pdf
+```
+
+Mã dùng Arial trên Windows hoặc DejaVu Sans trên Linux; có thể truyền `--font-dir`. Đầu ra mặc định ở `output/pdf/ban_thuyet_trinh_day_du.pdf`. Lệnh này chỉ dàn trang lời thoại và đọc bảng kết quả hiện có.
 
 ## Chạy lại thực nghiệm
 

@@ -1,0 +1,13 @@
+{
+  "status": "pass",
+  "pages": 32,
+  "slide_scripts": 24,
+  "bookmarks": 32,
+  "full_speech_and_terms_preserved": true,
+  "unicode_missing_glyphs": 0,
+  "page_bounds_checked": true,
+  "rendered_pages": 32,
+  "evidence": "Existing experiment results retained; no model retraining for this PDF.",
+  "pdf_sha256": "97d721e639e0089e3dce6d996fd5f89aa15c0c53c8548dfeac89d4299f5bc4d6",
+  "table_of_contents_links": 28
+}
